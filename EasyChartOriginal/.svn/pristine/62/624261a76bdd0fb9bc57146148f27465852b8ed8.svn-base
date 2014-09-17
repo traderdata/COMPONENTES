@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+		<add key="Designer.DefaultFormulas" value="VOLMA;DEMO.VC;DEMO.FUNC2;DEMO.FUNC3;VOLMA;VOLMA" />
+		<add key="Designer.FavoriteFormulas" value="VOLMA;EXTEND.RSI;DEMO.MACD;CCI;DEMO.FUNC1;DEMO.FUNC2;DEMO.FUNC3;OBV;ATR;FastSTO;SlowSTO;ROC;TRIX;WR;AD;CMF;PPO;StochRSI;ULT;BBWidth;PVO" />
+		<add key="Designer.ShowCursor" value="True" />
+		<add key="Designer.ShowTopLine" value="True" />
+		<add key="Designer.Skin" value="RedWhite" />
+		<add key="Designer.AreaCount" value="5" />
+		<add key="Designer.ShowCursorLabel" value="True" />
+	</appSettings>
+</configuration>

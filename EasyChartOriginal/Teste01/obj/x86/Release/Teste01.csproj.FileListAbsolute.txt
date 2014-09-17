@@ -1,0 +1,11 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\bin\Release\Teste01.exe
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\bin\Release\Teste01.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.csprojResolveAssemblyReference.cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.Properties.Resources.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.csproj.GenerateResource.Cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.exe
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\obj\x86\Release\Teste01.Form1.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\bin\Release\Teste01.exe.config
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\bin\Release\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\Teste01\bin\Release\Easychart.Finance.Win.dll

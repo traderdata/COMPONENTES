@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://data.easychart.net/datafeed.asmx?wsdl" docRef="http://data.easychart.net/datafeed.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://data.easychart.net/datafeed.asmx" xmlns:q1="http://finance.easychart.net" binding="q1:Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

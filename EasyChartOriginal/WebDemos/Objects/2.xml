@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:EasyChart="http://finance.easychart.net">
+  <Objects>
+    <BaseObject d3p1:type="GridObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37830" Y="27.9016768477137" />
+        <ObjectPoint X="37854" Y="26.943107503528573" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="0, 0, 0" Width="1" />
+      <GridCount>10</GridCount>
+    </BaseObject>
+  </Objects>
+</Root>

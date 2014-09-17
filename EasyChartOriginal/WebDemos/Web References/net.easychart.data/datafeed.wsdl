@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://finance.easychart.net" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://finance.easychart.net" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://finance.easychart.net">
+      <s:element name="Exchange">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExchangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndOfDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Exchanges" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndOfDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EndOfDayResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BinaryHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AddWhenNoSymbol" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BinaryHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BinaryHistoryResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SymbolList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Exchanges" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SymbolListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SymbolListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Industry">
+        <s:complexType />
+      </s:element>
+      <s:element name="IndustryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IndustryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="ExchangeSoapIn">
+    <part name="parameters" element="s0:Exchange" />
+  </message>
+  <message name="ExchangeSoapOut">
+    <part name="parameters" element="s0:ExchangeResponse" />
+  </message>
+  <message name="EndOfDaySoapIn">
+    <part name="parameters" element="s0:EndOfDay" />
+  </message>
+  <message name="EndOfDaySoapOut">
+    <part name="parameters" element="s0:EndOfDayResponse" />
+  </message>
+  <message name="BinaryHistorySoapIn">
+    <part name="parameters" element="s0:BinaryHistory" />
+  </message>
+  <message name="BinaryHistorySoapOut">
+    <part name="parameters" element="s0:BinaryHistoryResponse" />
+  </message>
+  <message name="SymbolListSoapIn">
+    <part name="parameters" element="s0:SymbolList" />
+  </message>
+  <message name="SymbolListSoapOut">
+    <part name="parameters" element="s0:SymbolListResponse" />
+  </message>
+  <message name="IndustrySoapIn">
+    <part name="parameters" element="s0:Industry" />
+  </message>
+  <message name="IndustrySoapOut">
+    <part name="parameters" element="s0:IndustryResponse" />
+  </message>
+  <portType name="Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap">
+    <operation name="Exchange">
+      <documentation>The exchange list for current user. users can change this from our web site!</documentation>
+      <input message="s0:ExchangeSoapIn" />
+      <output message="s0:ExchangeSoapOut" />
+    </operation>
+    <operation name="EndOfDay">
+      <documentation>End of day data for given exchanges and date.</documentation>
+      <input message="s0:EndOfDaySoapIn" />
+      <output message="s0:EndOfDaySoapOut" />
+    </operation>
+    <operation name="BinaryHistory">
+      <documentation>Historical data for given symbol.</documentation>
+      <input message="s0:BinaryHistorySoapIn" />
+      <output message="s0:BinaryHistorySoapOut" />
+    </operation>
+    <operation name="SymbolList">
+      <documentation>Symbol list for given exchanges.</documentation>
+      <input message="s0:SymbolListSoapIn" />
+      <output message="s0:SymbolListSoapOut" />
+    </operation>
+    <operation name="Industry">
+      <documentation>Industry list for US exchanges.</documentation>
+      <input message="s0:IndustrySoapIn" />
+      <output message="s0:IndustrySoapOut" />
+    </operation>
+  </portType>
+  <binding name="Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap" type="s0:Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Exchange">
+      <soap:operation soapAction="http://finance.easychart.net/Exchange" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="EndOfDay">
+      <soap:operation soapAction="http://finance.easychart.net/EndOfDay" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BinaryHistory">
+      <soap:operation soapAction="http://finance.easychart.net/BinaryHistory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SymbolList">
+      <soap:operation soapAction="http://finance.easychart.net/SymbolList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Industry">
+      <soap:operation soapAction="http://finance.easychart.net/Industry" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_Feed">
+    <documentation>Easy Stock Chart Data Feed</documentation>
+    <port name="Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap" binding="s0:Easy_x0020_Stock_x0020_Chart_x0020_Data_x0020_FeedSoap">
+      <soap:address location="http://data.easychart.net/datafeed.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,223 @@
+/* PAGE BACKGROUND */
+/* background color for the header at the top of the page  */
+
+/* background color for the content part of the pages */
+Body
+{
+    background-color: white;
+    font-family: Verdana Bold, Helvetica, sans-serif;
+}
+
+.Title 
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 16px;
+    color:Gray;
+    text-decoration:none;
+    font-weight: bold
+}
+
+.Script
+{
+	color: blue;
+	font-family: verdana;
+}
+
+.Text
+{
+	font-weight: bold;
+	font-family: verdana;
+}
+
+.Footer
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    color:Black;
+    text-decoration:none;
+}
+
+.HeadBg
+{
+	background-color: lightsteelblue;
+}
+
+.OtherTabsBg {
+    background-color: dimgray;
+    border-color: black;
+}
+
+.OtherTabs {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 13px;
+    color:gainsboro;
+    text-decoration:none;
+    font-weight: bold
+}
+
+.Tree {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 13px;
+    text-decoration:none;
+    font-weight: bold
+}
+
+.Perf
+{
+	font-size: 9pt;
+	color: blue;
+	font-family: verdana;
+}
+
+/* hyperlink styles of the unselected tabs */
+A.OtherTabs:link    {
+    text-decoration:    none;
+    color:#eeeeee;
+}
+
+A.OtherTabs:visited {
+    text-decoration:    none;
+    color:#eeeeee;
+}
+
+A.OtherTabs:active  {
+    text-decoration:    none;
+    color:#eeeeee;
+}
+
+A.OtherTabs:hover   {
+    text-decoration:    underline;
+    color:white;
+}
+
+.TabBg {
+    background-color: white;
+    border-color: white;
+}
+
+.SelectedTab
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: darkred;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+.SiteLink
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: dimgray;
+	font-family: Verdana, Helvetica, sans-serif;
+} 
+
+.SiteTitle {
+    font-family: Verdana Bold, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color:#ffffff
+}
+
+/* hyperlink style for the site links */
+A.SiteLink:link
+{
+	color: blue;
+	text-decoration: none;
+}
+
+A.SiteLink:visited
+{
+	color: blue;
+	text-decoration: none;
+}
+
+A.SiteLink:active
+{
+	color: blue;
+	text-decoration: none;
+}
+
+A.SiteLink:hover
+{
+	color: deeppink;
+	text-decoration: underline;
+}
+
+TD  {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size:  13px;
+}
+
+A {
+    font-family: Verdana, Helvetica, sans-serif;
+}
+
+SMALL   {
+    font-size:  8px;
+}
+
+BIG {
+    font-size:  14px;
+}
+
+BLOCKQUOTE, PRE {
+    font-family:    Lucida Console, monospace;
+}
+
+HR {
+    color: dimgrey;
+    height:1pt;
+    text-align:left
+}
+
+.TabItem
+{
+	background-color: lemonchiffon;
+}
+
+.TabItemA
+{
+	background-color: #eeffcc;
+}
+
+.TabItemB
+{
+	background-color: #f0ffee;
+}
+
+.TabItemC
+{
+	background-color: #fffff8;
+}
+
+.TabItemD
+{
+	background-color: #eeeeff;
+}
+
+.Gray
+{
+	background-color: whitesmoke;
+}
+
+HR
+{
+	color: #999900;
+	height: 1pt;
+}
+
+.FontA
+{
+	color: darkorange;
+}
+
+.ChartButton
+{
+	border-right: black 1px solid;
+	border-top: black 1px solid;
+	font-weight: bold;
+	border-left: black 1px solid;
+	color: #ffffff;
+	border-bottom: black 1px solid;
+	background-color: dimgray;
+}

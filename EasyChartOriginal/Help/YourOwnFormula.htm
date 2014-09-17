@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<style type="text/css"> <!-- td {font-family:Verdana; font-size: 11pt; line-height-: 14pt}
+	//--></style>
+	</head>
+	<body leftmargin="0" marginheight="0" marginwidth="0" topmargin="0" link="#800000" vlink="#800000"
+		alink="#0000ff">
+		<table width="100%" bgcolor="darkblue" Height="60">
+			<tr>
+				<td>
+					<B><font color="white" size="+1">Easy financial chart - Write you own formulas</font></B>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr>
+				<td>
+					<p>
+						Easy financial chart provide a flexible way to embed your own formulas. You can 
+						bundle all you formulas to a dll file, put it to the plugins subfolder, then it 
+						will be loaded automatically when main program start.
+					</p>
+					<p>
+						Here I make a file called demo.fml in <font color="red">\Program Files\Easy 
+							Financial Chart\WindowsDemo\bin\debug\plugins</font> folder , it's the 
+						source code of plugin dll . Open it using formula editor. (figure 1)<br>
+						<img src="editor1.gif">
+						<br>
+						figure 1
+					</p>
+					<p>
+						Expand the left tree to find the MACD formula.(figure 2)<br>
+						<img src="editor2.gif">
+						<br>
+						figure 2
+					</p>
+					<p>
+						There are three parameters in this formula, LONG,SHORT and M. These parameters 
+						are referenced by the formula program.
+						<br>
+						In the code text box shows following formula:<br>
+						<font color="blue">DIFF : EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);<br>
+							DEA : EMA(DIFF,M);<br>
+							MACD : 2*(DIFF-DEA), COLORSTICK;<br>
+						</font>
+						<br>
+					This means the formula will show three lines on the chart : DIFF,DEA and MACD.
+					<p>
+						Let's see the first line : <font color="blue">DIFF : EMA(CLOSE,SHORT) - 
+							EMA(CLOSE,LONG);</font><br>
+						This line means that the exponental moving average of the last "LONG" days 
+						closes will be subtracted from the exponental moving average of the last 
+						"SHORT" days closes. The LONG and SHORT was specified in the parameter 
+						area(Figure 3).
+					</p>
+					<p>
+						The second line means that the exponental moving average of the last "M" days 
+						of DIFF. DIFF is the value returned by the first line.
+					</p>
+					<p>
+						The third line means that first line subtract the second line , the result 
+						multiply by 2. and show this line in a style of COLORSTICK. <img src="editor3.gif"><br>
+						Figure 3
+					</p>
+					<p>
+						Let's open WindowsDemo.exe , You can see how the MACD formula is drawn in the 
+						chart.(Figure 4) <img src="editor4.gif"><br>
+						Figure 4
+					</p>
+					<p>
+						Modify the MACD formula , and see what happens.<br>
+						Add two lines in the code text box :
+						<br>
+						<font color="blue">0.25;
+							<br>
+							TRIMA:MA(DEA,M2);</font><br>
+						Press F9 to compile it. The editor shows an error "The name M2 does not exist". 
+						This is because we did not define this parameter. (Figure 5) <img src="editor5.gif"><br>
+						Figure 5
+					</p>
+					<p>
+						Right click MACD in the tree, add the parameter M2.(Figure 6)<br>
+						<img src="editor6.gif"><br>
+						Figure 6
+					</p>
+					<p>
+						Press F9 to Compile.
+						<br>
+						If the WindowsDemo.exe still open, Formula editor will give an error : "Could 
+						not write to output file..."(figure 7)
+						<br>
+						so make sure to close the WindowsDemo.exe before compile.<br>
+						<img src="editor7.gif"><br>
+						Figure 7
+					</p>
+					<p>
+						Press F9 again.
+						<br>
+						This time we get the OK! message in the editor.(figure 8)<br>
+						<img src="editor8.gif"><br>
+						Figure 8
+					</p>
+					<p>
+						Open WindowsDemo.exe again. You will see two extra lines shown in the 
+						chart.(figure 9)<br>
+						<img src="editor9.gif"><br>
+						Figure 9
+					</p>
+					<p>
+						You can double click the formula area to change the formula parameters.(figure 
+						10)<br>
+						<img src="editor10.gif"><br>
+						Figure 10
+					</p>
+					<p>
+						Define which formulas can be selected in the chart at App.config.<br>
+						<font color="blue">&lt;add key="SupportedFormulas" 
+							value="VOLMA;EXTEND.RSI;DEMO.MACD;CCI;DEMO.FUNC1;DEMO.FUNC2;DEMO.FUNC3" /&gt;</font><br>
+						each formula is seperated by semicolon.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr>
+				<td>
+					<a href="FormulaGuide.htm">Quick Formula Script Language Guide</a><br>
+					<br>
+					<a href="mailto:support@easychart.net">Any questions? feel free to contact me!</a><br>
+					<a href="http://finance.easychart.net">http://finance.easychart.net</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

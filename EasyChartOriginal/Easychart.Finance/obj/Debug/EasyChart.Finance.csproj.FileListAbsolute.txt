@@ -1,0 +1,12 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\bin\debug\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\bin\debug\Easychart.Finance.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\obj\Debug\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\obj\Debug\Easychart.Finance.pdb
+C:\Backup\Projetos2014\COMPONENTES\CHART2\Easychart.Finance\bin\debug\Easychart.Finance.dll
+C:\Backup\Projetos2014\COMPONENTES\CHART2\Easychart.Finance\bin\debug\Easychart.Finance.pdb
+C:\Backup\Projetos2014\COMPONENTES\CHART2\Easychart.Finance\obj\Debug\Easychart.Finance.dll
+C:\Backup\Projetos2014\COMPONENTES\CHART2\Easychart.Finance\obj\Debug\Easychart.Finance.pdb
+C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug\Easychart.Finance.dll
+C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug\Easychart.Finance.pdb
+C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.dll
+C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.pdb

@@ -1,0 +1,5 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyTools\bin\Debug\EasyTools.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyTools\bin\Debug\EasyTools.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyTools\obj\Debug\EasyTools.csprojResolveAssemblyReference.cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyTools\obj\Debug\EasyTools.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyTools\obj\Debug\EasyTools.pdb

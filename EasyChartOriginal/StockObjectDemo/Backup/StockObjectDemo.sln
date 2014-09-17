@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockObjectDemo", "StockObjectDemo.csproj", "{237F5454-CE44-496F-9AC0-CA7C50F30DD8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemosWithObject", "http://localhost/EasyStockChart/WebDemosWithObject.csproj", "{D840A11B-F74C-41BE-8B34-CAC17EF2C4AE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Easychart.Finance.Objects", "..\Easychart.Finance.Objects\Easychart.Finance.Objects.csproj", "{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyChart.Finance", "..\Easychart.Finance\EasyChart.Finance.csproj", "{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyChart.Finance.Win", "..\EasyChart.Finance.Win\EasyChart.Finance.Win.csproj", "{2DA946EF-D4DE-4377-8C16-8B3074662CF5}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyTools", "..\EasyTools\EasyTools.csproj", "{9BA65E2E-735B-4A6D-B023-0F9A221FAC52}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{237F5454-CE44-496F-9AC0-CA7C50F30DD8}.Debug.ActiveCfg = Debug|.NET
+		{237F5454-CE44-496F-9AC0-CA7C50F30DD8}.Debug.Build.0 = Debug|.NET
+		{237F5454-CE44-496F-9AC0-CA7C50F30DD8}.Release.ActiveCfg = Release|.NET
+		{237F5454-CE44-496F-9AC0-CA7C50F30DD8}.Release.Build.0 = Release|.NET
+		{D840A11B-F74C-41BE-8B34-CAC17EF2C4AE}.Debug.ActiveCfg = Debug|.NET
+		{D840A11B-F74C-41BE-8B34-CAC17EF2C4AE}.Debug.Build.0 = Debug|.NET
+		{D840A11B-F74C-41BE-8B34-CAC17EF2C4AE}.Release.ActiveCfg = Release|.NET
+		{D840A11B-F74C-41BE-8B34-CAC17EF2C4AE}.Release.Build.0 = Release|.NET
+		{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}.Debug.ActiveCfg = Debug|.NET
+		{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}.Debug.Build.0 = Debug|.NET
+		{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}.Release.ActiveCfg = Release|.NET
+		{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}.Release.Build.0 = Release|.NET
+		{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}.Debug.ActiveCfg = Debug|.NET
+		{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}.Debug.Build.0 = Debug|.NET
+		{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}.Release.ActiveCfg = Release|.NET
+		{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}.Release.Build.0 = Release|.NET
+		{2DA946EF-D4DE-4377-8C16-8B3074662CF5}.Debug.ActiveCfg = Debug|.NET
+		{2DA946EF-D4DE-4377-8C16-8B3074662CF5}.Debug.Build.0 = Debug|.NET
+		{2DA946EF-D4DE-4377-8C16-8B3074662CF5}.Release.ActiveCfg = Release|.NET
+		{2DA946EF-D4DE-4377-8C16-8B3074662CF5}.Release.Build.0 = Release|.NET
+		{9BA65E2E-735B-4A6D-B023-0F9A221FAC52}.Debug.ActiveCfg = Debug|.NET
+		{9BA65E2E-735B-4A6D-B023-0F9A221FAC52}.Debug.Build.0 = Debug|.NET
+		{9BA65E2E-735B-4A6D-B023-0F9A221FAC52}.Release.ActiveCfg = Release|.NET
+		{9BA65E2E-735B-4A6D-B023-0F9A221FAC52}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Namespace xmlns:Formula="http://finance.easychart.net" Name="FML" Version="1.0.0.135">
+  <Description />
+  <GroupOnly>false</GroupOnly>
+  <Namespaces>
+    <Namespace Name="Trend Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="BBI" IsMainView="true">
+          <FullName>Bullish-Bearish Indicator</FullName>
+          <Description>algorithm
+
+BBI = a weighted sum of the other indicators that have a bullish trend.</Description>
+          <Code>(MA(C,N1)+MA(C,N2)+MA(C,N3)+MA(C,N4))/4</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="3" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N3" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N4" DefaultValue="24" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="CYS" IsMainView="false">
+          <FullName />
+          <Description>This indicator shows the percentage of buyer which earn money.</Description>
+          <Code>Var1:=IF(YEAR&gt;=2010 &amp; MONTH&gt;=2,0,1);
+Var2:=VOL*C;
+Var3:=EMA(Var2,13)/EMA(VOL,13);
+CYS: (EMA(CLOSE,P1)-Var3)/Var3*100*Var1;
+ML: EMA(CYS,P2)*Var1;
+LO: 0, POINTDOT;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="P1" DefaultValue="4" MinValue="1" MaxValue="15" Description="" ParamType="double" />
+            <FormulaParam Name="P2" DefaultValue="5" MinValue="1" MaxValue="15" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="DDI" IsMainView="false">
+          <FullName>Directional Divergence Index</FullName>
+          <Description />
+          <Code>TR:=MAX(ABS(H-REF(H,1)),ABS(L-REF(L,1)));
+DMZ:=IF((H+L)&lt;=(REF(H,1)+REF(L,1)),0,MAX(ABS(H-REF(H,1)),ABS(L-REF(L,1))));
+DMF:=IF((H+L)&gt;=(REF(H,1)+REF(L,1)),0,MAX(ABS(H-REF(H,1)),ABS(L-REF(L,1))));
+DIZ:=SUM(DMZ,N)/(SUM(DMZ,N)+SUM(DMF,N));
+DIF:=SUM(DMF,N)/(SUM(DMF,N)+SUM(DMZ,N));
+DDI:DIZ-DIF,COLORSTICK;
+ADDI:SMA(DDI,N1,M);
+AD:MA(ADDI,M1);
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="13" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="30" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M1" DefaultValue="5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="DMA" IsMainView="false">
+          <FullName>Daily Moving Average</FullName>
+          <Description>A moving average calculated based upon daily activity. A number preceding the abbreviation indicates the daily time period used to calculate the average.</Description>
+          <Code>DDD : (MA(CLOSE,SHORT)-MA(CLOSE,LONG));
+AMA : MA(DDD,M)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="SHORT" DefaultValue="10" MinValue="2" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="LONG" DefaultValue="50" MinValue="2" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="10" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="DMI" IsMainView="false">
+          <FullName>Directional Movement Index</FullName>
+          <Description>Directional movement is a system for providing trading signals to be used for price breaks from a trading range.  The system involves 5 indicators which are the Directional Movement Index (DX), the plus Directional Indicator (+DI), the minus Directional Indicator (-DI), the average Directional Movement (ADX) and the Directional movement rating (ADXR).  The system was developed J. Welles Wilder and is explained thoroughly in his book, New Concepts in Technical Trading Systems .
+
+The basic Directional Movement Trading system involves plotting the 14day +DI and the 14 day -DI on top of each other.  When the +DI rises above the -DI, it is a bullish signal.  A bearish signal occurs when the +DI falls below the -DI.  To avoid whipsaws, Wilder identifies a trigger point to be the extreme price on the day the lines cross.  If you have received a buy signal, you would wait for the security to rise above the extreme price (the high price on the day the lines crossed).  If you are waiting for a sell signal the extreme point is then defined as the low price on the day's the line cross.</Description>
+          <Code>TR := SUM(MAX(MAX(HIGH-LOW,ABS(HIGH-REF(CLOSE,1))),ABS(LOW-REF(CLOSE,1))),N);
+HD := HIGH-REF(HIGH,1);
+LD := REF(LOW,1)-LOW;
+DMP:= SUM(IF(HD&gt;0 &amp; HD&gt;LD,HD,0),N);
+DMM:= SUM(IF(LD&gt;0 &amp; LD&gt;HD,LD,0),N);
+PDI: DMP*100/TR;
+MDI: DMM*100/TR;
+ADX: MA(ABS(MDI-PDI)/(MDI+PDI)*100,M);
+ADXR:(ADX+REF(ADX,M))/2
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="EMA4" IsMainView="true">
+          <FullName>Exponential Moving Averages</FullName>
+          <Description>An exponential moving average (EMA) is calculated by adding a percentage of yesterday's moving average to a percentage of today's closing value.  In this way an investor can put more emphasis on more recent data and less weight on past data in the calculation of the moving average.</Description>
+          <Code>MA1:EMA(CLOSE,P1);
+MA2:EMA(CLOSE,P2);
+MA3:EMA(CLOSE,P3);
+MA4:EMA(CLOSE,P4)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="P1" DefaultValue="5" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P2" DefaultValue="10" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P3" DefaultValue="20" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P4" DefaultValue="60" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MA4" IsMainView="false">
+          <FullName>Moving Averages</FullName>
+          <Description>Moving averages are used to help identify the trend of prices.  By creating an average of prices, that "moves" with the addition of new data, the price action on the security being analyzed is "smoothed".  In other words, by calculating the average value of a underlying security or indicator, day to day fluctuations are reduced in importance and what remains is a stronger indication of the trend of prices over the period being analyzed.</Description>
+          <Code>MA1:MA(CLOSE,P1);
+MA2:MA(CLOSE,P2);
+MA3:MA(CLOSE,P3);
+MA4:MA(CLOSE,P4);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="P1" DefaultValue="5" MinValue="0" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P2" DefaultValue="10" MinValue="0" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P3" DefaultValue="20" MinValue="0" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P4" DefaultValue="30" MinValue="0" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MACD" IsMainView="false">
+          <FullName>Moving Average Convergence Divergence</FullName>
+          <Description>The Moving Average Convergence/Divergence indicator (MACD) is calculated by subtracting the value of a 26-period exponential moving average from a 12-period exponential moving average (EMA). A 9-period dotted exponential moving average (the "signal line") of the difference between the 26 and 12 period EMA is used as the signal line.
+
+The basic MACD trading rule is to sell when the MACD falls below its 9 day signal line and to buy when the MACD rises above the 9 day signal line.  Traders sometimes vary the calculation period of the signal line and may use different moving average lengths in calculating the MACD dependent on the security and trading strategy.</Description>
+          <Code>DIFF : EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+DEA  : EMA(DIFF,M);
+MACD : 2*(DIFF-DEA), COLORSTICK;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="LONG" DefaultValue="26" MinValue="20" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="SHORT" DefaultValue="12" MinValue="5" MaxValue="40" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="9" MinValue="2" MaxValue="60" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MTM" IsMainView="false">
+          <FullName>Momentum</FullName>
+          <Description>The Momentum is simply the difference between the current point (price or something else) and the point N periods ago.
+
+Usage:
+
+The rising line signals that the uptrend is getting stronger, the horizontal line at zero level means there is no trend, and falling line means the downtrend is getting stronger.
+
+The momentum can be used for identifying trends, overbought/oversold conditions and divergences.
+</Description>
+          <Code>MTM : CLOSE-REF(CLOSE,N);
+MTMMA : MA(MTM,N1)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PPO" IsMainView="false">
+          <FullName>Price Oscillator</FullName>
+          <Description>An indicator which attempts to assess the momentum of price activity by the use of two or more moving averages, for a predefined time frame period.</Description>
+          <Code>PPO:(EMA(CLOSE,SHORT)-EMA(CLOSE,LONG))/EMA(CLOSE,LONG)*100;
+EMA(PPO,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="LONG" DefaultValue="26" MinValue="5" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="SHORT" DefaultValue="12" MinValue="2" MaxValue="40" Description="" ParamType="double" />
+            <FormulaParam Name="N" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SAR" IsMainView="true">
+          <FullName>Stop and Reverse</FullName>
+          <Description>Parabolic Stop and Release was introduced by J Welles Wilder.  The Parabolic SAR is a trend following indicator that is designed to create a trailing stop.  This is a point that follows a prevailing trend, giving a possible value for a stop loss order that is far enough away from the original trend to avoid being stopped out with a small consolidation and retraction moves.  The trailing stop moves with the trend, accelerating closer to price action as time passes giving the path of the indicator a parabolic look.  When price penetrates the SAR a new calculation is started taking the other side of the market with an initial setting that again allows a certain amount of initial volatility if the trend is slow to get underway.</Description>
+          <Code>SAR(N,STEP,MAXP),CIRCLEDOT</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="STEP" DefaultValue="2" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="MAXP" DefaultValue="20" MinValue="5" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="TRIX" IsMainView="false">
+          <FullName />
+          <Description>TRIX is a momentum indicator that displays the percent rate-of-change of a triple exponentially smoothed moving average of the security's closing price. It is designed to keep you in trends equal to or shorter than the number of periods you specify.
+
+</Description>
+          <Code>TR:= EMA(EMA(EMA(CLOSE,N),N),N);
+TRIX : (TR-REF(TR,1))/REF(TR,1)*100;
+TRMA :  MA(TRIX,M);
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="3" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VMACD" IsMainView="false">
+          <FullName>Volumn Moving Average Convergence Divergence</FullName>
+          <Description />
+          <Code>DIFF : EMA(VOL,SHORT) - EMA(VOL,LONG);
+DEA  : EMA(DIFF,M);
+MACD : DIFF-DEA, COLORSTICK</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="SHORT" DefaultValue="12" MinValue="1" MaxValue="50" Description="" ParamType="double" />
+            <FormulaParam Name="LONG" DefaultValue="26" MinValue="20" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="9" MinValue="30" MaxValue="50" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ZIG" IsMainView="false">
+          <FullName>Zig Zag</FullName>
+          <Description>Zig Zag is trend following indicator that helps define what the trend has been, and can be used as a significance test to help determine when changes in the current price might indicate when the trend of price might be changing.  The zig zag indicators filters out changes in a data item that are less than a specific amount that you define.  Below is a chart of National Semiconductor.  If you bought every time the zig zag moved up and sold every time the zig zag moved down, every trade would be a winner.
+
+</Description>
+          <Code>ZIG(PER),Width2</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="PER" DefaultValue="10" MinValue="1" MaxValue="60" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ADX" IsMainView="false">
+          <FullName>Average Directional Index</FullName>
+          <Description>J. Welles Wilder Jr. developed the Average Directional Index (ADX) in order to evaluate the strength of the current trend, be it up or down. It's important to detemine whether the market is trending or trading (moving sideways), because certain indicators give more useful results depending on the market doing one or the other.
+
+</Description>
+          <Code>TR := SUM(MAX(MAX(HIGH-LOW,ABS(HIGH-REF(CLOSE,1))),ABS(LOW-REF(CLOSE,1))),N);
+HD := HIGH-REF(HIGH,1);
+LD := REF(LOW,1)-LOW;
+DMP:= SUM(IF(HD&gt;0 &amp; HD&gt;LD,HD,0),N);
+DMM:= SUM(IF(LD&gt;0 &amp; LD&gt;HD,LD,0),N);
+PDI: DMP*100/TR;
+@SetName(PDI,'+DI');
+MDI: DMM*100/TR;
+@SetName(MDI,'-DI');
+ADX: MA(ABS(MDI-PDI)/(MDI+PDI)*100,N),Width2;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PERF" IsMainView="false">
+          <FullName>Performance</FullName>
+          <Description />
+          <Code>(C-C.First)/C.First*100</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Momentum Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="B3612" IsMainView="false">
+          <FullName>Bias3-Bias6 and Bias6-Bias12</FullName>
+          <Description />
+          <Code>B36 : MA(CLOSE,3)-MA(CLOSE,6);
+B612 : MA(CLOSE,6)-MA(CLOSE,12)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="BIAS" IsMainView="false">
+          <FullName>BIAS</FullName>
+          <Description>Show the distance of close and moving average.</Description>
+          <Code>BIAS1 : (CLOSE-MA(CLOSE,L1))/MA(CLOSE,L1)*100;
+BIAS2 : (CLOSE-MA(CLOSE,L2))/MA(CLOSE,L2)*100;
+BIAS3 : (CLOSE-MA(CLOSE,L3))/MA(CLOSE,L3)*100;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="L1" DefaultValue="6" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="L2" DefaultValue="12" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="L3" DefaultValue="24" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="CCI" IsMainView="false">
+          <FullName>Commodity Channel Index</FullName>
+          <Description>The Commodity Channel Index measures the position of price in relation to its moving average. This can be used to highlight when the market is overbought/oversold or to signal when a trend is weakening. The indicator is similar in concept to Bollinger Bands but is presented as an indicator line rather than as overbought/oversold levels.
+
+The Commodity Channel Index was developed by Donald Lambert and is outlined in his book Commodities Channel Index: Tools for Trading Cyclic Trends.
+
+</Description>
+          <Code>TYP := (HIGH + LOW + CLOSE)/3;
+(TYP-MA(TYP,N))/(0.015*AVEDEV(TYP,N))</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="DBCD" IsMainView="false">
+          <FullName>Bias Convergence Divergence</FullName>
+          <Description />
+          <Code>BIAS:=(C-MA(C,N))/MA(C,N);
+DIF:=(BIAS-REF(BIAS,M));
+DBCD:SMA(DIF,T,1);
+MM:MA(DBCD,5)
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="16" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="T" DefaultValue="76" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="DPO" IsMainView="false">
+          <FullName>Detrended Price Oscillator</FullName>
+          <Description>Detrended Price Oscillator compares closing price to a prior moving average, eliminating cycles longer than the moving average.
+
+The real power of the Detrended Price Oscillator is in identifying turning points in longer cycles:
+
+When Detrended Price Oscillator shows a higher trough - expect an upturn in the intermediate cycle;
+When Detrended Price Oscillator experiences a lower peak - expect a downturn.
+</Description>
+          <Code>C - REF(MA(CLOSE,20),11)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="FastSTO" IsMainView="false">
+          <FullName>Fast Stochastic</FullName>
+          <Description>The Stochastic Oscillator is a measure of the relative momentum of current prices to previous closing prices within a given interval.  When it is plotted, it is two lines that move within a range of 0 and 100.  Values above 80 are considered to be in overbought territory giving an indication that a reversal in price is possible.  Values below 20 are considered oversold and again are an indication that a reversal of the price trend is a higher risk.  In a strong trending environment, the Stochastic Oscillator can stay in overbought or oversold territory for some time while price continues in a single direction.  In relation to a longer term price trend environment, the stochastic provides little interest.  In its construction it is meant to relate the current periods momentum to the most recent previous periods of momentum in price in an attempt to identify periods where momentum may be easing or increasing.  The easing (at a top) or increase (at a bottom) of momentum occurs at reversal points for the price trend being measured.  However changing momentum also occurs during times when there is no change in the overall trend in prices and should be understood as a period when a reversal in price trend is possible but not guaranteed.</Description>
+          <Code>K:(CLOSE-LLV(LOW,N))/(HHV(HIGH,N)-LLV(LOW,N))*100;
+D:MA(K,M);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="3" MinValue="2" MaxValue="40" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="LWR" IsMainView="false">
+          <FullName />
+          <Description>100-Stochastic</Description>
+          <Code>RSV:= (HHV(HIGH,N)-CLOSE)/(HHV(HIGH,N)-LLV(LOW,N))*100;
+LWR1:SMA(RSV,M1,1);
+LWR2:SMA(LWR1,M2,1)
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M1" DefaultValue="3" MinValue="2" MaxValue="40" Description="" ParamType="double" />
+            <FormulaParam Name="M2" DefaultValue="3" MinValue="2" MaxValue="40" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ROC" IsMainView="false">
+          <FullName>Price Rate-of-Change</FullName>
+          <Description>ROC is a refinement of Momentum - readings fluctuate as percentages around the zero line. Further details are given at Construction.
+
+The indicator is designed for use in ranging markets - to detect trend weakness and likely reversal points. However, when combined with a trend indicator, it can be used in trending markets.
+
+Ranging Markets
+First, you will need to set overbought and oversold levels based on your observation of past ranging markets. The levels should cut across at least two-thirds of the peaks and troughs.
+
+Go long when ROC crosses to below the oversold level and then rises back above it.
+Go long on bullish divergences - where the first trough is below the oversold level.
+Go short when ROC crosses to above the overbought level and then falls back below it.
+Go short on a bearish divergence - with the first peak above the overbought level.
+</Description>
+          <Code>ROC:(CLOSE-REF(CLOSE,N))/REF(CLOSE,N)*100;
+ROCMA:MA(ROC,M)
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="6" MinValue="1" MaxValue="50" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="RSI" IsMainView="false">
+          <FullName>Relative Strength Index</FullName>
+          <Description>The Relative Strength Index was introduced by Welles Wilder. It is an indicator for overbought / oversold conditions. It is going up when the market is strong, and down, when the market is weak. The oscillation range is between 0 and 100.
+
+The indicator is non-linear, it is moving faster in the middle of its range, and slower - in the overbought / oversold territory.
+
+The RSI should not be confused with the relative strength indicator which is used to compare stocks to each other.
+
+</Description>
+          <Code>LC := REF(CLOSE,1);
+RSI:SMA(MAX(CLOSE-LC,0),N1,1)/SMA(ABS(CLOSE-LC),N1,1)*100;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="14" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SI" IsMainView="false">
+          <FullName />
+          <Description>Swing Index
+</Description>
+          <Code>LC:=REF(C,1);
+AA:=ABS(H-LC);
+BB:=ABS(L-LC);
+CC:=ABS(H-REF(L,1));
+DD:=ABS(LC-REF(O,1));
+R:=IF(AA&gt;BB &amp; AA&gt;CC,AA+BB/2+DD/4,IF(BB&gt;CC &amp; BB&gt;AA,BB+AA/2+DD/4,CC+DD/4));
+X:=(C-LC+(C-O)/2+LC-REF(O,1));
+SI:16*X/R*MAX(AA,BB)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="SlowSTO" IsMainView="false">
+          <FullName>Slow Stochastic</FullName>
+          <Description>The Slow Stochastic applies further smoothing to the Stochastic oscillator, to reduce volatility and improve signal accuracy.</Description>
+          <Code>A:=(CLOSE-LLV(LOW,N))/(HHV(HIGH,N)-LLV(LOW,N))*100;
+K:MA(A,M1);
+D:MA(K,M2)
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M1" DefaultValue="3" MinValue="2" MaxValue="50" Description="" ParamType="double" />
+            <FormulaParam Name="M2" DefaultValue="3" MinValue="2" MaxValue="50" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SRDM" IsMainView="false">
+          <FullName>SRDM</FullName>
+          <Description />
+          <Code>DMZ:=IF((H+L)&lt;=(REF(H,1)+REF(L,1)),0,MAX(ABS(H-REF(H,1)),ABS(L-REF(L,1))));
+DMF:=IF((H+L)&gt;=(REF(H,1)+REF(L,1)),0,MAX(ABS(H-REF(H,1)),ABS(L-REF(L,1))));
+ADMZ:=MA(DMZ,10);
+ADMF:=MA(DMF,10);
+SRDM:IF(ADMZ&gt;ADMF,(ADMZ-ADMF)/ADMZ,IF(ADMZ=ADMF,0,(ADMZ-ADMF)/ADMF));
+ASRDM:SMA(SRDM,N,1);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="30" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VROC" IsMainView="false">
+          <FullName>Rate of Change (Volume)</FullName>
+          <Description>Rate of Change Volume (ROCV) is an oscillator applied to volume rather than price and is calculated in the same manner as the Rate of Change (Price) indicator.
+
+ROCV highlights increases in volume, which normally occur at most significant market tops, bottoms and breakouts.
+
+</Description>
+          <Code>(VOL-REF(VOL,N))/REF(VOL,N)*100</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="2" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VRSI" IsMainView="false">
+          <FullName>Volumn Relative Strength Index</FullName>
+          <Description>Volumn RSI</Description>
+          <Code>SMA(MAX(VOL-REF(VOL,1),0),N,1)/SMA(ABS(VOL-REF(VOL,1)),N,1)*100</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="WR" IsMainView="false">
+          <FullName>Williams %R</FullName>
+          <Description>The The Williams %R indicator was introduced by Larry Williams. It is working by identifying the overbought / oversold levels. The scale extends from 0 to -100.
+
+Usage
+The overbought level is considered 0 to -20, and oversold -70 to -100.
+
+As a confirmation signal, we can wait for the indicator to cross the -50 line.
+</Description>
+          <Code>-100*(HHV(HIGH,N)-CLOSE)/(HHV(HIGH,N)-LLV(LOW,N))</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SO" IsMainView="false">
+          <FullName>Stochastic Oscillator</FullName>
+          <Description>The Stochastic Oscillator was introduced by George C. Lane. The indicator provides information about the location of a current close in relation to the period's high and low. The closer the close is to the period's high, the higher is the buying pressure, and the closer the close is to the period's low, the more selling pressure is.
+
+Usage:
+
+The indicator is considered bullish, when above 80, and bearish, when below 20. As this definition does not provide any insights on when to buy or sell, consider generating signals when the indicator moves from the overbought / oversold territory back.
+
+The crossings between the %K and its moving average can be used for the same purpose.
+
+Finally, the divergence can be considered a very strong signal. When the divergence develops when the indicator is moving from the overbought / oversold levels, it is a sell / buy signal.
+
+Additionally, the K39 (unsmoothed 39 period stochastic oscillator) was reported to generate good results when tested on paper. A buy signal is generated when K crosses above 50% and the close price is above the previous week's highest close. Sell signals are generated when K crosses below 50% and the close is below the previous week's lowest close.
+
+An additional confirmation can be provided by some indicators from the different group, for example, the On Balance Volume (OBV) indicator.
+
+The most value of a stochastics is when the strong trend is present. According to Lane, the safest way to trade is to buy when the trend is up, and to sell with the downtrend.
+</Description>
+          <Code>K :=(C-L)/(H-L);
+SK : SMA(K,N1,1);
+SD : SMA(SK,N2,1);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="3" MinValue="1" MaxValue="10" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="3" MinValue="1" MaxValue="10" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MFI" IsMainView="false">
+          <FullName>Money Flow</FullName>
+          <Description />
+          <Code>TP :=(High + Low + Close) / 3;
+LTP := REF(TP,1);
+MF :=TP*V;
+PMF := IF(TP&gt;LTP,MF,0);
+NMF := IF(TP&lt;=LTP,MF,0);
+MR :=MA(PMF,N)/MA(NMF,N);
+MFI :100-(100/(1+MR));
+20,Color#808080,NoValueLabel;
+80,Color#808080,NoValueLabel;
+FillRGN(MFI&gt;80,MFI,80),Brush#20808000;
+FillRGN(MFI&lt;20,MFI,20),Brush#20800000;
+@SetHLine(20,50,80,100);
+@SetYMinMax(0,100)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="StochRSI" IsMainView="false">
+          <FullName>StochRSI</FullName>
+          <Description>Developed by Tushard Chande and Stanley Kroll, StochRSI is an oscillator that measures the level of RSI relative to its range, over a set period of time. The indicator uses RSI as the foundation and applies to it the formula behind Stochastics. The result is an oscillator that fluctuates between 0 and 1.</Description>
+          <Code>LC := REF(CLOSE,1);
+RSI:=SMA(MAX(CLOSE-LC,0),N,1)/SMA(ABS(CLOSE-LC),N,1)*100;
+(RSI-LLV(RSI,N))/(HHV(RSI,N)-LLV(RSI,N));</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="EOM" IsMainView="false">
+          <FullName>Ease of Movement</FullName>
+          <Description />
+          <Code>MP:=(H+L)/2;
+MM :=MP-REF(MP,1);
+BR :=V/(H-L)/1000000;
+EOM : MM/BR;
+MA(EOM,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Volatility Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="PSY" IsMainView="false">
+          <FullName>Psychogical line</FullName>
+          <Description>people resist paying more for a stock than others unless the stock continues to move up.  People resist selling a stock for less than the price others have been getting for it unless the price continues to decline.  People who purchase the stock at the top of a trading range have a strong inclination to wait until the price comes back before they get out.
+</Description>
+          <Code>COUNT(CLOSE&gt;REF(CLOSE,1),N)/N*100</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VR" IsMainView="false">
+          <FullName>Volatility Ratio</FullName>
+          <Description>This ratio is derived from the Volatility Ratio introduced by Jack Schwager in Technical Analysis to identify wide-ranging days.
+
+Designed to highlight breakouts from a trading range, this VR compared to true range for the indicator period.</Description>
+          <Code>LC:=REF(CLOSE,1);
+SUM(IF(CLOSE&gt;LC,VOL,0),N)/
+SUM(IF(CLOSE&lt;=LC,VOL,0),N)*100
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="26" MinValue="5" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ATR" IsMainView="false">
+          <FullName>Average True Range</FullName>
+          <Description>The Average True Range indicator was created by J. Welles Wilder. Its primary use is for determining the volatility of the security. The idea is to replace the high - low interval for the given period, as the high-low does not take into consideration gaps and limit moves.</Description>
+          <Code>LC :=REF(CLOSE,1);
+TR := MAX(HIGH-LOW,ABS(LC-HIGH),ABS(LC-LOW));
+ATR : SMA(TR,N,1)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VOLATI" IsMainView="false">
+          <FullName>Chaikin's Volatility</FullName>
+          <Description>Marc Chaikin measures volatility as the trading range between high and low for each period. This does not take trading gaps into account as Average True Range does.</Description>
+          <Code>EC := EMA(HIGH-LOW,N);
+(EC-REF(EC,N))/REF(EC,N)*100</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="Aroon" IsMainView="false">
+          <FullName>Aroon</FullName>
+          <Description>The Aroon indicator system consists of two lines, 'Aroon(up)' and 'Aroon(down)'. It takes a single parameter which is the number of time periods to use in the calculation. Aroon(up) is the amount of time (on a percentage basis) that has elapsed between the start of the time period and the point at which the highest price during that time period occurred. If the stock closes at a new high for the given period, Aroon(up) will be +100. For each subsequent period that passes without another new high, Aroon(up) moves down by an amount equal to (1 / # of periods) x 100.</Description>
+          <Code>Up:(N-HHVBARS(C,N))/N*100;
+Down:(N-LLVBARS(C,N))/N*100;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="25" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="HV" IsMainView="false">
+          <FullName>Historic Volatility</FullName>
+          <Description />
+          <Code>LogS :=Log(C/Ref(C,1));
+TLogs :=Sum(LogS,N);
+ALogs :=TLogs/N;
+Delta :=LogS-ALogs;
+SSD :=Sum(Delta*Delta,N);
+HV : Sqrt(SSD/(N-1))*Sqrt(T)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="21" MinValue="1" MaxValue="10000" Description="" ParamType="double" />
+            <FormulaParam Name="T" DefaultValue="252" MinValue="0" MaxValue="1000000000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Price Volumn Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="ASI" IsMainView="false">
+          <FullName>Accumulation Swing Index</FullName>
+          <Description>The Accumulation Swing Index (ASI) is a cumulative sum of the Welles Wilder’s Swing Index indicator</Description>
+          <Code>LC:=REF(CLOSE,1);
+AA:=ABS(HIGH-LC);
+BB:=ABS(LOW-LC);
+CC:=ABS(HIGH-REF(LOW,1));
+DD:=ABS(LC-REF(OPEN,1));
+R:=IF(AA&gt;BB &amp; AA&gt;CC,AA+BB/2+DD/4,IF(BB&gt;CC &amp; BB&gt;AA,BB+AA/2+DD/4,CC+DD/4));
+X:=(CLOSE-LC+(CLOSE-OPEN)/2+LC-REF(OPEN,1));
+SI:=16*X/R*MAX(AA,BB);
+ASI:SUM(SI,0)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="OBV" IsMainView="false">
+          <FullName>On Balance Volume</FullName>
+          <Description>Volume is the number of shares or contracts that change ownership over a given period of time.  It is an indication of supply and demand that is independent from price and can relate a great deal about the relative enthusiasm of buyers and sellers in the market place.  On Balance Volume is one indicator that is designed to track changes in volume over time.  It is the running total of volume calculated in such a way as to add the day's volume to a cumulative total if the day's close was higher than the previous day's close and to subtract the day's volume from the cumulative total on down days.  The assumption is that changes in volume will precede changes in price trend.  On Balance Volume was created by Joseph Granville and has a number of interpretive qualities and should be used in conjunction with other indications of price trend reversals.
+
+Another use of On Balance Volume (OBV) is to look at the trend in the indicator.  A rising trend in the OBV gives sign of a healthy move into the security.  A doubtful trend, or sideways trend in the OBV leaves price trend suspect and a candidate for a reversal of the trend.  A falling OBV trend signals an exodus from the security despite price activity and leads to the caution that price may follow if it is not already.  As indicated on the graphs above, look for divergences between the price and the OBV indicator.  Divergences between the peaks warns of a potential fall in prices.  Divergences between the troughs warns of a potential rise in prices.</Description>
+          <Code>OBV:SUM(IF(CLOSE&gt;REF(CLOSE,1),VOL,IF(CLOSE&lt;REF(CLOSE,1),-VOL,0)),0),Width2;
+M:MA(OBV,N);
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PVT" IsMainView="false">
+          <FullName>PRICE AND VOLUME TREND</FullName>
+          <Description>Price and Volume Trend (PVT) is a variation of On Balance Volume, used to determine the strength of trends and warn of reversals.
+
+PVT = yesterday's PVT + today's Volume * (today's Close - yesterday's Close) / yesterday's Close
+</Description>
+          <Code>SUM((CLOSE-REF(CLOSE,1))/REF(CLOSE,1)*VOL,0)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="SOBV" IsMainView="false">
+          <FullName>SOBV</FullName>
+          <Description />
+          <Code>SUM(IF(ISUP,VOL,IF(ISDOWN,-VOL,0)),0)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="WVAD" IsMainView="false">
+          <FullName>Williams'Variable Accumulation Distribution</FullName>
+          <Description />
+          <Code>WVAD : (CLOSE-OPEN)/(HIGH-LOW)*VOL;
+MA1:MA(WVAD,N1);
+MA2:MA(WVAD,N2);
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="NVI" IsMainView="false">
+          <FullName>Negative Volume Index</FullName>
+          <Description>The Negative Volume Index ("NVI") focuses on days where the volume decreases from the previous day. The premise being that the "smart money" takes positions on days when volume decreases.
+
+1.Take yesterday's Negative Volume Index
+2.If today's volume is lower than yesterday, add:
+{ ( Close [today] - Close [yesterday] ) / Close [yesterday] } * NVI [yesterday]
+3.Otherwise, add zero.</Description>
+          <Code>A:=IF(V&lt;=REF(V,1),C/REF(C,1),1);
+NVI:Start*MUL(A);
+M1:EMA(NVI,N1);
+M2:EMA(NVI,N2);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Start" DefaultValue="1" MinValue="0" MaxValue="1000000000" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="9" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="255" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PVI" IsMainView="false">
+          <FullName>Positive Volume Index</FullName>
+          <Description>1.Take yesterday's Positive Volume Index
+2.If today's volume is greater than yesterday, add:
+{ ( Close [today] - Close [yesterday] ) / Close [yesterday] } * PVI [yesterday]
+3.Otherwise, add zero</Description>
+          <Code>A:=IF(V&gt;=REF(V,1),C/REF(C,1),1);
+PVI:Start*MUL(A);
+M1:MA(PVI,N1);
+M2:MA(PVI,N2);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Start" DefaultValue="1" MinValue="0" MaxValue="1000000000" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="9" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="255" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Bands Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="BBIBOLL" IsMainView="true">
+          <FullName>BBIBOLL</FullName>
+          <Description />
+          <Code>BBI:(MA(CLOSE,3)+MA(CLOSE,6)+MA(CLOSE,12)+MA(CLOSE,24))/4;
+UPR:BBI+P*STD(BBI,N);
+DWN:BBI-P*STD(BBI,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="P" DefaultValue="3" MinValue="0.1" MaxValue="20" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="BB" IsMainView="true">
+          <FullName>Bollinger Bands</FullName>
+          <Description>The Bollinger Bands were introduced by John Bollinger. Its primary use is for presenting the volatility of the security in an easy to view form. The indicator consists of three bands: a simple moving average (middle), SMA plus 2 standard deviations (upper), and SMA minus 2 standard deviations (lower).</Description>
+          <Code>MID :  MA(CLOSE,N);
+UPPER: MID + P*STD(CLOSE,N);
+LOWER: MID - P*STD(CLOSE,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="5" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P" DefaultValue="2" MinValue="0.1" MaxValue="10" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="CDP" IsMainView="false">
+          <FullName>CDP</FullName>
+          <Description />
+          <Code>PT  := REF(HIGH,1)-REF(LOW,1);
+CDP : (HIGH + LOW + CLOSE)/3;
+AH  : CDP + PT;
+AL  : CDP - PT;
+NH  : 2*CDP-LOW;
+NL  : 2*CDP-HIGH</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="ENV" IsMainView="true">
+          <FullName>ENVELOPES (TRADING BANDS)</FullName>
+          <Description>An envelope is comprised of two moving averages. One moving average is shifted upward and the second moving average is shifted downward.
+
+</Description>
+          <Code>UPPER : MA(CLOSE,N)*1.06;
+LOWER : MA(CLOSE,N)*0.94</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="2" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MIKE" IsMainView="true">
+          <FullName>MIKE</FullName>
+          <Description />
+          <Code>TYP:=(HIGH+LOW+CLOSE)/3;
+LL:=LLV(LOW,N);
+HH:=HHV(HIGH,N);
+WR:TYP+(TYP-LL);
+MR:TYP+(HH-LL);
+SR:2*HH-LL;
+WS:TYP-(HH-TYP);
+MS:TYP-(HH-LL);
+SS:2*LL-HH</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="200" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SR" IsMainView="true">
+          <FullName>Support &amp; Resistance</FullName>
+          <Description />
+          <Code>M :=(H+L+C)/3;
+A :=H-L;
+RR:=M+A;
+SS:=M-A;
+
+R:BackSet(IsLastBar,5)*RR.LastData,Width2,HighSpeed,ColorRed;
+S:BackSet(IsLastBar,5)*SS.LastData,Width2,HighSpeed,ColorDarkGreen;
+DrawNumber(BarsSince(R)==1,R,R,'f2'),Label0,VCenter,Right,ColorRed;
+DrawNumber(BarsSince(S)==1,S,S,'f2'),Label0,VCenter,Right,ColorDarkGreen;
+</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="BBWidth" IsMainView="false">
+          <FullName>Bollinger Band Width</FullName>
+          <Description>The Bollinger Band Width indicator charts the width of the Bollinger Bands. When the Bollinger Band Width increases in value, it indicates that the volatility of the underlying stock has also increased.
+</Description>
+          <Code>P*STD(C,N)*2,Width1.6,HighQuality</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="P" DefaultValue="2" MinValue="0.1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="Keltner" IsMainView="true">
+          <FullName>Keltner channel</FullName>
+          <Description />
+          <Code>Shift := FACTOR * ATR(Length);
+Avg := EMA(C, Length);
+Upper : Avg + Shift;
+Lower : Avg - Shift</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Length" DefaultValue="16" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="Factor" DefaultValue="1.3" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Index Indicators">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="ABI" IsMainView="false">
+          <FullName>Absolute Breadth Index</FullName>
+          <Description>The Absolute Breadth Index ("ABI") is a market momentum indicator that was developed by Norman G. Fosback.
+
+The ABI shows how much activity, volatility, and change is taking place on the New York Stock Exchange while ignoring the direction prices are headed.
+
+You can think of the ABI as an "activity index." High readings indicate market activity and change, while low readings indicate lack of change.</Description>
+          <Code>ABS(ADVANCE - DECLINE)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="ADL" IsMainView="false">
+          <FullName>Advance/Decline line</FullName>
+          <Description>The advance and decline line is a cumulative, ongoing sum of the difference between the number of stocks closing higher minus the number of stocks closing lower each day.  It can be used as a measure of market strength as it moves higher when the there are more advancing issues than declining issues.  It moves lower when there are more declining issues than advancing issues.  Plotting the Advance/Decline line allows insight into market strength.  At times the major U.S. indices can continue higher while we are seeing a drop in the advance/decline line.  This is called a divergence and warns that we may be at the end of an upward movement and sets the stage for a possible reversal of price trend.  However such divergences can exist over a long period of time before evidence of price trend reversal occur.  It becomes a matter of sound analysis to build as wide a body of evidence as possible in forming an outlook for the future path of prices.</Description>
+          <Code>SUM(ADVANCE-DECLINE,0)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="ADR" IsMainView="false">
+          <FullName>ADVANCE/DECLINE RATIO</FullName>
+          <Description>The Advance/Decline Ratio ("A/D Ratio") shows the ratio of advancing issues to declining issues. It is calculated by dividing the number of advancing issues by the number of declining issues.
+
+Interpretation
+
+The A/D Ratio is similar to the Advancing-Declining Issues in that it displays market breadth. But, where the Advancing-Declining Issues subtracts the advancing/declining values, the A/D Ratio divides the values. The advantage of the Ratio is that it remains constant regardless of the number of issues that are traded on the New York Stock Exchange (which has steadily increased).
+
+A moving average of the A/D Ratio is often used as an overbought/oversold indicator. The higher the value, the more "excessive" the rally and the more likely a correction. Likewise, low readings imply an oversold market and suggest a technical rally.
+
+Keep in mind, however, that markets that appear to be extremely overbought or oversold may stay that way for some time. When investing using overbought and oversold indicators, it is wise to wait for the prices to confirm your belief that a change is due before placing your trades.
+
+Day-to-day fluctuations of the Advance/Decline Ratio are often eliminated by smoothing the ratio with a moving average
+</Description>
+          <Code>SUM(ADVANCE,N)/SUM(DECLINE,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="200" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="BT" IsMainView="false">
+          <FullName>Breadth Trust</FullName>
+          <Description>The Breadth Thrust indicator is a market momentum indicator. It was developed by Dr. Martin Zweig. The Breadth Thrust is calculated by dividing a 10-day exponential moving average of the number of advancing issues, by the number of advancing plus declining issues.
+
+Interpretation
+
+A "Breadth Thrust" occurs when, during a 10-day period, the Breadth Thrust indicator rises from below 40% to above 61.5%. A "Thrust" indicates that the stock market has rapidly changed from an oversold condition to one of strength, but has not yet become overbought.
+
+According to Dr. Zweig, there have only been fourteen Breadth Thrusts since 1945. The average gain following these fourteen Thrusts was 24.6% in an average time-frame of eleven months. Dr. Zweig also points out that most bull markets begin with a Breadth Thrust.</Description>
+          <Code>MA(ADVANCE/(ADVANCE-DECLINE),N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="CHAIKIN" IsMainView="false">
+          <FullName>Chaikin's Accumulation/Distribution Indicator</FullName>
+          <Description>A cumulative volume indicator attempting to assess the net volume movement on a day or week.</Description>
+          <Code>ADL := SUM(ADVANCE-DECLINE,0);
+CHA :  MA(ADL,SHORT) - MA(ADL,LONG)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="LONG" DefaultValue="10" MinValue="5" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="SHORT" DefaultValue="3" MinValue="1" MaxValue="300" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MCO" IsMainView="false">
+          <FullName>McClellan Oscillator</FullName>
+          <Description>The McClellan Oscillator can be used as an overbought/oversold indicator.  It also has value at predicting short term trend changes when it crosses the zero line. A rising indicator that crosses the zero line from below is a bullish sign.  A falling indicator that crosses the zero line from above is a bearish sign.
+
+The McClellan Oscillator is calculated by subtracting a 39 day moving average of advances minus declines, from a 19 day moving average of advances minus declines.  Generally it is not considered a forward looking indicator but can tell you a lot about trend.
+</Description>
+          <Code>EMA(ADVANCE-DECLINE,N1)/10 - EMA(ADVANCE-DECLINE,N2)/20</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="19" MinValue="10" MaxValue="80" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="39" MinValue="30" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="OBOS" IsMainView="false">
+          <FullName>Over Buy/Over Sell</FullName>
+          <Description />
+          <Code>MA(ADVANCE-DECLINE,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="STIX" IsMainView="false">
+          <FullName>STIX</FullName>
+          <Description />
+          <Code>EMA(ADVANCE/(ADVANCE+DECLINE)*100,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="11" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Volumn Indicators" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="AMOUNT" IsMainView="false">
+          <FullName>AMOUNT</FullName>
+          <Description>AMOUNT</Description>
+          <Code>AMOUNT,VOLSTICK;
+MA1:MA(AMOUNT,N1);
+MA2:MA(AMOUNT,N2)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VOLMA" IsMainView="false">
+          <FullName>Volumn</FullName>
+          <Description>Volumn and moving average</Description>
+          <Code>VV:V,VOLSTICK;
+@SetName(VV,'');
+MA1:MA(VV,M1);
+@SetName(MA1,'MA');
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="M1" DefaultValue="60" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VOSC" IsMainView="false">
+          <FullName>Volume Oscillator</FullName>
+          <Description>The Volume Oscillator (VO) identifies trends in volume using a two moving average system.
+
+The Volume Oscillator measures the difference between a faster and slower moving average (MA).
+
+If the fast MA is above the slow MA the oscillator will be positive.
+If the fast MA is below the slow MA then the oscillator will be negative.
+The Volume Oscillator will be zero when the two MA's cross.</Description>
+          <Code>(MA(VOL,SHORT)-MA(VOL,LONG))/MA(VOL,SHORT)*100</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="SHORT" DefaultValue="12" MinValue="2" MaxValue="50" Description="" ParamType="double" />
+            <FormulaParam Name="LONG" DefaultValue="26" MinValue="15" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VSTD" IsMainView="false">
+          <FullName>Volumn STD</FullName>
+          <Description>Volumn STD</Description>
+          <Code>STD(VOL,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PVO" IsMainView="false">
+          <FullName>Percentage Volume Oscillator</FullName>
+          <Description>The Percentage Volume Oscillator (PVO) is the percentage difference between two moving averages of volume.</Description>
+          <Code>E1 :=EMA(V,N1);
+PVO : (E1-EMA(V,N2))/E1*100,Width1.6,HighQuality;
+M : EMA(PVO,N3);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="26" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N3" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MaxV" IsMainView="false">
+          <FullName>N day's maximum volume</FullName>
+          <Description />
+          <Code>HHV(V,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="COLORV" IsMainView="false">
+          <FullName>Volume with custom color</FullName>
+          <Description />
+          <Code>STICKLINE(C&gt;REF(C,1),V,0),Brush#FF0000,Color#800000;
+STICKLINE(C&lt;=REF(C,1),V,0),Brush#00FF00,Color#008000;</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Oscillator Indicators">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="AD" IsMainView="false">
+          <FullName>Accumulation/Distribution</FullName>
+          <Description>The Accumulation/Distribution is a momentum indicator that associates changes in price and volume. The indicator is based on the premise that the more volume that accompanies a price move, the more significant the price move.
+
+</Description>
+          <Code>AD:SUM(((CLOSE-LOW)-(HIGH-CLOSE))/(HIGH-LOW)*VOL,0);
+M:MA(AD,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MI" IsMainView="false">
+          <FullName>MI</FullName>
+          <Description />
+          <Code>A:C-REF(C,N);
+MI:SMA(A,N,1);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MICD" IsMainView="false">
+          <FullName>MICD</FullName>
+          <Description />
+          <Code>MI:=C-REF(C,1);
+AMI:=SMA(MI,N,1);
+DIF:MA(REF(AMI,1),N1)-MA(REF(AMI,1),N2);
+MICD:SMA(DIF,10,1)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="3" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="RC" IsMainView="false">
+          <FullName>Rate of Change</FullName>
+          <Description />
+          <Code>RC:=C/REF(C,N);
+ARC:SMA(REF(RC,1),N,1)
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="50" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="RCCD" IsMainView="false">
+          <FullName>Rate of Change Convergence Divergence</FullName>
+          <Description />
+          <Code>RC:=C/REF(C,N);
+ARC:=SMA(REF(RC,1),N,1);
+DIF:MA(REF(ARC,1),N1)-MA(REF(ARC,1),N2);
+RCCD:SMA(DIF,N,1)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="59" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N1" DefaultValue="21" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="28" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SRMI" IsMainView="false">
+          <FullName>SRMI</FullName>
+          <Description />
+          <Code>IF(C&lt;REF(C,N),(C-REF(C,N))/REF(C,N),IF(C==REF(C,N),0,(C-REF(C,N))/C))</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="CMF" IsMainView="false">
+          <FullName>Chaikin Money Flow</FullName>
+          <Description>Developed by Marc Chaikin, the Chaikin Money Flow oscillator is calculated from the daily readings of the Accumulation/Distribution Line. The basic premise behind the Accumulation Distribution Line is that the degree of buying or selling pressure can be determined by the location of the close relative to the high and low for the corresponding period (Closing Location Value). There is buying pressure when a stock closes in the upper half of a period's range and there is selling pressure when a stock closes in the lower half of the period's trading range. The Closing Location Value multiplied by volume forms the Accumulation/Distribution Value for each period.</Description>
+          <Code>D :=(HIGH-LOW);
+AD:=IF(D==0,0,((CLOSE-LOW)-(HIGH-CLOSE))/D*VOL);
+MV :=MA(VOL,N);
+CMF:IF(MV==0,0,MA(AD,N)/MV),COLORSTICK;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ULT" IsMainView="false">
+          <FullName>Ultimate Oscillator</FullName>
+          <Description>Developed by Larry Williams and first described in a 1985 article for Technical Analysis of Stocks and Commodities magazine, the "Ultimate" Oscillator combines a stock's price action during three different time frames into one bounded oscillator. Values range from 0 to 100 with 50 as the center line. Oversold territory exists below 30 and overbought territory extends from 70 to 100.
+
+</Description>
+          <Code>LC :=REF(C,1);
+TL :=MIN(L,LC);
+BP :=C-TL;
+TR := MAX(H-L,ABS(LC-H),ABS(LC-L));
+BPSum1 := MA(BP,N1);
+BPSum2 := MA(BP,N2);
+BPSum3 := MA(BP,N3);
+TRSum1 := MA(TR,N1);
+TRSum2 := MA(TR,N2);
+TRSum3 := MA(TR,N3);
+RawUO :=4*(BPSum1/TRSum1)+2*(BPSum2/TRSum2)+(BPSum3/TRSum3);
+(RawUO/(4+2+1))*100,Width1.6,HighQuality;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="7" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N3" DefaultValue="28" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="AroonOsc" IsMainView="false">
+          <FullName>Aroon Oscillator</FullName>
+          <Description>The Aroon Oscillator was constructed by subtracting Aroon(down) from Aroon(up). Since Aroon(up) and Aroon(down) oscillate between 0 and +100, the Aroon Oscillator oscillate between -100 and +100 with zero as the center crossover line.</Description>
+          <Code>0;
+"Aroon(N)[UP]"-"Aroon(N)[DOWN]"</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="25" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Others" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="MASS" IsMainView="false">
+          <FullName>Mass Index</FullName>
+          <Description>The Mass Index was designed to identify trend reversals by measuring the narrowing and widening of the range between the high and low prices. As this range widens, the Mass Index increases; as the range narrows the Mass Index decreases.
+
+The Mass Index was developed by Donald Dorsey.
+
+</Description>
+          <Code>SUM(EMA((HIGH-LOW),N1)/EMA(EMA((HIGH-LOW),N1),N1),N2)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="9" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="25" MinValue="5" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="STD" IsMainView="false">
+          <FullName>STD</FullName>
+          <Description>STD</Description>
+          <Code>STD(CLOSE,N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="26" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="VHF" IsMainView="false">
+          <FullName>Vertical Horizontal Filter</FullName>
+          <Description>Vertical Horizontal Filter (VHF) was created by Adam White to identify trending and ranging markets. VHF measures the level of trend activity, similar to ADX in the Directional Movement System. Trend indicators can then be employed in trending markets and momentum indicators in ranging markets.
+
+Vary the number of periods in the Vertical Horizontal Filter to suit different time frames. White originally recommended 28 days but now prefers an 18-day window smoothed with a 6-day moving average.
+</Description>
+          <Code>(HHV(CLOSE,N)-LLV(CLOSE,N))/SUM(ABS(CLOSE-REF(CLOSE,1)),N)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="28" MinValue="3" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="WAD" IsMainView="false">
+          <FullName>William's Accumulation/Distribution</FullName>
+          <Description>A price indicator attempting to assess the accumulation or distribution of securities.</Description>
+          <Code>SUM(IF( CLOSE&gt;REF(CLOSE,1),CLOSE-MIN(REF(CLOSE,1),LOW),IF(CLOSE&lt;REF(CLOSE,1),
+CLOSE-MAX(REF(CLOSE,1),HIGH),0)),0)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="ZigLabel" IsMainView="false">
+          <FullName>Zig Zag Label</FullName>
+          <Description />
+          <Code>DrawNumber(FindPeak(N),H,H,'f2'),Label3;
+DrawNumber(FindTrough(N),L,L,'f2'),Label3,Valign2;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PR" IsMainView="false">
+          <FullName>Price Relative</FullName>
+          <Description>The Price Relative compares the performance of one security against that of another. It is often used to compare the performance of a particular stock to a market index, usually the S&amp;P 500. Because the goal of many portfolio managers is to outperform the S&amp;P 500, they are usually interested in the strongest stocks. The price relative offers a straightforward and accurate portrayal of a stock's performance relative to the market.</Description>
+          <Code>PR:C/FML(StockCode,'C')*100,HighQuality;
+EMA(PR,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="StockCode" DefaultValue="^DJI" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+            <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="Fibonnaci" IsMainView="true">
+          <FullName>Fibonnaci</FullName>
+          <Description />
+          <Code>A := HHV(H,N);
+B := LLV(L,N);
+HH:BackSet(IsLastBar,N)*A.LastData,Width2;
+LL:BackSet(IsLastBar,N)*B.LastData,Width2;
+Height := HH-LL;
+A1 : LL+Height*0.382;
+A2 : LL+Height*0.5;
+A3 : LL+Height*0.618;
+@SetTextVisible(HH,false);
+@SetTextVisible(LL,false);
+@SetTextVisible(A1,false);
+@SetTextVisible(A2,false);
+@SetTextVisible(A3,false);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="100" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="LinRegr" IsMainView="true">
+          <FullName>Linear Regression Channels</FullName>
+          <Description />
+          <Code>A := LR(C,N);
+Dist :=C-A;
+M  := Max(MaxValue(Dist),ABS(MinValue(Dist)))*P/100;
+Upper : A +M;
+Lower : A - M;
+A;
+@SetName(A,'');
+@SetTextVisible(Upper,false);
+@SetTextVisible(Lower,false);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+            <FormulaParam Name="P" DefaultValue="100" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="RawData" IsMainView="false">
+          <FullName>Provide raw data from data provider</FullName>
+          <Description />
+          <Code>O:OrgData(DataName);
+@SetName(O,DataName);
+@SetTextVisible(false);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="DataName" DefaultValue="0" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+          </Params>
+        </Program>
+        <Program Name="ZigW" IsMainView="false">
+          <FullName>Zig /w retracements</FullName>
+          <Description />
+          <Code>Zig(N),Width2;
+A :=FindPeak(N);
+B :=FindTrough(N);
+A1 :=ToValue(A,H,0.5);
+A2 :=ToValue(B,L,0.5);
+PolyLine(A,H),StyleDash;
+PolyLine(B,L),StyleDash,SameColor;
+A3 :=ZIGP(N);
+DrawNumber(A1,A1,A3,'f3'),Label3,VAlign0;
+DrawNumber(A2,A2,A3,'f3'),Label3,VAlign0;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ZigSR" IsMainView="true">
+          <FullName>Zig support and resistance</FullName>
+          <Description />
+          <Code>A1 :=Peak(N);
+A2 :=Peak(N,2);
+B1 :=PeakBars(N);
+B2 :=PeakBars(N,2);
+DrawLine(B2.LastData,A2.LastData,B1.LastData,A1.LastData,1);
+DrawText(B2.LastData,A2.LastData,'{HIGH} +hi[UP]'),SameColor;
+DrawText(B1.LastData,A1.LastData,'{HIGH} +hi'),SameColor;
+D1 :=Trough(N);
+D2 :=Trough(N,2);
+E1 :=TroughBars(N);
+E2 :=TroughBars(N,2);
+DrawLine(E2.LastData,D2.LastData,E1.LastData,D1.LastData,1),SameColor;
+DrawText(E2.LastData,D2.LastData,'{LOW} +lo[up channel]'),VAlign2,SameColor;
+DrawText(E1.LastData,D1.LastData,'{LOW} +lo[b/o retest]'),VAlign2,SameColor;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="ZigIcon" IsMainView="true">
+          <FullName>Draw buy sell Icon according Zig</FullName>
+          <Description />
+          <Code>DrawIcon(FindPeak(N),H,'dn.gif'),Top;
+DrawIcon(FindTrough(N),L,'up.gif'),Bottom;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="6" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="TimeLabel" IsMainView="true">
+          <FullName>Draw label at specific time</FullName>
+          <Description />
+          <Code>AA : DrawText(NEARESTTIME(D,T),C,Text);
+@SetAttr(AA,Style);
+@SETTEXTVISIBLE(false);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="D" DefaultValue="20031231" MinValue="0" MaxValue="100000000" Description="" ParamType="double" />
+            <FormulaParam Name="T" DefaultValue="091000" MinValue="0" MaxValue="100000000" Description="" ParamType="double" />
+            <FormulaParam Name="Text" DefaultValue="Rumour" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+            <FormulaParam Name="Style" DefaultValue="Font(Verdana, 10pt, style=Bold, Italic),ColorRed" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Native" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="HL" IsMainView="false">
+          <FullName>Horizon Line</FullName>
+          <Description />
+          <Code>N</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="0" MinValue="1" MaxValue="20000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="EMA" IsMainView="false">
+          <FullName>EMA</FullName>
+          <Description />
+          <Code>EMA(C,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MA" IsMainView="false">
+          <FullName>MA</FullName>
+          <Description />
+          <Code>MA(C,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="12" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MAIN" IsMainView="false">
+          <FullName>Stock area</FullName>
+          <Description />
+          <Code>M:STOCK;
+@SetName('');
+@SetTextVisible(M,false);</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="VOL" IsMainView="false">
+          <FullName>Volumn View</FullName>
+          <Description />
+          <Code>VOL,VOLSTICK;</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="DotLine" IsMainView="false">
+          <FullName>Dot Horizon Line</FullName>
+          <Description />
+          <Code>N,StyleDash,ColorRed</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="0" MinValue="0" MaxValue="20000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MAIN2" IsMainView="false">
+          <FullName>Stock area show symbol and value</FullName>
+          <Description />
+          <Code>M:STOCK;
+@SetName(M,StkLabel);
+@SetTextVisible(false);
+</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="OverlayV" IsMainView="false">
+          <FullName>Volume for overlay</FullName>
+          <Description />
+          <Code>A:VOL,VOLSTICK,HIGH0.2,Alpha100;
+@SETNAME(A,'V');
+@SETTEXTVISIBLE(false)</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="REF" IsMainView="false">
+          <FullName>Reference values of N days before</FullName>
+          <Description />
+          <Code>A:=REF(FML(Indi),N);
+BackSet(IsLastValue(A),A,M)</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Indi" DefaultValue="C" MinValue="" MaxValue="" Description="" ParamType="indicator" />
+            <FormulaParam Name="N" DefaultValue="1" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+            <FormulaParam Name="M" DefaultValue="20" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="REFC" IsMainView="false">
+          <FullName>Reference Close Value</FullName>
+          <Description />
+          <Code>REF(C,N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="1" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Extend" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="AreaBB" IsMainView="true">
+          <FullName>Area Bollinger Bands</FullName>
+          <Description>The Bollinger Bands were introduced by John Bollinger. Its primary use is for presenting the volatility of the security in an easy to view form. The indicator consists of three bands: a simple moving average (middle), SMA plus 2 standard deviations (upper), and SMA minus 2 standard deviations (lower).</Description>
+          <Code>MID :=  MA(CLOSE,N);
+UPPER: MID + P*STD(CLOSE,N),Color#8080c0;
+LOWER: MID - P*STD(CLOSE,N),Color#8080c0;
+FILLRGN(1,LOWER,UPPER),Brush#200000C0;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="26" MinValue="5" MaxValue="300" Description="" ParamType="double" />
+            <FormulaParam Name="P" DefaultValue="2" MinValue="0.1" MaxValue="10" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="AreaRSI" IsMainView="false">
+          <FullName>Relative Strength Index</FullName>
+          <Description>The Relative Strength Index was introduced by Welles Wilder. It is an indicator for overbought / oversold conditions. It is going up when the market is strong, and down, when the market is weak. The oscillation range is between 0 and 100.
+
+The indicator is non-linear, it is moving faster in the middle of its range, and slower - in the overbought / oversold territory.
+
+The RSI should not be confused with the relative strength indicator which is used to compare stocks to each other.
+
+</Description>
+          <Code>LC := REF(CLOSE,1);
+RSI:SMA(MAX(CLOSE-LC,0),N1,1)/SMA(ABS(CLOSE-LC),N1,1)*100;
+70,HighSpeed;
+30,HighSpeed;
+FILLRGN(RSI&gt;70,RSI,70),Brush#20808000;
+FILLRGN(RSI&lt;30,RSI,30),Brush#20800000;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="14" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SR2" IsMainView="false">
+          <FullName>Support &amp; Resistance</FullName>
+          <Description />
+          <Code>M :=(H+L+C)/3;
+S:M +((-L+(2*M)-(-H+2*M))),Color#80c080;
+R:M-((-L+(2*M))-(-H+2*M)),Color#80c080;
+FILLRGN(1,S,R),Brush#2000C000;</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="Compare" IsMainView="true">
+          <FullName>Compare Stocks</FullName>
+          <Description />
+          <Code>FML(StockCode,'C'),FirstDataOfView,HighQuality;
+@SetName(StockCode);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="StockCode" DefaultValue="^DJI" MinValue="0" MaxValue="0" Description="" ParamType="symbol" />
+          </Params>
+        </Program>
+        <Program Name="CmpIndi" IsMainView="false">
+          <FullName>Compare two indicators</FullName>
+          <Description />
+          <Code>V1:FML(Indi),HighQuality;
+V2:FML(StockCode,Indi),HighQuality;
+@SetName(V1,StkLabel);
+@SetName(V2,StockCode);
+@SetName(Indi);
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="StockCode" DefaultValue="^DJI" MinValue="0" MaxValue="0" Description="" ParamType="symbol" />
+            <FormulaParam Name="Indi" DefaultValue="RSI(14)" MinValue="0" MaxValue="0" Description="" ParamType="indicator" />
+          </Params>
+        </Program>
+        <Program Name="SRAxisY" IsMainView="false">
+          <FullName>Support &amp; Resistance on AxisY</FullName>
+          <Description />
+          <Code>M :=(H+L+C)/3;
+A :=H-L;
+RR:=M+A;
+SS:=M-A;
+R : DrawAxisY(RR,-10,12),Width2,Color#A0FF0000,AxisMargin12;
+S : DrawAxisY(SS,-10,12),Width2,Color#A0004000;
+DrawTextAxisY(RR,'R',1),Color#FF0000,VCenter;
+DrawTextAxisY(SS,'S',1),Color#004000,VCenter;
+@SetName('SR');</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="SlowSTO2" IsMainView="false">
+          <FullName>Slow Stochastic</FullName>
+          <Description />
+          <Code>A:=(C-LLV(L,N))/(HHV(H,N)-LLV(L,N))*100;
+K:MA(A,M1),ColorDarkGreen,Width2,HighQuality;
+D:MA(K,M2);
+PartLine(K&gt;=D,K),ColorRed,Width2,HighQuality;
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="M1" DefaultValue="3" MinValue="1" MaxValue="50" Description="" ParamType="double" />
+            <FormulaParam Name="M2" DefaultValue="9" MinValue="1" MaxValue="50" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="RefIndi" IsMainView="false">
+          <FullName>Reference indicator's value</FullName>
+          <Description />
+          <Code>REF(FML(Indi),N);
+@SetName(Indi+'-'+N);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Indi" DefaultValue="MACD[DIFF]" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="10000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MainArea" IsMainView="false">
+          <FullName>Main Area View</FullName>
+          <Description />
+          <Code>MAIN : C,HighQuality;
+FILLAREA(MAIN),Brush#20808000;
+@SetTextVisible(MAIN,false);
+@SetTextVisible(false);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="100" MinValue="1" MaxValue="100000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="SR3" IsMainView="false">
+          <FullName>Support &amp; Resistance 2</FullName>
+          <Description />
+          <Code>P := (H+L+C)/3;
+YL := REF(L,1);
+YH := REF(H,1);
+R1 : 2 * P - YL;
+S1 : 2 * P - YH;
+R2 : (P - S1) + R1;
+S2 : P - (R1-S1);
+R3 : (P + R2) - S1;
+S3 : (P - R2) + S1;
+R4 : (P + R3) - S1;
+S4 : (P - R3) + S1;
+R5 : (P + R4) - S1;
+S5 : (P - R4) + S1;</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="Compare2" IsMainView="true">
+          <FullName>Compare Stocks</FullName>
+          <Description />
+          <Code>FML(StockCode,'STOCK'),FullView,HighQuality,MonoStock;
+@SetName(StockCode);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="StockCode" DefaultValue="^DJI" MinValue="0" MaxValue="0" Description="" ParamType="symbol" />
+          </Params>
+        </Program>
+        <Program Name="TwoDiff" IsMainView="false">
+          <FullName>Difference of Two Symbol</FullName>
+          <Description>draw difference of two symbol in candle mode.</Description>
+          <Code>C1:=FML(Symbol2,'C')-C;
+H1:=FML(Symbol2,'H')-H;
+L1:=FML(Symbol2,'L')-L;
+O1:=FML(Symbol2,'O')-O;
+GETSTOCK(O1,C1,MAX(C1,O1,H1,L1),MIN(C1,O1,H1,L1));
+
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Symbol2" DefaultValue="INTL" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+          </Params>
+        </Program>
+        <Program Name="TradingIcon" IsMainView="true">
+          <FullName>Trading Icon</FullName>
+          <Description />
+          <Code>DrawIcon(FML(Indi+'[ExitLong]'),H,'DN.GIF'),TOP;
+DrawIcon(FML(Indi+'[EnterLong]'),L,'UP.GIF'),BOTTOM;</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="Indi" DefaultValue="Trading.RSI" MinValue="0" MaxValue="0" Description="" ParamType="indicator" />
+          </Params>
+        </Program>
+        <Program Name="Compare3" IsMainView="false">
+          <FullName>Compare Stocks</FullName>
+          <Description />
+          <Code>FML(StockCode,'C'),HighQuality;
+@SetName(StockCode);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="StockCode" DefaultValue="^DJI" MinValue="0" MaxValue="0" Description="" ParamType="symbol" />
+          </Params>
+        </Program>
+        <Program Name="ColorSar" IsMainView="false">
+          <FullName>Color candle bar based on sar</FullName>
+          <Description />
+          <Code>M : SAR(N,STEP,MAXP),COLORBLUE;
+A1:STOCK,MONOSTOCK,BRUSHRED,COLORRED;
+A2:IF(M&lt;C,STOCK,NAN),MONOSTOCK,BRUSHBLUE,COLORBLUE;
+A3:IF(M&lt;C,M,NAN),COLORRED,CIRCLEDOT;
+@SETNAME(M,'SAR');
+@SETTEXTVISIBLE(A1,FALSE);
+@SETTEXTVISIBLE(A2,FALSE);
+@SETTEXTVISIBLE(A3,FALSE);
+@SETTEXTVISIBLE(FALSE);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="STEP" DefaultValue="2" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="MAXP" DefaultValue="20" MinValue="5" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+    <Namespace Name="Intraday" Version="">
+      <Description />
+      <GroupOnly>true</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="OpeningRange" IsMainView="false">
+          <FullName>Opening Range</FullName>
+          <Description>a horizontal line based on the high and low of the first X minutes of the trading day.</Description>
+          <Code>H1:=IF(IsLastDay &amp; Time&lt;=N,H,NaN);
+L1:=IF(IsLastDay &amp; Time&lt;=N,L,NaN);
+HH :=HHV(H1,0);
+LL :=LLV(L1,0);
+Extend(IF(HH.LastValue==HH,HH,NaN)),StyleDash,Width2;
+Extend(IF(LL.LastValue==LL,LL,NaN)),StyleDash,Width2;
+
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="100000" MinValue="0" MaxValue="240000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="PriorClose" IsMainView="false">
+          <FullName>Prior day's close</FullName>
+          <Description />
+          <Code>"REFC#DAY",StyleDash,ColorRed,NoValueLabel,Horizontal,Width2;
+@SetTextVisible(false);</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="PriorHLC" IsMainView="false">
+          <FullName>Prior day's High,Low,Close</FullName>
+          <Description />
+          <Code>"RefIndi(H,1)#DAY",StyleDash,NoValueLabel,Horizontal,Width2;
+"RefC#DAY",StyleDash,NoValueLabel,Horizontal,Width2;
+"RefIndi(L,1)#DAY",StyleDash,NoValueLabel,Horizontal,Width2;
+@SetTextVisible(false);</Code>
+          <DisabledCycle />
+          <Params />
+        </Program>
+        <Program Name="TDP" IsMainView="false">
+          <FullName>Three Days Pivot Range</FullName>
+          <Description />
+          <Code>Cond := Between(DoubleDate,LastDoubleDate-N,LastDoubleDate-0.00001);
+HH :=HHV(IF(Cond,H,NaN)).LastValue;
+LL :=LLV(IF(Cond,L,NaN)).LastValue;
+CC :=IF(Cond,C,NaN).LastValue;
+P :=(HH+LL+CC)/3;
+M :=(HH+LL)/2;
+PD :=ABS(P-M);
+PH:IF(IsLastDay,P+PD,NaN),StyleDash,Width2;
+PL:IF(IsLastDay,P-PD,NaN),StyleDash,Width2;
+
+</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="3" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+  </Namespaces>
+  <Programs />
+</Namespace>

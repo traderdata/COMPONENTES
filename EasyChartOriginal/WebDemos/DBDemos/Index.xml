@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NewDataSet>
+	<a>
+		<Symbol>^DJI</Symbol>
+		<Name>Dow Jones Industrial Average</Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>YEAR1</BigCycle>
+		<CycleText>Monthly</CycleText>
+		<XCycle>Year10</XCycle>
+		<XFormat>yy</XFormat>
+		<StartDate>19000101</StartDate>
+		<Overlay>MA(50)</Overlay>
+		<Indicator>RSI</Indicator>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+	</a>
+	<a>
+		<Symbol>^SPX</Symbol>
+		<Name>SP 500 Index</Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>QUARTER1</BigCycle>
+		<CycleText>Monthly</CycleText>
+		<XCycle>Year5</XCycle>
+		<XFormat>yy</XFormat>
+		<Main>MainArea</Main>
+		<StartDate>19770101</StartDate>
+		<YFormat>f0</YFormat>
+	</a>
+	<a>
+		<Symbol>^IXIC</Symbol>
+		<Name>Nasdaq Composite</Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>QUARTER1</BigCycle>
+		<CycleText>Monthly</CycleText>
+		<XCycle>Year2</XCycle>
+		<XFormat>yy</XFormat>
+		<StartDate>19860101</StartDate>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+	</a>
+	<a>
+		<Symbol>^DJI</Symbol>
+		<Name>Dow Jones Industrial Average</Name>
+		<Cycle>WEEK1</Cycle>
+		<BigCycle>DAY3</BigCycle>
+		<CycleText>Daily</CycleText>
+		<XCycle>Month2</XCycle>
+		<XFormat>{yy}MMM</XFormat>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+		<Span>12</Span>
+	</a>
+	<a>
+		<Symbol>^SPX</Symbol>
+		<Name>SP 500 Index</Name>
+		<Cycle>WEEK1</Cycle>
+		<BigCycle>DAY3</BigCycle>
+		<CycleText>Daily</CycleText>
+		<XCycle>Month2</XCycle>
+		<XFormat>{yy}MMM</XFormat>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+		<Span>12</Span>
+	</a>
+	<a>
+		<Symbol>^IXIC</Symbol>
+		<Name>Nasdaq Composite</Name>
+		<Cycle>WEEK1</Cycle>
+		<BigCycle>DAY3</BigCycle>
+		<CycleText>Daily</CycleText>
+		<XCycle>Month2</XCycle>
+		<XFormat>{yy}MMM</XFormat>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+		<Span>12</Span>
+	</a>
+</NewDataSet>

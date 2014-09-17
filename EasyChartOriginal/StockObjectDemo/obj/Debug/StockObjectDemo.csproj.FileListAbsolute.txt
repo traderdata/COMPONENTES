@@ -1,0 +1,13 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\obj\Debug\StockObjectDemo.csprojResolveAssemblyReference.cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\obj\Debug\StockObjectDemo.ObjectDesignerForm.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\obj\Debug\StockObjectDemo.csproj.GenerateResource.Cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\StockObjectDemo.exe
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\StockObjectDemo.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.Objects.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.Win.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.Objects.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.Win.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\bin\debug\Easychart.Finance.pdb
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\obj\Debug\StockObjectDemo.exe
+C:\Backup\Traderdata\Tecnologia\EasyChart\StockObjectDemo\obj\Debug\StockObjectDemo.pdb

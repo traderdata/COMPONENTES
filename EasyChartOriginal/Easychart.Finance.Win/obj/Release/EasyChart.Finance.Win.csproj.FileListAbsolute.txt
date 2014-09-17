@@ -1,0 +1,17 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\bin\Release\Easychart.Finance.Win.dll.config
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\bin\Release\Easychart.Finance.Win.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\bin\Release\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\EasyChart.Finance.Win.csprojResolveAssemblyReference.cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.AboutForm.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.ChartWinControl.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.DataFeedLogin.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.FormulaManager.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.FormulaSourceEditor.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.InputBox.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.SelectFormula.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.SelectMethod.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.SizeToolControl.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.SkinEditor.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.StatisticControl.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\EasyChart.Finance.Win.csproj.GenerateResource.Cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\EasyChart.Finance.Win\obj\Release\Easychart.Finance.Win.dll

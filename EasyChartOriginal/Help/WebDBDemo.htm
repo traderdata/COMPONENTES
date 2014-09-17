@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<style type="text/css"> <!-- td {font-family:Verdana; font-size: 11pt; line-height-: 14pt}
+	//--></style>
+	</head>
+	<body leftmargin="0" marginheight="0" marginwidth="0" topmargin="0" link="#800000" vlink="#800000"
+		alink="#0000ff">
+		<table width="100%" bgcolor="darkblue" Height="60" ID="Table1">
+			<tr>
+				<td>
+					<B><font color="white" size="+1">Easy financial chart - Web DB Demo Guide</font></B>
+				</td>
+			</tr>
+		</table>
+		<table ID="Table2">
+			<tr>
+				<td>
+					<br>
+					To use the DB chart demos, please follow these instructions:
+					<br>
+					<ul>
+						<b>1. Create your sql server database, run script "createtab.sql" in "SQL Query 
+							Analyzer".</b>
+						<br>
+						<br>
+						<b>2. Modify web.config in webdemos sub-folder , let the application can connect to 
+							the sql server.</b><br>
+						<font color="blue">&lt;appSettings&gt;
+							<br>
+							&lt;add key="ConnStr" value="Initial Catalog=efc;Data Source=localhost;User Id 
+							=aa;Password=aa" /&gt;
+							<br>
+							&lt;/appSettings&gt; </font>
+						<br>
+						Find the period of code above, change "Initial Catalog=efc;Data 
+						Source=localhost;User Id =aa;Password=aa" to your settings.
+						<br>
+						<br>
+						<b>3. Open page "WebDemos/Admin/" in web-browser</b>, default username/password is 1/1
+
+						<br>
+						here you can<br>
+						<br>
+						<ul>
+							1) Download symbols list to database , select the Exchange , click Import.
+							<br>
+							<br>
+							2) Manage the symbols you want and delete others, Enter the stock symbol list 
+							in the text box , click OK, the program will delete others.
+							<br>
+							<br>
+							3) Download historical quotes, this will take huge of time, you can see the 
+							progress in StockList.aspx. Note, this progress will stop when the 
+							webapplication restart , you need start it manually if not all historical 
+							quotes been downloaded.
+							<br>
+							<br>
+							4) Update all quotes of certain day, select the Exchange and date , click 
+							Update. Automatically update will be add later.
+							<br>
+							<br>
+							5) Update Pre-scan.
+							<br>
+							<br>
+							6) Update Formula Value.
+						</ul>
+						<br>
+						<b>4. You can open page "WebDemos/DBDemos/DBWebChart.aspx" to see the chart, 
+							"WebDemos/DBDemos/StockList.aspx" to see the stock list.</b><br>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<table ID="Table3">
+			<tr>
+				<td>
+					<a href="mailto:support@easychart.net">Any questions? feel free to contact me!</a><br>
+					<a href="http://finance.easychart.net">http://finance.easychart.net</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

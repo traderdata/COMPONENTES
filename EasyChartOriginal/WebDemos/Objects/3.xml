@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:EasyChart="http://finance.easychart.net" Symbol="MSFT" StartTime="37734" EndTime="38023" LatestTime="37995" MaxPrice="30.416367053591721" MinPrice="23.197165675069254">
+  <Objects d2p1:type="SingleLineObject" DataFormat="f2" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance">
+    <ControlPoints>
+      <ObjectPoint X="37813" Y="29.100366802298563" />
+    </ControlPoints>
+    <AreaName>FML.Native.MAIN</AreaName>
+    <SmoothingMode>Default</SmoothingMode>
+    <ObjectFont Alignment="Near" LineAlignment="Far">
+      <TextBrush Color="Red" />
+      <TextFont>Verdana, 10pt, style=Bold, Italic</TextFont>
+    </ObjectFont>
+  </Objects>
+  <Objects d2p1:type="SingleLineObject" DataFormat="f2" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance">
+    <ControlPoints>
+      <ObjectPoint X="37816" Y="27.7467665438256" />
+    </ControlPoints>
+    <AreaName>FML.Native.MAIN</AreaName>
+    <SmoothingMode>Default</SmoothingMode>
+    <ObjectFont Alignment="Near" LineAlignment="Far">
+      <TextBrush Color="Red" />
+      <TextFont>Verdana, 10pt, style=Bold, Italic</TextFont>
+    </ObjectFont>
+  </Objects>
+  <Objects d2p1:type="SingleLineObject" DataFormat="f2" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance">
+    <ControlPoints>
+      <ObjectPoint X="37827" Y="25.565966127396937" />
+    </ControlPoints>
+    <AreaName>FML.Native.MAIN</AreaName>
+    <SmoothingMode>Default</SmoothingMode>
+    <ObjectFont Alignment="Near" LineAlignment="Far">
+      <TextBrush Color="Red" />
+      <TextFont>Verdana, 10pt, style=Bold, Italic</TextFont>
+    </ObjectFont>
+  </Objects>
+</Root>

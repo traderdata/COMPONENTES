@@ -1,0 +1,8 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\bin\Release\WindowsDemo.exe.config
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\bin\Release\WindowsDemo.exe
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\bin\Release\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\bin\Release\Easychart.Finance.Win.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\obj\Release\WindowsDemo.csprojResolveAssemblyReference.cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\obj\Release\WindowsDemo.DemoForm.resources
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\obj\Release\WindowsDemo.csproj.GenerateResource.Cache
+C:\Backup\Traderdata\Tecnologia\EasyChart\WindowsDemo\obj\Release\WindowsDemo.exe

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Namespace xmlns:Formula="http://finance.easychart.net" Name="FML" Version="1.0.0.7">
+  <Description>Namespace description</Description>
+  <GroupOnly>false</GroupOnly>
+  <Namespaces />
+  <Programs>
+    <Program Name="TestScan" IsMainView="false">
+      <FullName />
+      <Description />
+      <Code>C&lt;LLV(C,3) &amp; MA(V,N)&gt;50000 &amp; BETWEEN(C,1,10) &amp; ABS(C-"BB(M,M/10)[LOWER]")&lt;0.1</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="N" DefaultValue="90" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+        <FormulaParam Name="M" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+      </Params>
+    </Program>
+    <Program Name="TestOrgData" IsMainView="false">
+      <FullName>OrgData</FullName>
+      <Description />
+      <Code>MYIV:OrgData(FN),HighQuality;
+IVC : SMA(MYIV,XN,1);</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="FN" DefaultValue="Close" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+        <FormulaParam Name="XN" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+      </Params>
+    </Program>
+    <Program Name="TestPartColor" IsMainView="false">
+      <FullName>Support up color and download of line</FullName>
+      <Description />
+      <Code>C;
+MA(C,20),UpColorRed,DownColorGreen,Width2,HighQuality</Code>
+      <DisabledCycle />
+      <Params />
+    </Program>
+    <Program Name="TwoDiff" IsMainView="false">
+      <FullName>Difference of Two Symbol</FullName>
+      <Description />
+      <Code>C1:=FML(Symbol2,'C')-C;
+H1:=FML(Symbol2,'H')-H;
+L1:=FML(Symbol2,'L')-L;
+O1:=FML(Symbol2,'O')-O;
+GETSTOCK(O1,C1,MAX(C1,O1,H1,L1),MIN(C1,O1,H1,L1));
+
+</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="Symbol2" DefaultValue="MSFT" MinValue="0" MaxValue="0" Description="" ParamType="string" />
+      </Params>
+    </Program>
+    <Program Name="CustomTrade" IsMainView="true">
+      <FullName>Trade sign from database</FullName>
+      <Description>Load EnterLong,EnterShort,ExitLong,ExitShort from database</Description>
+      <Code>M :=OrgData('M'+N);
+DrawIcon(M==1,L,'EnterLong.GIF'),BOTTOM;
+DrawIcon(M==2,H,'EnterShort.GIF'),GOP;
+DrawIcon(M==3,H,'ExitLong.GIF'),TOP;
+DrawIcon(M==4,L,'ExitShort.GIF'),BOTTOM;
+@SetTextVisible(false);</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="N" DefaultValue="1" MinValue="1" MaxValue="3" Description="" ParamType="double" />
+      </Params>
+    </Program>
+    <Program Name="VolChange" IsMainView="false">
+      <FullName>Vol Change</FullName>
+      <Description />
+      <Code>V/MA(C,N)-1,ColorRed;
+@SetName('Vol%Change');</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="N" DefaultValue="50" MinValue="1" MaxValue="1000" Description="" ParamType="double" />
+      </Params>
+    </Program>
+    <Program Name="PartStockColor" IsMainView="true">
+      <FullName />
+      <Description />
+      <Code>M:MA(C,N);
+@SETNAME(M,'MA'+N);
+A1:STOCK,MonoStock,BrushGreen,ColorGreen;
+A2:IF(C&gt;M,STOCK,NAN),MonoStock,BrushRed,ColorRed;
+@SETTEXTVISIBLE(A2,false);
+@SETNAME(A1,'C');
+@SETTEXTVISIBLE(false);</Code>
+      <DisabledCycle />
+      <Params>
+        <FormulaParam Name="N" DefaultValue="13" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+      </Params>
+    </Program>
+  </Programs>
+</Namespace>

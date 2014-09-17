@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<NewDataSet>
+	<a>
+		<Symbol>UUR</Symbol>
+		<Name></Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>Year1</BigCycle>
+		<CycleText>Yearly</CycleText>
+		<XCycle>Year10</XCycle>
+		<XFormat>yyyy</XFormat>
+		<StartDate>18960101</StartDate>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+	</a>
+	<a>
+		<Symbol>CPUSAM</Symbol>
+		<Name></Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>Year1</BigCycle>
+		<CycleText>Yearly</CycleText>
+		<XCycle>Year20</XCycle>
+		<XFormat>yyyy</XFormat>
+		<StartDate>18960101</StartDate>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+	</a>
+	<a>
+		<Symbol>CPJPNM</Symbol>
+		<Name></Name>
+		<Cycle>YEAR1</Cycle>
+		<BigCycle>Year1</BigCycle>
+		<CycleText>Yearly</CycleText>
+		<XCycle>Year20</XCycle>
+		<XFormat>yyyy</XFormat>
+		<StartDate>18960101</StartDate>
+		<Main>MainArea</Main>
+		<YFormat>f0</YFormat>
+	</a>
+</NewDataSet>

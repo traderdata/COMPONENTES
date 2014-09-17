@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Namespace xmlns:Formula="http://finance.easychart.net" Name="FML">
+  <Description>Namespace description</Description>
+  <GroupOnly>false</GroupOnly>
+  <Namespaces>
+    <Namespace Name="Trading">
+      <Description />
+      <GroupOnly>false</GroupOnly>
+      <Namespaces />
+      <Programs>
+        <Program Name="RSI" IsMainView="false">
+          <FullName>RSI Trading System</FullName>
+          <Description>RSI Trading system</Description>
+          <Code>EnterLong:CROSS("RSI(N)",30);
+ExitLong:CROSS(70,"RSI(N)");</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+        <Program Name="MACD" IsMainView="false">
+          <FullName>MACD Trading System</FullName>
+          <Description>MACD Trading System</Description>
+          <Code>EnterLong:LONGCROSS("MACD(N1,N2,N3)",0.2,3);
+ExitLong:LONGCROSS(-0.2,"MACD(N1,N2,N3)",3);</Code>
+          <DisabledCycle />
+          <Params>
+            <FormulaParam Name="N1" DefaultValue="26" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N2" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+            <FormulaParam Name="N3" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+          </Params>
+        </Program>
+      </Programs>
+    </Namespace>
+  </Namespaces>
+  <Programs />
+</Namespace>

@@ -1,0 +1,693 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{1E15C0C6-FCA4-460A-A4F8-1236650A1C06}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = "App.ico"
+                AssemblyKeyContainerName = ""
+                AssemblyName = "Easychart.Finance.Objects"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "Easychart.Finance.Objects"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "System.Drawing.Design"
+                    AssemblyName = "System.Drawing.Design"
+                    HintPath = "..\..\..\..\WINXP\Microsoft.NET\Framework\v1.1.4322\System.Drawing.Design.dll"
+                />
+                <Reference
+                    Name = "System.Design"
+                    AssemblyName = "System.Design"
+                    HintPath = "..\..\..\..\WINXP\Microsoft.NET\Framework\v1.1.4322\System.Design.dll"
+                />
+                <Reference
+                    Name = "EasyChart.Finance"
+                    Project = "{F00BED6B-BCAD-4A25-8309-AD840EF06B3F}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "EasyChart.Finance.Win"
+                    Project = "{2DA946EF-D4DE-4377-8C16-8B3074662CF5}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "App.config"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "App.ico"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\BaseObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\FillPolygonObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\InvisibleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\LineGroupObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\LineGroupTextObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Base\PolygonObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Channel\ChannelObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Channel\CrossObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Channel\GridObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\ArcObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\Circle2Object.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\CircleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\EllipseObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\FibonacciCircleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\MultiArcObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\SinObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Circle\SpiralObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Cycle\CycleCounterObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Cycle\CycleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Fan\FanObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Icons\Arrow.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ArrowLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ChannelCross.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ChannelE.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ChannelF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ChannelGrid.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ChannelM.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Circle.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CircleF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CircleFib.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CircleM.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CycleC.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CycleE.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CycleF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CycleSqr.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\CycleSym.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\default.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Ellipse.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\EllipseF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Fan3.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Fan4.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\FanFib.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\FibLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\FibLineA.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\HLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ImgFix.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ImgResize.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ImgRotate.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line1.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line2.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line3.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line4.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line5.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Line8.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRAChannel.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRChannel.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRDown.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRError.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LROChannel.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRSingle.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRSTD.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRUp.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\LRUpDown.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ParralleloGram.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\ParralleloGramF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\PercentLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\PercentLineA.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\PriceLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Rect.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\RectBand.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\RectPrice.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\RectRound.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Segment.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Sin.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\SpiralA.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\SpiralH.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\SpiralL.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\SpiralLi.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\SpiralP.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Text.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\TextL.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\TextLP.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\TextLPD.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\Traingle.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\TraingleF.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Icons\VLine.gif"
+                    BuildAction = "EmbeddedResource"
+                    CustomToolNamespace = "Icons"
+                />
+                <File
+                    RelPath = "Image\ImageFileEditor.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Image\ImageObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Image\ImgControl.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Image\ImgControl.resx"
+                    DependentUpon = "ImgControl.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectCategory.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectDragging.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectInit.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectManager.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectSegment.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectToolPanel.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectToolPanel.resx"
+                    DependentUpon = "ObjectToolPanel.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectTree.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\ObjectTree.resx"
+                    DependentUpon = "ObjectTree.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Infrastructure\PointArrayConverter.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Infrastructure\WebCanvas.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Invisible\DayTrendsObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Invisible\WeekTrendsObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Line\FibonacciLineObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Line\LinearRegression.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Line\LineObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Line\PriceLineObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Line\SingleLineObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Shape\RectangleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Shape\TriangleObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Text\LabelObject.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

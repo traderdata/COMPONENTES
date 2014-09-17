@@ -1,0 +1,665 @@
+<html>
+	<head>
+		<style type="text/css"> <!-- td {font-family:Verdana; font-size: 11pt; line-height-: 14pt}
+	//--></style>
+	</head>
+	<body leftmargin="0" marginheight="0" marginwidth="0" topmargin="0" link="#800000" vlink="#800000"
+		alink="#0000ff">
+		<table width="100%" bgcolor="darkblue" Height="60" ID="Table1">
+			<tr>
+				<td>
+					<B><font color="white" size="+1">Easy financial chart - Formula script language guide</font></B>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<br>
+					1.Below table shows all basic method supported by formula script language.
+					<br>
+					2.Show line name before ":" . For example DIFF:C-O , formula line DIFF will 
+					show in the chart.
+					<br>
+					3.Don't show line name before ":=". For example A:=(C+O)/2, formula line A will 
+					not show in the chart.It's a intermedial variant.
+					<br>
+					4.Formula line seperate by ";".<br>
+					<br>
+					100+ basic method can be used in formula script language.
+				</td>
+			</tr>
+		</table>
+		<TABLE cellSpacing="1" cellPadding="1" border="1">
+			<TR bgcolor="#ccff66">
+				<TD>Method Name</TD>
+				<TD>Method description</TD>
+				<TD>Example</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">OPEN/CLOSE/HIGH/LOW/VOLUME/AMOUNT</TD>
+			</TR>
+			<TR>
+				<TD>CLOSE</TD>
+				<TD>Get the stock closing prices</TD>
+				<TD>CLOSE</TD>
+			</TR>
+			<TR>
+				<TD>OPEN</TD>
+				<TD>Get the stock open prices</TD>
+				<TD>OPEN</TD>
+			</TR>
+			<TR>
+				<TD>HIGH</TD>
+				<TD>Get the stock highest prices</TD>
+				<TD>HIGH</TD>
+			</TR>
+			<TR>
+				<TD>LOW</TD>
+				<TD>Get the stock lowest prices</TD>
+				<TD>LOW</TD>
+			</TR>
+			<TR>
+				<TD>VOLUME</TD>
+				<TD>Get the stock volume</TD>
+				<TD>VOLUME</TD>
+			</TR>
+			<TR>
+				<TD>AMOUNT</TD>
+				<TD>Get the stock amount</TD>
+				<TD>AMOUNT</TD>
+			</TR>
+			<TR>
+				<TD>C</TD>
+				<TD>Shortcut of CLOSE</TD>
+				<TD>C</TD>
+			</TR>
+			<TR>
+				<TD>O</TD>
+				<TD>Shortcut of OPEN</TD>
+				<TD>O</TD>
+			</TR>
+			<TR>
+				<TD>H</TD>
+				<TD>Shortcut of HIGH</TD>
+				<TD>H</TD>
+			</TR>
+			<TR>
+				<TD>L</TD>
+				<TD>Shortcut of LOW</TD>
+				<TD>L</TD>
+			</TR>
+			<TR>
+				<TD>V</TD>
+				<TD>Shortcut of VOLUME</TD>
+				<TD>V</TD>
+			</TR>
+			<TR>
+				<TD>VOL</TD>
+				<TD>Shortcut of VOLUME</TD>
+				<TD>VOL</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Other basic data</TD>
+			</TR>
+			<TR>
+				<TD>DATACOUNT</TD>
+				<TD>Data count of current data array</TD>
+				<TD>DATACOUNT</TD>
+			</TR>
+			<TR>
+				<TD colspan="3" bgcolor="#ffff66">Date &amp; time functions</TD>
+			</TR>
+			<TR>
+				<TD>DATE</TD>
+				<TD>This returns the date of format yymmdd , yy means the real year minus 1970,mm 
+					means month, dd means day.</TD>
+				<TD>DATE</TD>
+			</TR>
+			<TR>
+				<TD>DAY</TD>
+				<TD>This returns the day of the month.</TD>
+				<TD>DAY</TD>
+			</TR>
+			<TR>
+				<TD>HOUR</TD>
+				<TD>This return the hour of the day.</TD>
+				<TD>HOUR</TD>
+			</TR>
+			<TR>
+				<TD>MINUTE</TD>
+				<TD>This return the minute of the hour</TD>
+				<TD>MINUTE</TD>
+			</TR>
+			<TR>
+				<TD>MONTH</TD>
+				<TD>This returns the month of the year.If today was July 15,2003, this function 
+					would return 7.</TD>
+				<TD>MONTH</TD>
+			</TR>
+			<TR>
+				<TD>TIME</TD>
+				<TD>Return the time of format hhmmss, which hh is hour , mm is minute , ss is 
+					second.</TD>
+				<TD>TIME</TD>
+			</TR>
+			<TR>
+				<TD>WEEK</TD>
+				<TD>Return the week of the year.</TD>
+				<TD>WEEK</TD>
+			</TR>
+			<TR>
+				<TD>WEEKDAY</TD>
+				<TD>This returns an number equal to the day of the week.</TD>
+				<TD>WEEKDAY</TD>
+			</TR>
+			<TR>
+				<TD>YEAR</TD>
+				<TD>This function will return the value of the year.</TD>
+				<TD>YEAR</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Reference functions</TD>
+			</TR>
+			<TR>
+				<TD>SUM(Data Array,N)</TD>
+				<TD>This function totals the values for Data Array over the last&nbsp;N number of 
+					records.</TD>
+				<TD>SUM(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>COUNT(Data Array,N)</TD>
+				<TD></TD>
+				<TD>COUNT(C&gt;O,10)</TD>
+			</TR>
+			<TR>
+				<TD>REF(DataArray,N)</TD>
+				<TD>This returns the value of Data Array on a previous or subsequent period.The 
+					time to be accessed is expressed by N.</TD>
+				<TD>REF(C,1)</TD>
+			</TR>
+			<TR>
+				<TD>MA(DataArray,N)</TD>
+				<TD>N days moving average line.</TD>
+				<TD>MA(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>EMA(DataArray,N)</TD>
+				<TD>N days exp moving average line.</TD>
+				<TD>EMA(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>SMA(DataArray,N)</TD>
+				<TD>N days simple moving average line.</TD>
+				<TD>SMA(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>DMA(Data Array,N)</TD>
+				<TD>N days dynamic moving average line.</TD>
+				<TD>DMA(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>HHV(DataArray,N)</TD>
+				<TD>Calculates the highest value of the Data array from the most recent N number of 
+					records.</TD>
+				<TD>HHV(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>LLV(DataArray,N)</TD>
+				<TD>Calculates the lowest value of the Data array from the most recent N number of 
+					records.</TD>
+				<TD>LLV(REF(C,1),10)</TD>
+			</TR>
+			<TR>
+				<TD>HHVBARS(DataArray,N)</TD>
+				<TD>Looks at the last N number of records in Data Array. This function then returns 
+					how many periods have passed since the highest value of those records 
+					examined.Remember that this function always includes the current period in its 
+					calculations.</TD>
+				<TD>HHVBARS(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>LLVBARS(DataArray,N)</TD>
+				<TD>Looks at the last N number of records in Data Array. This function then returns 
+					how many periods have passed since the lowest value of those records 
+					examined.Remember that this function always includes the current period in its 
+					calculations.</TD>
+				<TD>LLVBARS(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>BARSCOUNT(DataArray)</TD>
+				<TD></TD>
+				<TD>BARSCOUNT(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>SUMBARS(DataArray,N)</TD>
+				<TD></TD>
+				<TD>SUMBARS(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>BARSLAST(DataArray)</TD>
+				<TD></TD>
+				<TD>BARSLAST(C)</TD>
+			</TR>
+			<TR>
+				<TD>BARSSINCE(DataArray)</TD>
+				<TD></TD>
+				<TD>BARSSINCE(C)</TD>
+			</TR>
+			<TR>
+				<TD>BACKSET(DataArray,N)</TD>
+				<TD></TD>
+				<TD>BACKSET(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>FILTER(DataArray,N)</TD>
+				<TD></TD>
+				<TD>FILTER(C,10)</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Logic functions</TD>
+			</TR>
+			<TR>
+				<TD>IF(Condition,True DataArray,False DataArray)</TD>
+				<TD>This is the basic decision making function. If Condition is tree, the result is 
+					whatever is in the True Data Array position. Otherwise it returns what is in 
+					the False Data Array position.</TD>
+				<TD>IF(C&gt;O,H,L) // if Close&gt;Open return High otherwise return Low</TD>
+			</TR>
+			<TR>
+				<TD>BETWEEN(DataArray1,<br>
+					DataArray2,DataArray3)</TD>
+				<TD></TD>
+				<TD>BETWEEN(C-O,2,3)</TD>
+			</TR>
+			<TR>
+				<TD>RANGE(DataArray1,DataArray2,<br>DataArray3)</TD>
+				<TD></TD>
+				<TD>RANGE(C-O,1,2)</TD>
+			</TR>
+			<TR>
+				<TD>CROSS(DataArray1,DataArray2)</TD>
+				<TD></TD>
+				<TD>CROSS(MA(C,5),MA(C,10))</TD>
+			</TR>
+			<TR>
+				<TD>LONGCROSS(DataArray1,DataArray2,N)</TD>
+				<TD></TD>
+				<TD>LONGCROSS(MA(C,10),MA(C,20),10)</TD>
+			</TR>
+			<TR>
+				<TD>NOT(DataArray)</TD>
+				<TD></TD>
+				<TD>NOT(C&gt;O)</TD>
+			</TR>
+			<TR>
+				<TD>ISLASTBAR(DataArray)</TD>
+				<TD></TD>
+				<TD>ISLASTBAR(C)</TD>
+			</TR>
+			<TR>
+				<TD>EXIST(DataArray,N)</TD>
+				<TD></TD>
+				<TD>EXIST(C&gt;O,N)</TD>
+			</TR>
+			<TR>
+				<TD>EVERY(DataArray,N)</TD>
+				<TD></TD>
+				<TD>EVERY(C,N)</TD>
+			</TR>
+			<TR>
+				<TD>LAST(DataArray,N)</TD>
+				<TD></TD>
+				<TD>LAST(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>ISUP</TD>
+				<TD>Return 1 if C&gt;O , Otherwise 0.</TD>
+				<TD>ISUP</TD>
+			</TR>
+			<TR>
+				<TD>ISDOWN</TD>
+				<TD>Return 1 if C&lt;O , Otherwise 0.</TD>
+				<TD>ISDOWN</TD>
+			</TR>
+			<TR>
+				<TD>ISEQUAL</TD>
+				<TD>Return 1 if C==O , Otherwise 0.</TD>
+				<TD>ISEQUAL</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Math functions 1</TD>
+			</TR>
+			<TR>
+				<TD>MAX(DataArray1,DataArray2)</TD>
+				<TD>This examines both values inserted for the Data Array and returns which ever of 
+					the two has the largest numerical value.</TD>
+				<TD>MAX(H-C,C-L)</TD>
+			</TR>
+			<TR>
+				<TD>MIN(DataArray1,DataArray2)</TD>
+				<TD>This examines both values inserted for the Data Array and returns which ever of 
+					the two has the smallest numerical value.</TD>
+				<TD>MIN(C-L,H-C)</TD>
+			</TR>
+			<TR>
+				<TD>ABS(DataArray)</TD>
+				<TD>This function returns the absolute value of the specified data array. The 
+					absolute value is equal to the value of the number without any positive or 
+					negative sign.</TD>
+				<TD>ABC(O-C)</TD>
+			</TR>
+			<TR>
+				<TD>FLOOR(DataArray)</TD>
+				<TD>The Floor function returns the highest integer that is lower that the smallest 
+					value in the data array.</TD>
+				<TD>FLOOR(C/O*1000)</TD>
+			</TR>
+			<TR>
+				<TD>CEILING(DataArray)</TD>
+				<TD>The Ceiling function returns the lowest integer that is greater that the 
+					largest value in the data array.</TD>
+				<TD>CEILING(C/O*1000)</TD>
+			</TR>
+			<TR>
+				<TD>INTPART(DataArray)</TD>
+				<TD>This will return only the non-fractional portion of Data Array. In other 
+					words,anything to the right of the decmal point is dropped.</TD>
+				<TD>INTPART(C)</TD>
+			</TR>
+			<TR>
+				<TD>MOD(DataArray1,DataArray2)</TD>
+				<TD>Calculates the remainder after the Data Array1 is divided by the Data Array2.</TD>
+				<TD>MOD(DAY,5)</TD>
+			</TR>
+			<TR>
+				<TD>SGN(DataArray)</TD>
+				<TD>This function return the sign of Data Array.</TD>
+				<TD>SGN(C-O)</TD>
+			</TR>
+			<TR>
+				<TD>REVERSE(DataArray)</TD>
+				<TD>This function multiplies the value of Data Array by negative one.</TD>
+				<TD>REVERSE(C-O)</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Math functions 2</TD>
+			</TR>
+			<TR>
+				<TD>SIN(DataArray)</TD>
+				<TD>Calculates the geometric function Sine</TD>
+				<TD>SIN(C)</TD>
+			</TR>
+			<TR>
+				<TD>COS(DataArray)</TD>
+				<TD>Calculates the geometric function Cosine.</TD>
+				<TD>COS(BARSSINCE(C))</TD>
+			</TR>
+			<TR>
+				<TD>TAN(DataArray)</TD>
+				<TD>Calculates TAN of the Data Array.</TD>
+				<TD>TAN(C)</TD>
+			</TR>
+			<TR>
+				<TD>ASIN(DataArray)</TD>
+				<TD>Calculates Arc sine of the Data Array.</TD>
+				<TD>ASIN(C)</TD>
+			</TR>
+			<TR>
+				<TD>ACOS(DataArray)</TD>
+				<TD>Calculates Arc&nbsp;Cosine of the Data Array</TD>
+				<TD>ACOS(C)</TD>
+			</TR>
+			<TR>
+				<TD>ATAN(DataArray)</TD>
+				<TD>This is trigonometric function dealing with the ratio between angles and the 
+					legs of a right triangle.</TD>
+				<TD>ATAN(C)</TD>
+			</TR>
+			<TR>
+				<TD>LOG10(DataArray)</TD>
+				<TD>This function calculated 10 based logarithm of Data Array.
+				</TD>
+				<TD>LOG10(C)</TD>
+			</TR>
+			<TR>
+				<TD height="36">LN(Data Array)</TD>
+				<TD height="36">This function calculated the natural logarithm of Data Array.
+				</TD>
+				<TD height="36">LN(C)</TD>
+			</TR>
+			<TR>
+				<TD>EXP(DataArray)</TD>
+				<TD>Calculates the mathematical constant e raised to the Data Array power.</TD>
+				<TD>EXP(C)</TD>
+			</TR>
+			<TR>
+				<TD>SQRT(DataArray)</TD>
+				<TD>This calculates the square root of Data Array.</TD>
+				<TD>SQRT(C)</TD>
+			</TR>
+			<TR>
+				<TD>SQR(DataArray)</TD>
+				<TD>Calculates the square of Data Array</TD>
+				<TD>SQR(C)</TD>
+			</TR>
+			<TR>
+				<TD>POWER(DataArray,N)</TD>
+				<TD>This calculates the value of Data Array raise to a specified N.</TD>
+				<TD>POWER(C,3)</TD>
+			</TR>
+			<TR>
+				<TD>POW(DataArray)</TD>
+				<TD>Shortcut of POWER</TD>
+				<TD>POW(C,3)</TD>
+			</TR>
+			<TR>
+				<TD bgcolor="#ffff66" colSpan="3">Statistics functions</TD>
+			</TR>
+			<TR>
+				<TD>STD(DataArray,N)</TD>
+				<TD>This calculates the value of the Standard Deviation indicator.</TD>
+				<TD>STD(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>STDP(DataArray,N)</TD>
+				<TD></TD>
+				<TD>STDP(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>VAR(DataArray,N)</TD>
+				<TD>This function examines the Data Array and calculates the statistical variance 
+					over N number of records.</TD>
+				<TD>VAR(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>VARP(DataArray,N)</TD>
+				<TD></TD>
+				<TD>VARP(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>AVEDEV(DataArray,N)</TD>
+				<TD></TD>
+				<TD>AVEDEV(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>DEVSQ(DataArray,N)</TD>
+				<TD></TD>
+				<TD>DEVSQ(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>FORCAST(DataArray,N)</TD>
+				<TD></TD>
+				<TD>FORCAST(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>SLOPE(DataArray,N)</TD>
+				<TD></TD>
+				<TD>SLOPE(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>CORR(DataArray1,DataArray2,N)</TD>
+				<TD></TD>
+				<TD>CORR(C,H,10)</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Index function</TD>
+			</TR>
+			<TR>
+				<TD>ZIG(DataArray,N)</TD>
+				<TD>This calculates the value of the Zig Zag indicator on the Data Array specified.</TD>
+				<TD>ZIG(C,10)</TD>
+			</TR>
+			<TR>
+				<TD>PEAK(DataArray,N,M)</TD>
+				<TD></TD>
+				<TD>PEAK(C,20,10)</TD>
+			</TR>
+			<TR>
+				<TD>PEAKBARS(DataArray,N,M)</TD>
+				<TD></TD>
+				<TD>PEAKBARS(C,20,10)</TD>
+			</TR>
+			<TR>
+				<TD>TROUGH(DataArray,N,M)</TD>
+				<TD></TD>
+				<TD>PEAKBARS(C,20,10)</TD>
+			</TR>
+			<TR>
+				<TD>TROUGHBARS(DataArray,N,M)</TD>
+				<TD></TD>
+				<TD>TROUGHBARS(C,20,10)</TD>
+			</TR>
+			<TR>
+				<TD>SAR(N,STEP,MAXP)</TD>
+				<TD></TD>
+				<TD>SAR(10,1,2)</TD>
+			</TR>
+			<TR>
+				<TD>SARTURN(N,STEP,MAXP)</TD>
+				<TD></TD>
+				<TD>SARTURN(10,1,2)</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">String functions</TD>
+			</TR>
+			<TR>
+				<TD>EXCHANGE</TD>
+				<TD>Return current market name</TD>
+				<TD>STKMARKET</TD>
+			</TR>
+			<TR>
+				<TD>CODE</TD>
+				<TD>Return current stock label</TD>
+				<TD>STKLABEL</TD>
+			</TR>
+			<TR>
+				<TD>NAME</TD>
+				<TD>Return current stock name</TD>
+				<TD>STKNAME</TD>
+			</TR>
+			<TR>
+				<TD>STKINBLOCK(string)</TD>
+				<TD>Return if the stock is belong to the block</TD>
+				<TD>STKINBLOCK("COMPUTER")</TD>
+			</TR>
+			<TR>
+				<TD>STRCMP(string1,string2)</TD>
+				<TD>Compare two string string1 and string2</TD>
+				<TD>STRCMP(CODE,"MSFT")</TD>
+			</TR>
+			<TR>
+				<TD>STRNCMP(string1,string2,N)</TD>
+				<TD>Compare first N chars of string1 and string2</TD>
+				<TD>STRNCMP(CODE,"MS",2)</TD>
+			</TR>
+			<TR>
+				<TD bgcolor="#ffff66" colSpan="3">Draw functions</TD>
+			</TR>
+			<TR>
+				<TD>DRAWTEXT(Condition,DataArray,s)</TD>
+				<TD>Draw text at DataArray when Condition is true.</TD>
+				<TD>DRAWTEXT(ISUP,C-1,"ISUP")</TD>
+			</TR>
+			<TR>
+				<TD>DRAWNUMBER(Condition,DataArray1,<br>DataArray2,Precision)</TD>
+				<TD>Draw DataArray1 at DataArray2 when Condition is true</TD>
+				<TD>DRAWNUMBER(ISDOWN,C+1,L,5)</TD>
+			</TR>
+			<TR>
+				<TD>DRAWICON(Condition,DataArray,IconIndex)</TD>
+				<TD>Draw Icon at DataArray when Condition is true</TD>
+				<TD>DRAWICON(ISUP,C-1,2)</TD>
+			</TR>
+			<TR>
+				<TD>POLYLINE(Condition,DataArray)</TD>
+				<TD>Draw Poly line at DataArray when Condition is true</TD>
+				<TD>POLYLINE(ISUP,C)</TD>
+			</TR>
+			<TR>
+				<TD>DRAWLINE(Condition1,DataArray1,<br>
+					Condition2,DataArray2,Expand)</TD>
+				<TD>Draw Line start at Condition1,DataArray1, end with Condition2,DataArray2</TD>
+				<TD>DRAWLINE(ISUP,C,ISDOWN,O,0)</TD>
+			</TR>
+			<TR>
+				<TD>STICKLINE(Condition,DataArray1,DataArray2,<br>
+					Width,Empty)</TD>
+				<TD>Draw Stick line at DataArray1 and DataArray2 when Condition is true.</TD>
+				<TD>STICKLINE(ISUP,C,O,2,0)</TD>
+			</TR>
+			<TR>
+				<TD>FILLRGN(Condition,DataArray1,DataArray2)</TD>
+				<TD>Fill region at DataArray1 and DataArray2 when Condition is true.</TD>
+				<TD>FILLRGN(ISUP,C,O)</TD>
+			</TR>
+			<TR>
+				<TD>PARTLINE(Condition,DataArray1)</TD>
+				<TD>Draw partial line at DataArray1 when Condition is true.</TD>
+				<TD>PARTLINE(ISUP,C)</TD>
+			</TR>
+			<TR>
+				<TD>VERTLINE(DataArray1)</TD>
+				<TD>Draw vertical line at DataArray1</TD>
+				<TD>VERTLINE(DAY==1)</TD>
+			</TR>
+			<TR>
+				<TD>GETSTOCK(O,C,H,L)</TD>
+				<TD>Draw candle with O,C,H,L</TD>
+				<TD>GETSTOCK(O,C,H+1,L-1)</TD>
+			</TR>
+			<TR>
+				<TD>STOCK</TD>
+				<TD>Draw candle of current stock</TD>
+				<TD>STOCK</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Advanced functions</TD>
+			</TR>
+			<TR>
+				<TD>STKINDI(StkLabel,IndexName),<br>
+					FML(StkLabel,IndexName)</TD>
+				<TD>Get another stock's indicator of current market.</TD>
+				<TD>FML("NTES","C")</TD>
+			</TR>
+			<TR>
+				<TD colSpan="3" bgcolor="#ffff66">Operators</TD>
+			</TR>
+			<TR>
+				<TD>+ - * /</TD>
+				<TD></TD>
+				<TD>C+O-H*L/V</TD>
+			</TR>
+			<TR>
+				<TD>&gt; &lt; &gt;= &lt;= == !=</TD>
+				<TD></TD>
+				<TD>(C&gt;O)+(H-O)&gt;=(O-C)</TD>
+			</TR>
+			<TR>
+				<TD>&amp; | ^ % ! ~ ++ --</TD>
+				<TD></TD>
+				<TD>C&gt;10 &amp; C&lt;11</TD>
+			</TR>
+		</TABLE>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<table>
+	<record>
+		<Date>1/1/2004</Date>
+		<Open>12</Open>
+		<High>13.2</High>
+		<Low>11.0</Low>
+		<Close>12.1</Close>
+		<Volume>122078</Volume>
+	</record>
+	<record>
+		<Date>2/1/2004</Date>
+		<Open>12.1</Open>
+		<High>14</High>
+		<Low>11.9</Low>
+		<Close>12.4</Close>
+		<Volume>122536</Volume>
+	</record>
+	<record>
+		<Date>3/1/2004</Date>
+		<Open>13.3</Open>
+		<High>14</High>
+		<Low>12</Low>
+		<Close>13</Close>
+		<Volume>143232</Volume>
+	</record>
+</table>

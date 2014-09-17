@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:EasyChart="http://finance.easychart.net">
+  <Objects>
+    <BaseObject d3p1:type="FibonacciLineObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37816" Y="29.976484076085494" />
+        <ObjectPoint X="37916" Y="26.001269796974309" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>Default</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <ObjectFont>
+        <TextBrush Color="Black" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+        <Alignment>Near</Alignment>
+        <LineAlignment>Near</LineAlignment>
+        <TextFont>Verdana, 10pt, style=Italic</TextFont>
+      </ObjectFont>
+      <Split>
+        <float>0</float>
+        <float>0.236</float>
+        <float>0.382</float>
+        <float>0.5</float>
+        <float>0.618</float>
+        <float>1</float>
+        <float>1.382</float>
+        <float>1.5</float>
+        <float>1.618</float>
+        <float>2</float>
+        <float>2.382</float>
+        <float>2.618</float>
+        <float>4.236</float>
+        <float>6.853</float>
+        <float>11.088</float>
+        <float>17.941</float>
+        <float>29.029</float>
+      </Split>
+      <Snap>None</Snap>
+    </BaseObject>
+    <BaseObject d3p1:type="LabelObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37879" Y="25.402291553984266" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="0, 0, 0, 0" Width="1" />
+      <BackBrush Color="Yellow" Color2="" HatchStyle="Horizontal" BrushStyle="Empty" Angle="0" />
+      <StickHeight>0</StickHeight>
+      <StickAlignment>LeftTop</StickAlignment>
+      <LabelFont>
+        <TextBrush Color="100, 0, 0, 0" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+        <Alignment>Center</Alignment>
+        <LineAlignment>Center</LineAlignment>
+        <TextFont>Verdana, 20pt</TextFont>
+      </LabelFont>
+      <Text>Transparent Label
+Create By Easy Stock Object</Text>
+      <RoundWidth>0</RoundWidth>
+      <ShadowWidth>0</ShadowWidth>
+    </BaseObject>
+    <BaseObject d3p1:type="LabelObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37810" Y="27.707079248483304" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <BackBrush Color="Yellow" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+      <StickHeight>6</StickHeight>
+      <StickAlignment>RightBottom</StickAlignment>
+      <LabelFont>
+        <TextBrush Color="Black" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+        <Alignment>Near</Alignment>
+        <LineAlignment>Center</LineAlignment>
+        <TextFont>Verdana, 9pt</TextFont>
+      </LabelFont>
+      <Text>Date = {D}
+Open = {O}
+High = {H}
+Low = {L}
+Close = {0}</Text>
+      <RoundWidth>2</RoundWidth>
+      <ShadowWidth>2</ShadowWidth>
+    </BaseObject>
+    <BaseObject d3p1:type="LabelObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37851" Y="25.325133593243994" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <BackBrush Color="Yellow" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+      <StickHeight>6</StickHeight>
+      <StickAlignment>LeftTop</StickAlignment>
+      <LabelFont>
+        <TextBrush Color="Black" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+        <Alignment>Near</Alignment>
+        <LineAlignment>Center</LineAlignment>
+        <TextFont>Verdana, 10pt</TextFont>
+      </LabelFont>
+      <Text>Date = {D}
+Open = {O}
+High = {H}
+Low = {L}
+Close = {0}</Text>
+      <RoundWidth>2</RoundWidth>
+      <ShadowWidth>2</ShadowWidth>
+    </BaseObject>
+    <BaseObject d3p1:type="SpiralObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37799" Y="164196842.56880733" />
+        <ObjectPoint X="37809" Y="164196842.56880733" />
+      </ControlPoints>
+      <AreaName>FML.VOLMA</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <SpiralType>Archimedes</SpiralType>
+      <SweepAngle>1800</SweepAngle>
+    </BaseObject>
+    <BaseObject d3p1:type="FibonacciCircleObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37818" Y="72.782437926724782" />
+        <ObjectPoint X="37832" Y="38.380771749286069" />
+      </ControlPoints>
+      <AreaName>FML.SlowSTO</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <Split>
+        <float>0.381966025</float>
+        <float>0.618034</float>
+        <float>1</float>
+        <float>1.381966</float>
+        <float>1.618034</float>
+        <float>2</float>
+        <float>2.381966</float>
+        <float>2.618034</float>
+        <float>4.236068</float>
+        <float>6.618034</float>
+        <float>10.8541021</float>
+      </Split>
+    </BaseObject>
+    <BaseObject d3p1:type="RectangleObject" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <ControlPoints>
+        <ObjectPoint X="37853" Y="24.840000152587891" />
+        <ObjectPoint X="37978" Y="29.834880828857422" />
+      </ControlPoints>
+      <AreaName>FML.NATIVE.MAIN</AreaName>
+      <SmoothingMode>AntiAlias</SmoothingMode>
+      <LinePen DashCap="Flat" DashStyle="Solid" Color="Black" Width="1" />
+      <Brush Color="40, 160, 160, 64" Color2="" HatchStyle="Horizontal" BrushStyle="Solid" Angle="0" />
+      <RoundWidth>0</RoundWidth>
+      <Snap>Price</Snap>
+    </BaseObject>
+
+  </Objects>
+</Root>

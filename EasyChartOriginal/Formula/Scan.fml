@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Namespace xmlns:Formula="http://finance.easychart.net" Name="FML" Version="1.0.0.26">
+  <Description />
+  <GroupOnly>false</GroupOnly>
+  <Namespaces>
+    <Namespace Name="Scan" Version="">
+      <Description>Scanning stocks!</Description>
+      <GroupOnly>false</GroupOnly>
+      <Namespaces>
+        <Namespace Name="Indicator" Version="">
+          <Description>Technical Indicator Scans</Description>
+          <GroupOnly>true</GroupOnly>
+          <Namespaces />
+          <Programs>
+            <Program Name="UP" IsMainView="false">
+              <FullName>ISUP</FullName>
+              <Description>The stock is going up</Description>
+              <Code>ISUP</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="Range" IsMainView="false">
+              <FullName>Range</FullName>
+              <Description>Scan the quotes between N1 and N2</Description>
+              <Code>Between(C,N1,N2) &amp; (V&gt;N3);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="10" MinValue="0.01" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="12" MinValue="0.01" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="N3" DefaultValue="100000" MinValue="0.01" MaxValue="5000000000000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="CrossMA" IsMainView="false">
+              <FullName>Cross MA</FullName>
+              <Description>MA1 cross MA2 from below within N3 days</Description>
+              <Code>Exist(Cross(MA(C,N1),MA(C,N2)),N3);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="13" MinValue="1" MaxValue="10000000" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="50" MinValue="1" MaxValue="10000000" Description="" ParamType="double" />
+                <FormulaParam Name="N3" DefaultValue="5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Rising" IsMainView="false">
+              <FullName>Rising</FullName>
+              <Description>Rising stocks</Description>
+              <Code>C&gt;Ref(C,1);</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="MACD" IsMainView="false">
+              <FullName>Scan by MACD</FullName>
+              <Description>DIFF line cross DEA from below.</Description>
+              <Code>DIFF := EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+DEA  := EMA(DIFF,M);
+CROSS(DIFF,DEA)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="LONG" DefaultValue="26" MinValue="20" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="SHORT" DefaultValue="12" MinValue="5" MaxValue="50" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="9" MinValue="2" MaxValue="40" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="RSI" IsMainView="false">
+              <FullName>RSI scanning</FullName>
+              <Description />
+              <Code>CROSS("RSI(N)[RSI]",LL);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="6" MinValue="2" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="LL" DefaultValue="20" MinValue="0" MaxValue="40" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="NewHigh" IsMainView="false">
+              <FullName>Newest high within N days</FullName>
+              <Description>Newest high within N days</Description>
+              <Code>HHV(H,N)==H &amp; BARSCOUNT(C)&gt;=N</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="3" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="BOLL" IsMainView="false">
+              <FullName>Boll scanning</FullName>
+              <Description />
+              <Code>CROSS(C,"BB(N,P)[LOWER]")</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="26" MinValue="5" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="P" DefaultValue="2" MinValue="0.1" MaxValue="10" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SAR" IsMainView="false">
+              <FullName>Sar scan</FullName>
+              <Description />
+              <Code>SARTURN(N,STEP,MAXP)==1</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="50" Description="" ParamType="double" />
+                <FormulaParam Name="STEP" DefaultValue="2" MinValue="1" MaxValue="5" Description="" ParamType="double" />
+                <FormulaParam Name="MAXP" DefaultValue="20" MinValue="5" MaxValue="80" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="NewLow" IsMainView="false">
+              <FullName>Newest low within N days</FullName>
+              <Description />
+              <Code>LLV(L,N)==L &amp; BARSCOUNT(C)&gt;=N</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="3" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SVG" IsMainView="false">
+              <FullName>Strong Volume Gainers</FullName>
+              <Description />
+              <Code>V&gt;(MA(V,N2)*N1) &amp; ISUP</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="4" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SVD" IsMainView="false">
+              <FullName>Strong Volume Decliners</FullName>
+              <Description />
+              <Code>V&gt;(MA(V,N2)*N1) &amp; ISDOWN</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="4" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="MCU" IsMainView="false">
+              <FullName>Bullish MA Crossover</FullName>
+              <Description>Stocks that had the simple moving average of the last N1 closing prices move above the simple moving average of the last N2 closing prices.
+
+</Description>
+              <Code>Cross(MA(C,N1),MA(C,N2)) &amp; ISUP;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="13" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="50" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="MCD" IsMainView="false">
+              <FullName>Bearish MA Crossover</FullName>
+              <Description>Stocks that had the simple moving average of the last N1 closing prices move below the simple moving average of the last N2 closing prices.
+</Description>
+              <Code>Cross(MA(C,N1),MA(C,N2)) &amp; ISDOWN;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="13" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="50" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="AUBB" IsMainView="false">
+              <FullName>Moved Above Upper Bollinger Band</FullName>
+              <Description>Stocks which closed above the upper line of their N-day Bollinger Band and which were below that same band after the previous trading session.
+</Description>
+              <Code>CROSS(C,"BB(N,2)[UPPER]")</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="BLBB" IsMainView="false">
+              <FullName>Moved Below Lower Bollinger Band</FullName>
+              <Description>Stocks which closed below the lower line of their N-day Bollinger Band and which were above that same band after the previous trading session.
+</Description>
+              <Code>CROSS("BB(N,2)[LOWER]",C)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="GU" IsMainView="false">
+              <FullName>Gap Ups</FullName>
+              <Description>Stocks whose current low was at least P percent higher than the previous day's high.</Description>
+              <Code>LH := REF(H,1);
+(L-LH)/LH&gt;(P/100)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="P" DefaultValue="2.5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="GD" IsMainView="false">
+              <FullName>Gap Downs</FullName>
+              <Description>Stocks whose current high was at least P percent lower than the previous day's low.</Description>
+              <Code>LL := REF(L,1);
+(LL-H)/LL&gt;(P/100)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="P" DefaultValue="2.5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="IT" IsMainView="false">
+              <FullName>Island Tops</FullName>
+              <Description>Stocks that gapped up at least P percent yesterday and gapped down at least 2.5 percent today.
+</Description>
+              <Code>REF("GU(P)",1) &amp; "GD(P)"</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="P" DefaultValue="2.5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="IB" IsMainView="false">
+              <FullName>Island Bottoms</FullName>
+              <Description />
+              <Code>REF("GD(P)",1) &amp; "GU(P)"</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="P" DefaultValue="2.5" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="ADXU" IsMainView="false">
+              <FullName>Stocks in a New Uptrend(ADX)</FullName>
+              <Description>Stocks for which the N-day ADX Line just moved above the +M level (signaling a new trend) and the +DI line is above the -DI line (signaling that the new trend is upwards).</Description>
+              <Code>Cross("ADX(N)",M) &amp; "ADX(N)[+DI]"&gt;"ADX(N)[-DI]"</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="ADXD" IsMainView="false">
+              <FullName>Stocks in a New Downtrend (ADX)</FullName>
+              <Description>Stocks for which the N-day ADX Line just moved above the +M level (signaling a new trend) and the -DI line is above the +DI line (signaling that the new trend is downwards).
+</Description>
+              <Code>Cross("ADX(N)",M) &amp; "ADX(N)[-DI]"&gt;"ADX(N)[+DI]";</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="MACDU" IsMainView="false">
+              <FullName>Bullish MACD Crossovers</FullName>
+              <Description>Stocks whose MACD line crossed above the signal line today after being below the signal line for the previous three days. The MACD parameters used are 26 and 12 and the signal line is a 9-day EMA of the MACD line.
+</Description>
+              <Code>DIFF := EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+DEA  := EMA(DIFF,M);
+LONGCROSS(DIFF,DEA,3)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="Long" DefaultValue="26" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="Short" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="MACDD" IsMainView="false">
+              <FullName>Bearish MACD Crossovers</FullName>
+              <Description>Stocks whose MACD line crossed below the signal line today after being above the signal line for the previous three days. The MACD parameters used are 26 and 12 and the signal line is a 9-day EMA of the MACD line.</Description>
+              <Code>DIFF := EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+DEA  := EMA(DIFF,M);
+LONGCROSS(DEA,DIFF,3)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="Long" DefaultValue="26" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="Short" DefaultValue="12" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="9" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="RSID" IsMainView="false">
+              <FullName>Overbought with a Declining RSI</FullName>
+              <Description>Stocks whose RSI line moved below 70 today after being above 70 for the previous three days. The RSI period used is 14.</Description>
+              <Code>LONGCROSS(LL,"RSI(N)[RSI]",3);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="LL" DefaultValue="70" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="RSII" IsMainView="false">
+              <FullName>Oversold with an Improving RSI</FullName>
+              <Description>Stocks whose RSI line moved above 30 today after being below 30 for the previous three days. The RSI period used is 14.
+</Description>
+              <Code>LONGCROSS("RSI(N)[RSI]",LL,3);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="LL" DefaultValue="30" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="CMFI" IsMainView="false">
+              <FullName>Improving Chaikin Money Flow</FullName>
+              <Description>Stocks for which the 21-day Chaikin Money Flow oscillator has just moved above the +20% level.
+</Description>
+              <Code>CROSS("CMF(N)", 0.2);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="21" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="CMFD" IsMainView="false">
+              <FullName>Declining Chaikin Money Flow</FullName>
+              <Description>Stocks for which the 21-day Chaikin Money Flow oscillator has just moved below the -20% level.
+</Description>
+              <Code>CROSS(-0.2,"CMF(N)");</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="21" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="CCIB" IsMainView="false">
+              <FullName>CCI Buy Signals</FullName>
+              <Description>Stocks for which the 20-day Commodity Channel Index (CCI) has just moved above the +100 level.</Description>
+              <Code>TYP := (HIGH + LOW + CLOSE)/3;
+CROSS((TYP-MA(TYP,N))/(0.015*AVEDEV(TYP,N)),100)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="CCIS" IsMainView="false">
+              <FullName>CCI Sell Signals</FullName>
+              <Description>Stocks for which the 20-day Commodity Channel Index (CCI) has just moved below the -100 level.</Description>
+              <Code>TYP := (HIGH + LOW + CLOSE)/3;
+CROSS(-100,(TYP-MA(TYP,N))/(0.015*AVEDEV(TYP,N)))</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SARB" IsMainView="false">
+              <FullName>Parabolic SAR Buy Signals</FullName>
+              <Description>Stocks whose Parabolic SAR just "flipped" from above the price bars to below the price bars. The parameters used are 0.02 and 0.20.
+</Description>
+              <Code>SARTURN(N,STEP,MAXP)==1</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="STEP" DefaultValue="2" MinValue="0" MaxValue="10" Description="" ParamType="double" />
+                <FormulaParam Name="MAXP" DefaultValue="20" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SARS" IsMainView="false">
+              <FullName>Parabolic SAR Sell Signals</FullName>
+              <Description />
+              <Code>SARTURN(N,STEP,MAXP)==-1</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="10" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="STEP" DefaultValue="2" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="MAXP" DefaultValue="20" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Fibonnaci" IsMainView="false">
+              <FullName>Fibonnaci</FullName>
+              <Description />
+              <Code>BETWEEN(("Fibonnaci(N)[A3]"-C)/C,-0.01,0.01)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="40" MinValue="1" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="DownT" IsMainView="false">
+              <FullName>Down Trend</FullName>
+              <Description>DownT will show all stocks under N which closed less than P% below their M week high. So for example, if the 52 week high is $10 and the stock closed at $9.00 it would be in the screen.  If it closed at $8.90 it would not show up.</Description>
+              <Code>A :=HHV(C,M*5);
+C&lt;N &amp; Between(C,A*P/100,A);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="10" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="P" DefaultValue="90" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="52" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="DTWLL" IsMainView="false">
+              <FullName>up at least N% and closed in the upper M% range of the days range</FullName>
+              <Description>up at least N% and closed in the upper M% range of the days range</Description>
+              <Code>PC := REF(C,1);
+(C-PC)/PC&gt;N/100 &amp; (H-C)/(H-L)&lt;=M/100 &amp; C&gt;=P1 &amp; C&lt;=P2;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="2" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="2" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="P1" DefaultValue="5" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+                <FormulaParam Name="P2" DefaultValue="10000" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="DTWLS" IsMainView="false">
+              <FullName>down at least N% and closed in the lower M% range of the days range</FullName>
+              <Description>down at least N% and closed in the lower M% range of the days range</Description>
+              <Code>PC := REF(C,1);
+(C-PC)/PC&lt;-N/100 &amp; (C-L)/(H-L)&lt;=M/100 &amp; C&gt;=P1 &amp; C&lt;=P2;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="2" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="M" DefaultValue="2" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+                <FormulaParam Name="P1" DefaultValue="5" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="P2" DefaultValue="10000" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Muddy" IsMainView="false">
+              <FullName>Muddy Original</FullName>
+              <Description>This locates stocks where the price has been decreasing for the past 3 days, has touched the lower Bollinger Band and the volume is above the 90 day average of N3 volume
+N1=Enter Min Price
+N2=Enter Max Price
+N3=Enter the average 90 day volume</Description>
+              <Code>R1 := REF(C,1);
+R2 := REF(R1,1);
+C&lt;R1 &amp; R1&lt;R2 &amp; MA(V,N3)&gt;100000 &amp; BETWEEN(C,N1,N2) &amp; "BB(M,2)[LOWER]"/C&gt;0.99</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N1" DefaultValue="1" MinValue="0.001" MaxValue="5000000" Description="" ParamType="double" />
+                <FormulaParam Name="N2" DefaultValue="1000" MinValue="0.001" MaxValue="5000000" Description="" ParamType="double" />
+                <FormulaParam Name="N3" DefaultValue="50" MinValue="1" MaxValue="5000000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Muddy2" IsMainView="false">
+              <FullName>Muddy 2</FullName>
+              <Description>This locates stocks where the price has been decreasing for the past 3 days, has touched the lower Bollinger Band and the volume is above the 90 day average of N3 volume</Description>
+              <Code>X :=(V&gt;REF(V,1))*2;
+AvgV := MA(V,90);
+Y :=Count(V&gt;AvgV,3);
+Z :=X+Y;
+
+C1 :=Z&gt;1;
+C2 :=C&lt;Ref(C,1) &amp; Ref(C,1)&lt;Ref(C,2) &amp; Count(ISUP,3)==0;
+C3 :=AvgV&gt;MinVolume;
+C4 :=BETWEEN(C,MinPrice,MaxPrice);
+C5 :=C&lt;"BB(20,2)[LOWER]";
+C1 &amp; C2 &amp; C3 &amp; C4 &amp; C5;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="MinPrice" DefaultValue="0.01" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MaxPrice" DefaultValue="10" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MinVolume" DefaultValue="100000" MinValue="1" MaxValue="10000000000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Muddy3" IsMainView="false">
+              <FullName>Avery Zone</FullName>
+              <Description>This locates stocks which broke the upper bollinger
+band and pulled back into a 'zone' between EMA13 and
+MA 20.
+</Description>
+              <Code>uRSI := Count("RSI(2)"&gt;90, 5);
+
+C1 := C &lt; EMA(C,13);
+C2 := C &gt; MA(C,20);
+C3 := uRSI &gt; 0;
+C4 := Between(C,MinPrice,MaxPrice);
+C5 := V &gt; MinVolume;
+C6 := Exist(Cross("BB(20,2)[UPPER]",C),7);
+C1 &amp; C2 &amp; C3 &amp; C4 &amp; C5 &amp; C6</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="MinPrice" DefaultValue="0.01" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MaxPrice" DefaultValue="10" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MinVolume" DefaultValue="100000" MinValue="0" MaxValue="10000000000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Muddy4" IsMainView="false">
+              <FullName>Muddy Triple</FullName>
+              <Description />
+              <Code>C1 :=C&lt;Ref(C,1) &amp; Ref(C,1)&lt;Ref(C,2) &amp; Count(ISUP,3)==0;
+C2 :=MA(V,90)&gt;MinVolume &amp; BETWEEN(C,MinPrice,MaxPrice) &amp; "BB(20,2)[LOWER]"/C&gt;0.99;
+C3 :="RSI(2)"&lt;1;
+C4 :=SLOPE(C,N)&gt;0;
+C5 :=Near("LinRegr(N)[LOWER]",L,0.05);
+
+C1 &amp; C2 &amp; C3 &amp; C4 &amp; C5</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="MinPrice" DefaultValue="0.01" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MaxPrice" DefaultValue="10" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MinVolume" DefaultValue="250000" MinValue="0" MaxValue="10000000000" Description="" ParamType="double" />
+                <FormulaParam Name="N" DefaultValue="60" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="Muddy5" IsMainView="false">
+              <FullName>Muddy Double</FullName>
+              <Description />
+              <Code>C1 :=C&lt;Ref(C,1) &amp; Ref(C,1)&lt;Ref(C,2) &amp; Count(ISUP,3)==0;
+C2 :=MA(V,90)&gt;MinVolume &amp; BETWEEN(C,MinPrice,MaxPrice) &amp; "BB(20,2)[LOWER]"/C&gt;0.99;
+C3 :="RSI(2)"&lt;1;
+C4 :=SLOPE(C,N)&gt;0;
+C5 :=Near("LinRegr(N)[LOWER]",L,0.05);
+
+C1 &amp; C2 &amp; ((C4 &amp; C5) | C3)</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="MinPrice" DefaultValue="0.01" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MaxPrice" DefaultValue="10" MinValue="0" MaxValue="1000000" Description="" ParamType="double" />
+                <FormulaParam Name="MinVolume" DefaultValue="250000" MinValue="0" MaxValue="10000000000" Description="" ParamType="double" />
+                <FormulaParam Name="N" DefaultValue="60" MinValue="0" MaxValue="10000" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="IGLN" IsMainView="false">
+              <FullName>Indicator greater or less than a number</FullName>
+              <Description />
+              <Code>(FML(Indi) &gt; N) ^ IsLess</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="Indi" DefaultValue="RSI" MinValue="0" MaxValue="0" Description="" ParamType="indicator" />
+                <FormulaParam Name="N" DefaultValue="0" MinValue="0" MaxValue="1000000000" Description="" ParamType="double" />
+                <FormulaParam Name="IsLess" DefaultValue="0" MinValue="0" MaxValue="2" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="SName" IsMainView="false">
+              <FullName>Search key from stock name</FullName>
+              <Description />
+              <Code>Contain(StkName,Key) | Contain(Code,Key);</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="Key" DefaultValue="" MinValue="" MaxValue="" Description="" ParamType="string" />
+              </Params>
+            </Program>
+          </Programs>
+        </Namespace>
+        <Namespace Name="Pattern" Version="">
+          <Description>Candlestick Pattern Scans</Description>
+          <GroupOnly>true</GroupOnly>
+          <Namespaces />
+          <Programs>
+            <Program Name="BullE" IsMainView="false">
+              <FullName>Bullish Engulfing</FullName>
+              <Description />
+              <Code>LO :=Ref(O,1);
+LC :=Ref(C,1);
+C&gt;LO &amp; O&lt;LC &amp; LO&gt;LC;</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="PL" IsMainView="false">
+              <FullName>Piercing Line</FullName>
+              <Description>1)The first is a relatively long black candlestick.
+2)The second is a white candlestick that opens below the previous period's close and closes above the mid-point of the black candlestick's body.</Description>
+              <Code>LC :=Ref(C,1);
+LO :=Ref(O,1);
+(LO-LC)/LO&gt;0.05 &amp; O&lt;LC &amp; C&gt;(LC+LO)/2;</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="BullH" IsMainView="false">
+              <FullName>Bullish Harami</FullName>
+              <Description>The bullish harami is made up of two candlesticks. The first has a large body and the second a small body that is totally encompassed by the first.</Description>
+              <Code>LC :=Ref(C,1);
+LO :=Ref(O,1);
+ABS(LO-LC)/LO&gt;0.05 &amp; MIN(LC,LO)&lt;MIN(C,O) &amp; MAX(LC,LO)&gt;MAX(C,O)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="BearE" IsMainView="false">
+              <FullName>Bearish Engulfing</FullName>
+              <Description>The open must be higher than the previous close.
+The close must be lower than the previous open.</Description>
+              <Code>LO :=Ref(O,1);
+LC :=Ref(C,1);
+O&gt;LC &amp; C&lt;LO &amp; LC&gt;LO</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="BearH" IsMainView="false">
+              <FullName>Bearish Harami</FullName>
+              <Description>The first candlestick has a long body that is white or black.
+
+The second candlestick has a short body that is white or black and is nestled within the body of the first candlestick.</Description>
+              <Code>LC :=Ref(C,1);
+LO :=Ref(O,1);
+ABS(LO-LC)/LO&gt;0.05 &amp; MIN(LC,LO)&lt;MIN(C,O) &amp; MAX(LC,LO)&gt;MAX(C,O)
+</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="TBC" IsMainView="false">
+              <FullName>Three Black Crows</FullName>
+              <Description>Three black crows is a bearish reversal pattern that forms with three consecutive long black candlesticks. After an advance, the three black crows pattern signals a change in sentiment and reversal of trend from bullish to bearish. Further bearish confirmation is not required, but there is sometimes a test of resistance established by the reversal.</Description>
+              <Code>IsDown &amp; Ref(IsDown,1) &amp; Ref(IsDown,2);</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="RTM" IsMainView="false">
+              <FullName>Rising Three Methods</FullName>
+              <Description>Stocks that have a Rising Three Methods pattern at the end of their daily chart.
+</Description>
+              <Code>C&gt;Ref(C,1) &amp; Ref(C,1)&gt;Ref(C,2)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="FTM" IsMainView="false">
+              <FullName>Falling Three Methods</FullName>
+              <Description>Stocks that have a Falling Three Methods pattern at the end of their daily chart</Description>
+              <Code>C&lt;Ref(C,1) &amp; Ref(C,1)&lt;Ref(C,2)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="DDoji" IsMainView="false">
+              <FullName>Dragonfly Doji</FullName>
+              <Description>Stocks that have a Dragonfly Doji pattern at the end of their daily chart.
+</Description>
+              <Code>between((C-O)/O,0,0.005) &amp; (H-C)&lt;(O-L)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="GDoji" IsMainView="false">
+              <FullName>Gravestone Doji</FullName>
+              <Description>Stocks that have a Gravestone Doji pattern at the end of their daily chart.
+</Description>
+              <Code>between((O-C)/C,0,0.005) &amp; (H-O)&gt;(C-L)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="Hammer" IsMainView="false">
+              <FullName>Hammer, Hanging Man</FullName>
+              <Description>The resulting candlestick looks like a square lollipop with a long stick. The long stick below represents the long lower shadow that forms from the intraday low. The high for the day is near the open or the close, depending on which of the two is higher.</Description>
+              <Code>between(ABS(O-C)/C,0,0.02) &amp; (H-MAX(O,C))&lt;(MIN(C,O)-L)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="MDS" IsMainView="false">
+              <FullName>Morning Doji Star</FullName>
+              <Description>A Morning Doji Star is a 3-candlestick pattern that forms after a decline and marks a potential reversal of trend.
+1.The first candlestick is black and should have a relatively long body.
+2.The middle candlestick is a doji that forms after a gap down on the open.
+3.The third candlestick is white and has a relatively long white body.
+</Description>
+              <Code>REF(ISDOWN,2) &amp; REF(ISEQUAL,1) &amp; ISUP;</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="TWS" IsMainView="false">
+              <FullName>Three White Soldiers</FullName>
+              <Description>Three white soldiers is a bullish reversal pattern that forms with three consecutive long white candlesticks. After a decline, the three white soldiers pattern signals a change in sentiment and reversal of trend from bearish to bullish. Further bullish confirmation is not required, but there is sometimes a test of support established by the reversal.
+
+</Description>
+              <Code>REF(ISUP,2) &amp; REF(ISUP,1) &amp; ISUP</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="DCC" IsMainView="false">
+              <FullName>Dark Cloud Cover Pattern (bearish)</FullName>
+              <Description>A dark cloud cover pattern is formed by two candlesticks where:
+
+1.The first is a relatively long white candlestick.
+2.The second is a black candlestick that opens above the previous period's high and closes below the mid-point of the long white candlestick's body</Description>
+              <Code>REF(ISUP,1) &amp; O&gt;REF(H,1) &amp; C&lt;REF((O+C)/2,1)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="ES" IsMainView="false">
+              <FullName>Evening Star (bearish)</FullName>
+              <Description>An evening star is a bearish pattern that forms after an advance and marks a reversal of trend. The evening star formation is made up of three candlesticks:
+
+1.The first candlestick should have a relatively long white body.
+2.The middle candlestick can be either black or white and has a relatively small body. It should also form with a gap up on the open.
+3.The third candlestick has a relatively long black body and should form with a gap down on the open.
+
+
+</Description>
+              <Code>REF(ISUP,2) &amp; REF(ISEQUAL,1) &amp; ISDOWN;</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="Shooting" IsMainView="false">
+              <FullName>Shooting Star</FullName>
+              <Description>A shooting star candlestick forms when a security advances significantly higher after the open, but gives up most or all of its intraday gain to close well off of its high. As opposed to the hanging man or the hammer, a shooting star looks like an upside down square lollipop with a long stick. Sometimes there will be a short lower shadow, but not always.
+</Description>
+              <Code>between(ABS(O-C)/C,0,0.02) &amp; (H-MAX(O,C))&gt;(MIN(C,O)-L)</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="FBC" IsMainView="false">
+              <FullName>Filled Black Candles</FullName>
+              <Description>Stocks that have a black, filled-in candlestick at the end of their daily chart.
+</Description>
+              <Code>O==H &amp; L==C &amp; (O-C)/O&gt;0.05</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+            <Program Name="HRC" IsMainView="false">
+              <FullName>Hollow Red Candles</FullName>
+              <Description>Stocks that have a red, hollow candlestick at the end of their daily chart.
+</Description>
+              <Code>O==L &amp; H==C &amp; (C-O)/O&gt;0.05
+</Code>
+              <DisabledCycle />
+              <Params />
+            </Program>
+          </Programs>
+        </Namespace>
+        <Namespace Name="Others" Version="">
+          <Description />
+          <GroupOnly>true</GroupOnly>
+          <Namespaces />
+          <Programs>
+            <Program Name="EMAC" IsMainView="false">
+              <FullName>EMA is greater or less than Close</FullName>
+              <Description />
+              <Code>(C &gt; EMA(C,N)) ^ IsLess</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+                <FormulaParam Name="IsLess" DefaultValue="0" MinValue="0" MaxValue="2" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="MAC" IsMainView="false">
+              <FullName>Moving average is greater or less than closs</FullName>
+              <Description />
+              <Code>(C &gt; MA(C,N)) ^ IsLess</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="N" DefaultValue="14" MinValue="0" MaxValue="100000" Description="" ParamType="double" />
+                <FormulaParam Name="IsLess" DefaultValue="0" MinValue="0" MaxValue="2" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="AtrStat" IsMainView="false">
+              <FullName>ATR sar status</FullName>
+              <Description />
+              <Code>M := ATRSAR(NAtr,NEma,Factor);
+M&gt;C;</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="NAtr" DefaultValue="10" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="NEma" DefaultValue="10" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="Factor" DefaultValue="1" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+            <Program Name="AtrDist" IsMainView="false">
+              <FullName>The distance between atr sar and closing price</FullName>
+              <Description />
+              <Code>M := ATRSAR(NAtr,NEma,Factor);
+(M-C)/C
+</Code>
+              <DisabledCycle />
+              <Params>
+                <FormulaParam Name="NAtr" DefaultValue="10" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="NEma" DefaultValue="10" MinValue="0" MaxValue="1000" Description="" ParamType="double" />
+                <FormulaParam Name="Factor" DefaultValue="1" MinValue="0" MaxValue="100" Description="" ParamType="double" />
+              </Params>
+            </Program>
+          </Programs>
+        </Namespace>
+      </Namespaces>
+      <Programs />
+    </Namespace>
+  </Namespaces>
+  <Programs />
+</Namespace>

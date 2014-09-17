@@ -1,0 +1,1946 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Easychart.Finance</name>
+    </assembly>
+    <members>
+        <member name="T:Easychart.Finance.DataProvider.CSVDataProvider">
+            <summary>
+            CSV Data Provider 
+            1.Get data from yahoo csv data
+            2.Save data as binary
+            3.Load data from binary
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataProvider.IDataProvider">
+            <summary>
+            Provider stock data to stock chart
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.AddRealtimeData">
+            <summary>
+            Not implement yet
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.#ctor(Easychart.Finance.DataProvider.IDataManager)">
+            <summary>
+            Create the data provider
+            </summary>
+            <param name="dm"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.#ctor(Easychart.Finance.DataProvider.IDataManager,System.IO.Stream)">
+            <summary>
+            Create the data provider by stream
+            </summary>
+            <param name="dm">The Data Manager</param>
+            <param name="stream">Stream used to create the data provider</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.#ctor(Easychart.Finance.DataProvider.IDataManager,System.String)">
+            <summary>
+            Create data provider by file
+            </summary>
+            <param name="dm">The Data Manager</param>
+            <param name="FileName">File used to create the data provider</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.#ctor(Easychart.Finance.DataProvider.IDataManager,System.Byte[])">
+            <summary>
+            Create data provider by byte array
+            </summary>
+            <param name="dm">The Data Manager</param>
+            <param name="data">Byte Array used to create the data provider</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.LoadBinary(System.IO.Stream)">
+            <summary>
+            Load binary stock data from stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.LoadBinary(System.String)">
+            <summary>
+            Load binary stock data from File
+            </summary>
+            <param name="FileName"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.LoadBinary(System.Byte[])">
+            <summary>
+            Load binary stock data from byte array
+            </summary>
+            <param name="bs"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.LoadBinary(System.Byte[],System.Int32)">
+            <summary>
+            Load lastest N days binary stock data from byte array
+            </summary>
+            <param name="bs">Byte array</param>
+            <param name="N">How many days to be loaded</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.LoadBinary(System.Double[][])">
+            <summary>
+            Load binary stock data from two dimension double data array
+            ds[0] : OPEN
+            ds[1] : HIGH
+            ds[2] : LOW
+            ds[3] : CLOSE
+            ds[4] : VOLUMN
+            ds[5] : DATE
+            ds[6] : ADJCLOSE (optional)
+            </summary>
+            <param name="ds">The two dimension double data array</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.MergeOneQuote(System.Byte[],Easychart.Finance.DataProvider.DataPackage)">
+            <summary>
+            Marge DataPackage to the byte data array
+            </summary>
+            <param name="bs">Byte data array</param>
+            <param name="dp">DataPackage to be merged</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.SaveBinary(System.IO.Stream)">
+            <summary>
+            Save binary stock data to stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.SaveBinary(System.String)">
+            <summary>
+            Save binary stock data to file
+            </summary>
+            <param name="FileName"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.SaveBinary">
+            <summary>
+            Save binary stock data to byte array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetCycleData(Easychart.Finance.DataCycle)">
+            <summary>
+            Get stock data of certain data cycle
+            </summary>
+            <param name="dc">The data cycle</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.AdjustByBase(System.Double[],System.Double[])">
+            <summary>
+            Adjust date time according to the BaseDataProvider
+            </summary>
+            <param name="Date">The date time array of the data, It must have the same length of the data</param>
+            <param name="dd">The data array to be adjusted</param>
+            <returns>adjusted data array</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetData(System.String)">
+            <summary>
+            Get stock data of current data cycle
+            </summary>
+            <param name="DataType">Stock data type , CLOSE,OPEN,HIGH,LOW,VOLUME,AMOUNT etc.</param>
+            <returns>Certain data array</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetConstData(System.String)">
+            <summary>
+            Get constant stock data
+            </summary>
+            <param name="DataType">The key of the constant data</param>
+            <returns>Return the value of the DataType</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetStringData(System.String)">
+            <summary>
+            Get the string value of this provider , such as stock name, stock code etc.
+            </summary>
+            <param name="DataType">Data type , such as Name,Code</param>
+            <returns>Return the value of the DataType</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.SetStringData(System.String,System.String)">
+            <summary>
+            Set the string value of this provider,such as stock name, stock code etc.
+            </summary>
+            <param name="DataType">Data type, such as Name,Code etc</param>
+            <param name="Value">The value of the DataType</param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetDataPackage(System.Int32)">
+            <summary>
+            Get DataPackage of certain bars
+            </summary>
+            <param name="Index">The bar index</param>
+            <returns>The DataPackage at position of Index</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetLastPackage">
+            <summary>
+            Get the lastest DataPackage
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetLastDataPackages(System.Int32)">
+            <summary>
+            Get lastest DataPackages
+            </summary>
+            <param name="Count">DataPackage count</param>
+            <returns>Array of DataPackage</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.GetLastDataPackages(System.Int32,System.Int32)">
+            <summary>
+            Get DataPackages
+            </summary>
+            <param name="Start">Start bars of the DataPackage</param>
+            <param name="Count">DataPackage count</param>
+            <returns>Array of DataPackage</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.CSVDataProvider.Merge(Easychart.Finance.DataProvider.IDataProvider)">
+            <summary>
+            Merge data from another DataProvider
+            </summary>
+            <param name="idp">DataProvider to be merged</param>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.DataCycle">
+            <summary>
+            Get or Set the current data cycle
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.BaseDataProvider">
+            <summary>
+            Adjust the date of current DataProvider according to BaseDataProvider
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.Item(System.String)">
+            <summary>
+            Get stock data by name, which name is CLOSE, OPEN,HIGH,LOW,VOLUME,AMOUNT etc.
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.Count">
+            <summary>
+            Get the data count
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.DataManager">
+            <summary>
+            Get the data manager
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.CSVDataProvider.Adjusted">
+            <summary>
+            Determine if the close data is managed in adjust mode
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataProvider.IDataManager">
+            <summary>
+            DataManager interface
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.IDataManager.Item(System.String)">
+            <summary>
+            Return the DataProvider of certain code
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.IDataManager.Item(System.String,System.Int32)">
+            <summary>
+            Return lastest 'Count' days DataProvider of certain code
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataProvider.DataManagerBase">
+            <summary>
+            The base implement of the IDataManager interface
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataManagerBase.GetData(System.String,System.Int32)">
+            <summary>
+            Get DataProvider of certain code.
+            Must be implement by inherited classes.
+            </summary>
+            <param name="Code">Stock symbol</param>
+            <param name="Count">How many days to get</param>
+            <returns>IDataProvider</returns>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.DataManagerBase.Item(System.String)">
+            <summary>
+            Implement the interface
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.DataManagerBase.Item(System.String,System.Int32)">
+            <summary>
+            Implement the interface
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataProvider.DataPackage">
+            <summary>
+            This class manage stock data of certain day
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.DataProvider.DataPackage.PackageSize">
+            <summary>
+            The float array size of DataPackage
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.DataProvider.DataPackage.PackageByteSize">
+            <summary>
+            The byte array size of DataPackate
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.#ctor(System.DateTime,System.Single,System.Single,System.Single,System.Single,System.Double,System.Single)">
+            <summary>
+            Create DataPackage
+            </summary>
+            <param name="Date"></param>
+            <param name="Open"></param>
+            <param name="High"></param>
+            <param name="Low"></param>
+            <param name="Close"></param>
+            <param name="Volume"></param>
+            <param name="AdjClose"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.#ctor(System.Double,System.Single,System.Single,System.Single,System.Single,System.Double,System.Single)">
+            <summary>
+            Create DataPackage
+            </summary>
+            <param name="DoubleDate"></param>
+            <param name="Open"></param>
+            <param name="High"></param>
+            <param name="Low"></param>
+            <param name="Close"></param>
+            <param name="Volume"></param>
+            <param name="AdjClose"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.GetDateTime(System.Single[],System.Int32)">
+            <summary>
+            Get date time from float array
+            </summary>
+            <param name="fs">Float data array</param>
+            <param name="i">The index of the date time</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.GetDateTime(System.Single[])">
+            <summary>
+            Get date time from float array
+            </summary>
+            <param name="fs">Float data array</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.GetVolume(System.Single[])">
+            <summary>
+            Get volume from float array
+            </summary>
+            <param name="fs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.ParseEODData(System.String)">
+            <summary>
+            Create the DataPackage by parse data from EODData.com
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.RemoveQuotation(System.String)">
+            <summary>
+            Remove " " of the input
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.ParseYahoo(System.String)">
+            <summary>
+            Parse real-time data from yahoo
+            </summary>
+            <param name="s">"NTES","NETEASE.COM INC","12/17/2003","4:00pm",37.40,"37.25 - 38.97",38.24,1878789</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.DownloadFromYahoo(System.String)">
+            <summary>
+            Download real-time stock data from yahoo finance
+            </summary>
+            <param name="Code">Symbol</param>
+            <returns>DataPackage</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.GetFloat">
+            <summary>
+            Get the float array of current DataPackage
+            </summary>
+            <returns>Array of float</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.DataPackage.GetByte">
+            <summary>
+            Get the byte array of current DataPackage
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Easychart.Finance.DataProvider.RandomDataProvider">
+            <summary>
+            Genarate random stock data for test purpose
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.RandomDataProvider.#ctor(System.Int32)">
+            <summary>
+            Create N days random data
+            </summary>
+            <param name="N"></param>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.RandomDataProvider.GetDataCount">
+            <summary>
+            Return the bars of this data provider
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.RandomDataProvider.GetData(System.String)">
+            <summary>
+            Get stock data of current data cycle
+            </summary>
+            <param name="DataType">Stock data type , CLOSE,OPEN,HIGH,LOW,VOLUME,AMOUNT etc.</param>
+            <returns>Certain data array</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.RandomDataProvider.GetConstData(System.String)">
+            <summary>
+            Get constant stock data
+            </summary>
+            <param name="DataType">The key of the constant data</param>
+            <returns>Return the value of the DataType</returns>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.RandomDataProvider.GetStringData(System.String)">
+            <summary>
+            Get the string value of this provider , such as stock name, stock code etc.
+            </summary>
+            <param name="DataType">Data type , such as Name,Code</param>
+            <returns>Return the value of the DataType</returns>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.RandomDataProvider.BaseDataProvider">
+            <summary>
+            Adjust the date of current DataProvider according to BaseDataProvider
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.RandomDataProvider.DataCycle">
+            <summary>
+            Get or Set the current data cycle
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.RandomDataProvider.Count">
+            <summary>
+            Get the data count
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.RandomDataProvider.DataManager">
+            <summary>
+            Get the data manager
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.DataProvider.RandomDataProvider.Item(System.String)">
+            <summary>
+            Get stock data by name, which name is CLOSE, OPEN,HIGH,LOW,VOLUME,AMOUNT etc.
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.YahooDataManager.#ctor">
+            <summary>
+            Create YahooDataManager
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataProvider.YahooDataManager.GetData(System.String,System.Int32)">
+            <summary>
+            Create IDataProvider by Code and Count
+            </summary>
+            <param name="Code">Stock Symbol</param>
+            <param name="Count">How many bars to get</param>
+            <returns>IDataProvider</returns>
+        </member>
+        <member name="T:FML.CustomFormula">
+            <summary>
+            Create formulas by custom data
+            </summary>
+            <example>
+            DBDemos\Extern.aspx.cs
+            </example>
+        </member>
+        <member name="T:Easychart.Finance.FormulaBase">
+            <summary>
+            Stock Formula base class, define all the basic Formula functions
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaBase.Params">
+            <summary>
+            Formula parameter collection
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaBase.DataProvider">
+            <summary>
+            DataProvider
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaBase.Name">
+            <summary>
+            Formula Name
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaBase.ShowParameter">
+            <summary>
+            Show parameter in DisplayName
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaBase.TextInvisible">
+            <summary>
+            Determine if show text in the value label
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.Run(Easychart.Finance.DataProvider.IDataProvider)">
+            <summary>
+            Create a package of stock Formula data. Must be implemented by child classes
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.Run(Easychart.Finance.DataProvider.IDataProvider,System.String[])">
+            <summary>
+            Create a package of stock Formula data by current Formula and stock data provider
+            </summary>
+            <param name="dp">Stock data provider</param>
+            <param name="ss">Stock Formula parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.AdjustDateTime(Easychart.Finance.DataProvider.IDataProvider,Easychart.Finance.FormulaData)">
+            <summary>
+            Adjust the date time of current Formula data by another stock data provider
+            </summary>
+            <param name="dp">Another stock data provider</param>
+            <param name="f">The stock Formula data</param>
+            <returns>The adjusted stock Formula data</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.GetFormulaData(Easychart.Finance.DataProvider.IDataProvider,System.String)">
+            <summary>
+            Get stock Formula data from another stock Formula
+            </summary>
+            <param name="dp">Stock data provider</param>
+            <param name="FormulaName">Another Formula name</param>
+            <returns>Stock data array of the Formula</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.VALUEWHEN(Easychart.Finance.FormulaData,Easychart.Finance.FormulaData,System.Double)">
+            <summary>
+            This looks at all the data in the chart and evaluates when the Expr was true.
+            Then starting from the most recent,it counts back Nth times and reports the value of f.
+            </summary>
+            <param name="Expr"></param>
+            <param name="f"></param>
+            <param name="N"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBase.VERTLINE(Easychart.Finance.FormulaData)">
+            <summary>
+            VERTLINE(DAY>10);
+            </summary>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.DisplayName">
+            <summary>
+            Define the text display format of this stock Formula
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.CLOSE">
+            <summary>
+            Get the stock closing prices
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.C">
+            <summary>
+            Shortcut of CLOSE
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.OPEN">
+            <summary>
+            Get the stock open prices
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.O">
+            <summary>
+            Shortcut of OPEN
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.HIGH">
+            <summary>
+            Get the stock highest prices
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.H">
+            <summary>
+            Shortcut of HIGH
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.LOW">
+            <summary>
+            Get the stock lowest prices
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.L">
+            <summary>
+            Shortcut of LOW
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.VOLUME">
+            <summary>
+            Get the stock VOLUME
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.VOL">
+            <summary>
+            Shortcut of VOLUME
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.V">
+            <summary>
+            Shortcut of VOLUME
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBase.AMOUNT">
+            <summary>
+            Get the stock amount
+            </summary>
+        </member>
+        <member name="M:FML.CustomFormula.#ctor(System.String)">
+            <summary>
+            Create instance
+            </summary>
+            <param name="Name">The name of this formula</param>
+        </member>
+        <member name="M:FML.CustomFormula.Add(System.Double[])">
+            <summary>
+            Add custom data to this formula
+            </summary>
+            <param name="Data"></param>
+        </member>
+        <member name="M:FML.CustomFormula.Add(System.String,System.Double[])">
+            <summary>
+            Add custom data to this formula
+            </summary>
+            <param name="Name">Formula Name</param>
+            <param name="Data">Formula data array</param>
+        </member>
+        <member name="M:FML.CustomFormula.Add(System.String,System.Double[],System.Double[])">
+            <summary>
+            Add custom data to this formula
+            </summary>
+            <param name="Name">Formula Name</param>
+            <param name="Date">Formula date data array</param>
+            <param name="Data">Formula data array</param>
+        </member>
+        <member name="M:FML.CustomFormula.Add(System.String,System.DateTime[],System.Double[])">
+            <summary>
+            Add custom data to this formula
+            </summary>
+            <param name="Name">Formula Name</param>
+            <param name="Date">Formula date data array</param>
+            <param name="Data">Formula data array</param>
+        </member>
+        <member name="M:FML.CustomFormula.Run(Easychart.Finance.DataProvider.IDataProvider)">
+            <summary>
+            Create formula data package
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easychart.Finance.FML.NATIVE.ERROR">
+            <summary>
+            An error message formula class, This will show an error message in the formula area
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.Chinese">
+            <summary>
+            This class implement chinese calendar
+            http://www.hh.gov.cn/nlyxldz.htm
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataCycleBase">
+            <summary>
+            Define the base data cycle enum
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DataCycle">
+            <summary>
+            Summary description for DataCycle.
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.DataCycle.CycleBase">
+            <summary>
+            The base data cycle enum
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.DataCycle.Repeat">
+            <summary>
+            The repeat count of the base data cycle
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.#ctor">
+            <summary>
+            Constructor of DataCycle
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.#ctor(Easychart.Finance.DataCycleBase,System.Int32)">
+            <summary>
+            Constructor of DataCycle
+            </summary>
+            <param name="CycleBase">The DataCycleBase enum</param>
+            <param name="Repeat">Repeat count of DataCycleBase</param>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.GetSequence(System.Double)">
+            <summary>
+            Get the sequence of date
+            </summary>
+            <param name="D">OADate</param>
+            <returns>
+            Date in same DataCycle return same result
+            different DataCycle return different result.
+            For example :  DataCycle = 1 month
+            2004-1-3 and 2004-1-10 will return same result
+            2004-1-3 and 2004-2-1 will return different result
+            </returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.Day">
+            <summary>
+            1 Day
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.Month">
+            <summary>
+            1 Month
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.QUARTER">
+            <summary>
+            1 Quarter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.Year">
+            <summary>
+            1 Year
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.Minute">
+            <summary>
+            1 Minute
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.ToString">
+            <summary>
+            
+            </summary>
+            <returns>
+            DataCycle string like MONTH1,DAY15 etc.
+            </returns>
+        </member>
+        <member name="M:Easychart.Finance.DataCycle.Parse(System.String)">
+            <summary>
+            Parse DataCycle from string
+            </summary>
+            <param name="s">DataCycle string like MONTH1,DAY15 etc.</param>
+            <returns>DataCycle</returns>
+        </member>
+        <member name="T:Easychart.Finance.DataCycleCollection">
+            <summary>
+            Collection of DataCycle
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.DeepClone">
+            <summary>
+            DeepClone class is an abstract class for you to derive from.
+            Every class that will be dirived from this class will support the 
+            Clone method automaticly.
+            The class implements the interface ICloneable and there 
+            for every object that will be derived 
+            from this object will support the ICloneable interface as well.
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.DeepClone.Clone">
+            <summary>
+            Clone the object, and returning a reference to a cloned object.
+            </summary>
+            <returns>Reference to the new cloned 
+            object.</returns>
+        </member>
+        <member name="T:Easychart.Finance.FormulaArea">
+            <summary>
+            Draw chart according to compiled Formulas
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.FormulaDataArray">
+            <summary>
+            ArrayList of FormulaData
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Formulas">
+            <summary>
+            All Formulas will be shown on this Formula area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.AxisYs">
+            <summary>
+            All AxisY will be shown on this Formula area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.LastValueInAxis">
+            <summary>
+            Draw latest data in axis Y 
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Selected">
+            <summary>
+            Shows If this FormulaArea is selected area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.SelectedPen">
+            <summary>
+            Selected FormulaArea frame pen
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Back">
+            <summary>
+            The back ground of this stock area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.AxisX">
+            <summary>
+            X axis of this stock area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.AxisY">
+            <summary>
+            Y axis of the stock area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Canvas">
+            <summary>
+            Canvas of this stock area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Parent">
+            <summary>
+            The stock chart this area belong to
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.DrawVolumeAsLine">
+            <summary>
+            If set this property to true will draw stock VOLUME as line, or as rectangle.
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.StockRenderType">
+            <summary>
+            The stock chart render type
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.ScaleType">
+            <summary>
+            The stock chart scale type
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Colors">
+            <summary>
+            The color map of the Formula lines
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.LinePen">
+            <summary>
+            Default pen of Formula lines
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.BarPens">
+            <summary>
+            Stock data pens
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.BarBrushes">
+            <summary>
+            Stock data brushes
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.NameBrush">
+            <summary>
+            The brush used to draw the Formula name
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.NameFont">
+            <summary>
+            The font used to draw the Formula name
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.TextFont">
+            <summary>
+            The font userd to draw the Formula text
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.HeightPercent">
+            <summary>
+            The height percentage of the area in the stock chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaArea.Rect">
+            <summary>
+            Draw the stock Formula in this rectangle
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.#ctor(Easychart.Finance.FormulaChart)">
+            <summary>
+            Create the Formula area under the stock chart
+            </summary>
+            <param name="fc"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.#ctor(Easychart.Finance.FormulaChart,System.String,System.String)">
+            <summary>
+            Create the Formula area by a Formula name
+            </summary>
+            <param name="fc"></param>
+            <param name="Name"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.#ctor(Easychart.Finance.FormulaChart,System.String,System.String,System.Double)">
+            <summary>
+            Create the Formula area by a Formula name and Height percentage in the stock chart
+            </summary>
+            <param name="fc"></param>
+            <param name="Name"></param>
+            <param name="HeightPercent"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.GetFormulaData(System.Int32)">
+            <summary>
+            Get FormulaData
+            </summary>
+            <param name="Index">The FormulaData Index</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.AddFormula(System.String)">
+            <summary>
+            Add new Formula lines by Formula name, can use parameter , such as MA(10)
+            </summary>
+            <param name="Name">Formula name</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.AddFormula(System.String,System.String)">
+            <summary>
+            Add new Formula lines by Formula name and stock symbol
+            </summary>
+            <param name="Name">Formula name, such as MA(10)</param>
+            <param name="Quote">stock symbol, such as MSFT</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.AddFormula(Easychart.Finance.FormulaBase)">
+            <summary>
+            Add new Formula lines by Formula
+            </summary>
+            <param name="fb">Formulas</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.InsertFormula(System.Int32,System.String)">
+            <summary>
+            Insert new Formula lines by Formula name, can use parameter , such as MA(10)
+            </summary>
+            <param name="Index">Insert at</param>
+            <param name="Name">Formula Name</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.InsertFormula(System.Int32,Easychart.Finance.FormulaBase)">
+            <summary>
+            Insert new Formula lines by Formula
+            </summary>
+            <param name="Index"></param>
+            <param name="fb"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.RemoveFormula(Easychart.Finance.FormulaBase)">
+            <summary>
+            Remove Formula
+            </summary>
+            <param name="fb"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.RemoveFormula(System.String)">
+            <summary>
+            Remove Formula lines by Formula name
+            </summary>
+            <param name="Name"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.Bind">
+            <summary>
+            Bind data provider , create Formula line data of current data provider
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.DrawValueText">
+            <summary>
+            Draw line label and value at top of the FormulaArea
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.DrawValueText(System.Drawing.Graphics)">
+            <summary>
+            Draw line label and value at top of the FormulaArea
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.CalcLabelWidth(System.Drawing.Graphics)">
+            <summary>
+            Calc Y-axis width of this FormulaArea
+            </summary>
+            <param name="g">Graphics to draw this formula</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.CalcCenter(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Calc the cross point of two lines
+            </summary>
+            <param name="p0">First line start point</param>
+            <param name="p1">First line end point</param>
+            <param name="p3">Second line start point</param>
+            <param name="p2">Second line end point</param>
+            <returns>Cross point</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.Render(System.Drawing.Graphics)">
+            <summary>
+            Render the formula area
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.Render(System.Drawing.Graphics,System.Drawing.Rectangle,System.Int32,System.Double)">
+            <summary>
+            Render the formula area
+            </summary>
+            <param name="g">Graphics to render</param>
+            <param name="R">Rectangle</param>
+            <param name="Start">Zero based start index</param>
+            <param name="ColumnWidth">Width of each bar</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.GetBitmap(System.Int32,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Get bitmap of current stock area
+            </summary>
+            <param name="Width">Bitmap width</param>
+            <param name="Height">Bitmap height</param>
+            <param name="Start">Zero based start index</param>
+            <param name="ColumnWidth">Width of each bar</param>
+            <returns>Bitmap of this FormulaArea</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.ToString">
+            <summary>
+            
+            </summary>
+            <returns>Return the formula data separate by semicolon</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.GetUnique">
+            <summary>
+            The unique name of this formula
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaArea.IsMain">
+            <summary>
+            
+            </summary>
+            <returns>determine if this FormulaArea is the area</returns>
+        </member>
+        <member name="P:Easychart.Finance.FormulaArea.Name">
+            <summary>
+            Formula name
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaArea.DataProvider">
+            <summary>
+            return the data provider of the stock Formula
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.AreaCollection">
+            <summary>
+            Collection of stock Formula area
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.TimePeriod">
+            <summary>
+            This struct describe a time period
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.TimePeriod.Time1">
+            <summary>
+            Start time , Ole Date
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.TimePeriod.Time2">
+            <summary>
+            End time ,  Ole Date
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.TimePeriod.#ctor(System.Double,System.Double)">
+            <summary>
+            Create the TimePeriod by two time
+            </summary>
+            <param name="t1">Start Time</param>
+            <param name="t2">End time</param>
+        </member>
+        <member name="T:Easychart.Finance.FormulaAxisX">
+            <summary>
+            X axis of a Formula area
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisX.CopyFrom(Easychart.Finance.FormulaAxisX)">
+            <summary>
+            Copy attribute from another FormulaAxisX
+            </summary>
+            <param name="fax"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisX.GetX(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Get X position of certain date
+            </summary>
+            <param name="D">Ole Date</param>
+            <param name="x1">Start position</param>
+            <param name="x2">End position</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisX.Render(Easychart.Finance.FormulaCanvas,Easychart.Finance.FormulaArea)">
+            <summary>
+            Render the X-Axis
+            </summary>
+            <param name="Canvas">FormulaCanvas</param>
+            <param name="fa">FormulaArea</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisX.DrawCursor(System.Drawing.Graphics,Easychart.Finance.FormulaChart,Easychart.Finance.FormulaArea,System.Single)">
+            <summary>
+            Draw date label at X
+            </summary>
+            <param name="g"></param>
+            <param name="fc"></param>
+            <param name="Area"></param>
+            <param name="X"></param>
+        </member>
+        <member name="T:Easychart.Finance.ScaleType">
+            <summary>
+            Define the scale type of the finance chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.ScaleType.Normal">
+            <summary>
+            Normal line
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.ScaleType.Log">
+            <summary>
+            Logarithm line
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaAxisY">
+            <summary>
+            Y axis of a Formula area
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaAxisY.AutoMultiply">
+            <summary>
+            Calculate multiply factor automatically
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaAxisY.MultiplyFactor">
+            <summary>
+            Multiply the stock data by this factor
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaAxisY.Width">
+            <summary>
+            AxisY 's width
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.CopyFrom(Easychart.Finance.FormulaAxisY)">
+            <summary>
+            Copy attribute from another FormulaAxisY
+            </summary>
+            <param name="fay"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.#ctor">
+            <summary>
+            Constructor of Y-Axis
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.CalcLabelWidth(Easychart.Finance.FormulaCanvas)">
+            <summary>
+            Calc Y-axis width
+            </summary>
+            <param name="Canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.Render(Easychart.Finance.FormulaCanvas,Easychart.Finance.FormulaArea)">
+            <summary>
+            Render Y-axis
+            </summary>
+            <param name="Canvas"></param>
+            <param name="Area"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.DrawCursor(System.Drawing.Graphics,Easychart.Finance.FormulaChart,Easychart.Finance.FormulaArea,System.Single,System.Double)">
+            <summary>
+            Draw price label at Y
+            </summary>
+            <param name="g"></param>
+            <param name="fc"></param>
+            <param name="Area"></param>
+            <param name="Y">Y-Position</param>
+            <param name="d">Price</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.DrawCursor(System.Drawing.Graphics,Easychart.Finance.FormulaChart,Easychart.Finance.FormulaArea,System.Single)">
+            <summary>
+            Draw price label at Y
+            </summary>
+            <param name="g"></param>
+            <param name="fc"></param>
+            <param name="Area"></param>
+            <param name="Y">Y-position</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.CalcY(System.Double,System.Double,System.Double)">
+            <summary>
+            Calc Y-position of price
+            </summary>
+            <param name="d">Price</param>
+            <param name="Max">Max value in Y-axis</param>
+            <param name="Min">Min value in Y-axis</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.CalcY(System.Double)">
+            <summary>
+            Calc Y-position of price
+            </summary>
+            <param name="d">Price</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.GetValueFromY(System.Single,System.Double,System.Double)">
+            <summary>
+            Calc price from value
+            </summary>
+            <param name="Y">Y-Position</param>
+            <param name="Max">Max position of Y-Axis</param>
+            <param name="Min">Min position of Y-Axis</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaAxisY.GetValueFromY(System.Single)">
+            <summary>
+            Calc price from value
+            </summary>
+            <param name="Y">Y-Position</param>
+            <returns></returns>
+        </member>
+        <member name="T:Easychart.Finance.AxisYCollection">
+            <summary>
+            Collection of Y-Axis
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaBack">
+            <summary>
+            Stock Formula background
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBack.#ctor">
+            <summary>
+            Constructor of FormulaBack
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBack.Clone">
+            <summary>
+            A Clone of FormulaBack
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaBack.Render(System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            Render the FormulaBack
+            </summary>
+            <param name="g">Graphics to render</param>
+            <param name="R">Rectangle</param>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.BackGround">
+            <summary>
+            Background brush
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.LeftPen">
+            <summary>
+            Frame left border pen
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.TopPen">
+            <summary>
+            Frame top border pen
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.RightPen">
+            <summary>
+            Frame right border pen
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.BottomPen">
+            <summary>
+            Frame bottom border pen
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.FrameWidth">
+            <summary>
+            Set frame width
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaBack.FrameColor">
+            <summary>
+            Set frame color
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaRenderType">
+            <summary>
+            Formula render type
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaType">
+            <summary>
+            Formula data type
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaDot">
+            <summary>
+            Formula line type
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.StockRenderType">
+            <summary>
+            Stock render type
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaCanvas">
+            <summary>
+            Stock Formula Canvas, Used by formula system natively.
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaChart">
+            <summary>
+            Stock Formula chart , collection of stock Formula areas
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.ColumnWidth">
+            <summary>
+            Width of one stock data
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.MarginWidth">
+            <summary>
+            Margin of the stock view
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.Start">
+            <summary>
+            The start index of the data
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.ColumnPercent">
+            <summary>
+            When StockRenderType is Candle or Bar, this property specify the stock entity percentage of the column width
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.StartTime">
+            <summary>
+            The start date time of the stock chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.EndTime">
+            <summary>
+            The end date tiem of the stock chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.Areas">
+            <summary>
+            The stock formula areas
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.BitmapCache">
+            <summary>
+            If using the bitmap cache
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.CursorPos">
+            <summary>
+            Current cursor pos
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.ShowValueLabel">
+            <summary>
+            Display value labels in each areas
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaChart.Rect">
+            <summary>
+            The drawing rectangle of the stock chart
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.#ctor">
+            <summary>
+            Create the stock formula chart, add the main stock formula area
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SetSkin(Easychart.Finance.FormulaSkin)">
+            <summary>
+            Set the predefined stock chart skin
+            </summary>
+            <param name="fs"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SetSkin(System.String)">
+            <summary>
+            Set predefined stock chart skin
+            </summary>
+            <param name="Skin"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.Bind">
+            <summary>
+            Bind the stock Formula to data provider
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AddArea(Easychart.Finance.FormulaBase)">
+            <summary>
+            Add a new stock Formula area
+            </summary>
+            <param name="fb"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AddArea(System.String,System.String,System.Double)">
+            <summary>
+            Add a new stock formula area
+            </summary>
+            <param name="Name">Formula Name, such as MA(10)</param>
+            <param name="Quote">Stock Symbol , such as MSFT</param>
+            <param name="Percent">Percentage of this area</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AddArea(System.String,System.Double)">
+            <summary>
+            Add a new stock formula area
+            </summary>
+            <param name="Name">Formula Name, such as MA(10)</param>
+            <param name="Percent">Percentage of this area</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AddArea(System.String)">
+            <summary>
+            Add a new stock formula area by stock Formula name
+            </summary>
+            <param name="Name">Formula Name, such as MA(10)</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.InsertArea(System.Int32,Easychart.Finance.FormulaBase)">
+            <summary>
+            Insert stock formula at Index
+            </summary>
+            <param name="Index"></param>
+            <param name="fb"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.InsertArea(System.Int32,System.String,System.Double)">
+            <summary>
+            Insert stock formula at Index
+            </summary>
+            <param name="Index"></param>
+            <param name="Name">Formula Name such as MA(10)</param>
+            <param name="Percent">Percentage of this area</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.InsertArea(System.Int32,System.String,System.String,System.Double)">
+            <summary>
+            Insert stock formula at Index
+            </summary>
+            <param name="Index"></param>
+            <param name="Name">Formula Name such as MA(10)</param>
+            <param name="Quote">Stock Symbol , such as MSFT</param>
+            <param name="Percent">Percentage of this area</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.InsertArea(System.Int32,System.String)">
+            <summary>
+            Insert stock formula at Index
+            </summary>
+            <param name="Index"></param>
+            <param name="Name">Formula Name such as MA(10)</param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SetView">
+            <summary>
+            Recalculate the column width by StartTime and EndTime
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AdjustLabelWidth(System.Drawing.Graphics)">
+            <summary>
+            Recalculate the stock label width
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.Render(System.Drawing.Graphics)">
+            <summary>
+            Render stock chart to graphics
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetBitmap(System.Int32,System.Int32,System.Drawing.Rectangle)">
+            <summary>
+            Create a bitmap of this stock chart
+            </summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="R"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetBitmap(System.Int32,System.Int32)">
+            <summary>
+            Create a bitmap of this stock chart
+            </summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SaveToStream(System.IO.Stream,System.Int32,System.Int32,System.Drawing.Rectangle,System.Drawing.Imaging.ImageFormat,System.Single,System.Single)">
+            <summary>
+            Save the formula chart image to a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="R"></param>
+            <param name="ifm"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SaveToStream(System.IO.Stream,System.Int32,System.Int32,System.Drawing.Rectangle,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Save the formula chart image to a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="R"></param>
+            <param name="ifm"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SaveToStream(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Save the formula chart image to a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="Width"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SaveToStream(System.IO.Stream,System.Int32,System.Int32,System.Single,System.Single)">
+            <summary>
+            Save the formula chart image to a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SaveToImageStream(System.Int32,System.Int32,System.Drawing.Imaging.ImageFormat,System.Single,System.Single)">
+            <summary>
+            Save formula chart to asp.net cache.
+            <code>
+            protected System.Web.UI.WebControls.ImageButton ibChart;
+            ibChart.ImageUrl = "../ImageFromCache.aspx?CacheId="+
+            		fc.SaveToImageStream(800,700,ImageFormat.Png,0,0);
+            </code>
+            </summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="ifm"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetHitInfo(System.Single,System.Single)">
+            <summary>
+            Get the Hit info of current pos
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <returns>Formula Hit Info</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SelectAreaByPos(System.Single,System.Single)">
+            <summary>
+            Set area by pos
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.SetCursorPos(System.Single,System.Single)">
+            <summary>
+            Set cursor pos by X and Y
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawValueText(System.Drawing.Graphics)">
+            <summary>
+            Draw Value Text at current cursor pos
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawValueText(System.Single,System.Single)">
+            <summary>
+            Draw Value Text at position of (X,Y), and adjust the cursor pos by X and Y
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.RestoreMemBmp(System.Drawing.Graphics,System.Drawing.RectangleF)">
+            <summary>
+            Restore chart from memory bitmap
+            </summary>
+            <param name="g"></param>
+            <param name="R"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.HideCursor(System.Drawing.Graphics)">
+            <summary>
+            Hide the cursor of the chart
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawCursor(System.Drawing.Graphics,System.Single,System.Single)">
+            <summary>
+            Draw cursor to g at X and Y
+            </summary>
+            <param name="g"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawCursor(System.Drawing.Graphics,Easychart.Finance.FormulaArea,Easychart.Finance.FormulaData)">
+            <summary>
+            Draw cursor according current cursor pos
+            </summary>
+            <param name="g"></param>
+            <param name="fa"></param>
+            <param name="fd"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawCursor(System.Drawing.Graphics)">
+            <summary>
+            Draw cursor at current pos
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.AdjustCursorByPos(System.Drawing.Graphics,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Adjust current cursor pos by NewPos and NewStart
+            </summary>
+            <param name="g"></param>
+            <param name="NewPos"></param>
+            <param name="NewStart"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.DrawLastestData(System.Drawing.Graphics,Easychart.Finance.DataProvider.IDataProvider,System.Drawing.Font,System.Single,System.Single,System.Single,System.Boolean,System.Drawing.Color[])">
+            <summary>
+            Draw lastest data of given data provider
+            </summary>
+            <param name="g"></param>
+            <param name="idp"></param>
+            <param name="F"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="Colors">Color[0]:Down color , Color[1]:Equal color, Color[2]: Up color , Color[3]:Other color </param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetAreaTextData(Easychart.Finance.FormulaArea,System.String,System.Boolean)">
+            <summary>
+            Get the formula data of selected area
+            </summary>
+            <param name="fa"></param>
+            <param name="Separator"></param>
+            <param name="ShowHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetAreaTextData(System.String,System.Boolean)">
+            <summary>
+            Get the formula data of selected area
+            </summary>
+            <param name="Separator"></param>
+            <param name="ShowHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaChart.GetChartTextData(System.String,System.Boolean)">
+            <summary>
+            Get the formula data
+            </summary>
+            <param name="Separator"></param>
+            <param name="ShowHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.DataProvider">
+            <summary>
+            The stock data provider of this chart
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.DataCycle">
+            <summary>
+            The data cycle of this data stock chart
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.AxisXFormat">
+            <summary>
+            X axis label format
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.Item(System.String)">
+            <summary>
+            Get the stock formula area by name
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.Item(System.Int32)">
+            <summary>
+            Get the stock formula area by index
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaChart.SelectedArea">
+            <summary>
+            Get the selected area of the chart
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.Transform">
+            <summary>
+            Define how the formula data will be transform before shown
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaData">
+            <summary>
+            Formula data array
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaData.op_UnaryPlus(Easychart.Finance.FormulaData)">
+            <summary>
+            Operator + of FormulaData
+            </summary>
+            <param name="f1">The Formula data</param>
+            <returns>A new instance of Formula f1</returns>
+        </member>
+        <member name="M:Easychart.Finance.FormulaData.op_Addition(Easychart.Finance.FormulaData,Easychart.Finance.FormulaData)">
+            <summary>
+            Operator + of two Formula Data
+            </summary>
+            <param name="f1">Formula Data 1</param>
+            <param name="f2">Formula Data 2</param>
+            <returns></returns>
+        </member>
+        <member name="P:Easychart.Finance.FormulaData.Item(System.String)">
+            <summary>
+            Get or set the double array attached to this data
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaData.Item(System.Int32)">
+            <summary>
+            Get or set each value of this data array
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaData.Item(System.Double)">
+            <summary>
+            Get each value of this data array
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaHitType">
+            <summary>
+            This enum define the different part of the chart
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaHitInfo">
+            <summary>
+            The information of (X,Y) in the chart
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaLabel">
+            <summary>
+            Formula Label 
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaLabel.BorderColor">
+            <summary>
+            Border color of this label
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaLabel.BGColor">
+            <summary>
+            Background color of this label
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaLabel.TextBrush">
+            <summary>
+            Text brush of the label text
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaLabel.StickHeight">
+            <summary>
+            Stick height of this label
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaLabel.#ctor(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="BorderColor"></param>
+            <param name="BGColor"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaLabel.#ctor(System.Drawing.Color,System.Drawing.Color,System.Drawing.Brush)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="BorderColor"></param>
+            <param name="BGColor"></param>
+            <param name="TextBrush"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaLabel.DrawString(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,Easychart.Finance.VerticalAlign,Easychart.Finance.FormulaAlign,System.Drawing.PointF,System.Boolean)">
+            <summary>
+            Draw string using current label
+            </summary>
+            <param name="g">Graphics to draw on</param>
+            <param name="Text"></param>
+            <param name="TextFont"></param>
+            <param name="TextBrush"></param>
+            <param name="VAlign"></param>
+            <param name="Align"></param>
+            <param name="Pos"></param>
+            <param name="ShowArrow"></param>
+        </member>
+        <member name="M:Easychart.Finance.FormulaLabel.DrawString(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,Easychart.Finance.VerticalAlign,Easychart.Finance.FormulaAlign,System.Drawing.RectangleF,System.Boolean)">
+            <summary>
+            Draw string using current label
+            </summary>
+            <param name="g"></param>
+            <param name="Text"></param>
+            <param name="TextFont"></param>
+            <param name="TextBrush"></param>
+            <param name="VAlign"></param>
+            <param name="Align"></param>
+            <param name="Rect"></param>
+            <param name="ShowArrow"></param>
+        </member>
+        <member name="T:Easychart.Finance.FormulaPackage">
+            <summary>
+            Package of stock Formula data
+            </summary>
+        </member>
+        <member name="M:Easychart.Finance.FormulaPackage.#ctor(Easychart.Finance.FormulaData[],System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="FormulaDatas">FormulaData array</param>
+            <param name="Name">Name of this package</param>
+            <param name="Description">Description of this package</param>
+        </member>
+        <member name="P:Easychart.Finance.FormulaPackage.Item(System.String)">
+            <summary>
+            Return the formula data by name
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaPackage.Item(System.Int32)">
+            <summary>
+            Return the formula data by index
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaPackage.Count">
+            <summary>
+            Formula data count
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaPackageCollection">
+            <summary>
+            Collection of FormulaPackage
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaParam">
+            <summary>
+            Stock Formula parameter, Used by formula editor
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.ParamCollection">
+            <summary>
+            Collection of FormulaParam
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaProgram">
+            <summary>
+            Stock Formula program, Used by formula editor
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaSkin">
+            <summary>
+            Stock chart skin and predefined skins
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.AxisX">
+            <summary>
+            X - Axis of the chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.AxisY">
+            <summary>
+            Y - Axis of the chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.DrawVolumeAsLine">
+            <summary>
+            true - Draw stock volume as line
+            false - Draw stock volume as bar
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.StockRenderType">
+            <summary>
+            Set stock render type.
+            Bar,Candle or line
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.ScaleType">
+            <summary>
+            Set y - axis scale type , Log or Normal.
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.Colors">
+            <summary>
+            Set color map of the chart formulas
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.LinePen">
+            <summary>
+            Set the formula line pen style
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.BarPens">
+            <summary>
+            Set the pens for up , down or equal
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.BarBrushes">
+            <summary>
+            Set the brushes for up, down or equal
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.NameBrush">
+            <summary>
+            The brush for formula name on the chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.NameFont">
+            <summary>
+            The font for formula name on the chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.TextFont">
+            <summary>
+            The font for text on the chart
+            </summary>
+        </member>
+        <member name="F:Easychart.Finance.FormulaSkin.CursorPen">
+            <summary>
+            The pen for screen cursor
+            </summary>
+        </member>
+        <member name="P:Easychart.Finance.FormulaSkin.Back">
+            <summary>
+            The Back wall of the chart
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.FormulaSpace">
+            <summary>
+            Financial Formula program namespace,used by formula editors
+            </summary>
+        </member>
+        <member name="T:Easychart.Finance.PluginManager">
+            <summary>
+            Stock formula plugin manager.
+            Load formulas dlls at runtime.
+            </summary>
+            <example>
+            PluginManager.Load(Environment.CurrentDirectory+"\\Plugins\\");
+            PluginManager.OnPluginChanged +=new FileSystemEventHandler(OnPluginChange);
+            </example>
+        </member>
+        <member name="M:Easychart.Finance.PluginManager.LoadShadowAssembly(System.String)">
+            <summary>
+            Load formulas from a dll file.
+            And cache it in memory.
+            </summary>
+            <param name="FileName">Formula file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Easychart.Finance.PluginManager.Load(System.String)">
+            <summary>
+            Load dlls from a certain path
+            </summary>
+            <param name="Path">Plugin path</param>
+        </member>
+        <member name="M:Easychart.Finance.PluginManager.GetFormulaFile(Easychart.Finance.FormulaBase)">
+            <summary>
+            Get formula source xml file of a certain formula.
+            </summary>
+            <param name="fb"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2 @@
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\bin\Release\Easychart.Finance.dll
+C:\Backup\Traderdata\Tecnologia\EasyChart\Easychart.Finance\obj\Release\Easychart.Finance.dll
