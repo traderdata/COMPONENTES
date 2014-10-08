@@ -1,0 +1,26 @@
+﻿<Window x:Class="ModulusFE.ChartElementProperties.PropertiesDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PropertiesDialog" SizeToContent="WidthAndHeight"
+    Width="320" Height="Auto" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" IsTabStop="True">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridProps" Grid.Row="0" Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="2">
+            <Button Content="OK" HorizontalAlignment="Right" Width="60" Margin="1" x:Name="btnOK"
+              Click="btnOK_Click"/>
+            <Button Content="Cancel" HorizontalAlignment="Right" Width="60" Margin="1" x:Name="btnCancel"
+              Click="btnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

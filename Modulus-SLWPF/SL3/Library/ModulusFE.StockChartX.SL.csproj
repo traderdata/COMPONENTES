@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4194F467-9AF1-4687-9EC8-C1E22E4904BA}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModulusFE.StockChartX.SL</RootNamespace>
+    <AssemblyName>ModulusFE.StockChartX.SL</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Debug\ModulusFE.StockChartX.SL.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ImageTools">
+      <HintPath>..\..\..\..\..\..\..\Users\Felipe\Downloads\ImageTools 0.30\ImageTools 0.30\bin\SL4\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Jpeg">
+      <HintPath>..\..\..\..\..\..\..\Users\Felipe\Downloads\ImageTools 0.30\ImageTools 0.30\bin\SL4\ImageTools.IO.Jpeg.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpZipLib.Silverlight4">
+      <HintPath>libs\SharpZipLib.Silverlight4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TestChart\MS.SL.Toolkit\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ChartElementColorProperty.cs">
+      <Link>ChartElementProperties\ChartElementColorProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ChartElementOpacityProperty.cs">
+      <Link>ChartElementProperties\ChartElementOpacityProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ChartElementPropertyBase.cs">
+      <Link>ChartElementProperties\ChartElementPropertyBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ChartElementStrokeThicknessProperty.cs">
+      <Link>ChartElementProperties\ChartElementStrokeThicknessProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ChartElementStrokeTypeProperty.cs">
+      <Link>ChartElementProperties\ChartElementStrokeTypeProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ColorPropertyPresenter.xaml.cs">
+      <Link>ChartElementProperties\ColorPropertyPresenter.xaml.cs</Link>
+      <DependentUpon>ColorPropertyPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\ComboBoxPropertyPresenter.cs">
+      <Link>ChartElementProperties\ComboBoxPropertyPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\IChartElementProperty.cs">
+      <Link>ChartElementProperties\IChartElementProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\IChartElementPropertyAble.cs">
+      <Link>ChartElementProperties\IChartElementPropertyAble.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\IValuePresenter.cs">
+      <Link>ChartElementProperties\IValuePresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\SliderPropertyPresenter.cs">
+      <Link>ChartElementProperties\SliderPropertyPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartElementProperties\TextBoxPropertyPresenter.cs">
+      <Link>ChartElementProperties\TextBoxPropertyPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel.cs">
+      <Link>ChartPanel\ChartPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelMoreIndicator.cs">
+      <Link>ChartPanel\ChartPanelMoreIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelMoreIndicatorPanel.cs">
+      <Link>ChartPanel\ChartPanelMoreIndicatorPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelTitleCaptionEntry.cs">
+      <Link>ChartPanel\ChartPanelTitleCaptionEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_DependencyProperties.cs">
+      <Link>ChartPanel\ChartPanel_DependencyProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_DepProps.cs">
+      <Link>ChartPanel\ChartPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelMovePlaceHolder.cs">
+      <Link>ChartPanel\ChartPanelMovePlaceHolder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelMoveShadow.cs">
+      <Link>ChartPanel\ChartPanelMoveShadow.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelsDivider.cs">
+      <Link>ChartPanel\ChartPanelsDivider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelTitleBar.cs">
+      <Link>ChartPanel\ChartPanelTitleBar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanelTitleBarButton.cs">
+      <Link>ChartPanel\ChartPanelTitleBarButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_HeatMap.cs">
+      <Link>ChartPanel\ChartPanel_HeatMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_InfoPanel.cs">
+      <Link>ChartPanel\ChartPanel_InfoPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_Label.cs">
+      <Link>ChartPanel\ChartPanel_Label.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_MoreIndicators.cs">
+      <Link>ChartPanel\ChartPanel_MoreIndicators.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_Public.cs">
+      <Link>ChartPanel\ChartPanel_Public.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_SeriesDragDrop.cs">
+      <Link>ChartPanel\ChartPanel_SeriesDragDrop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\ChartPanel\ChartPanel_SideVolumeDepthBars.cs">
+      <Link>ChartPanel\ChartPanel_SideVolumeDepthBars.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\Calendar.cs">
+      <Link>Chart\Calendar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\ChartScroller.cs">
+      <Link>Chart\ChartScroller.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\Constants.cs">
+      <Link>Chart\Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\InfoPanel.cs">
+      <Link>Chart\InfoPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\MoveSeriesIndicator.cs">
+      <Link>Chart\MoveSeriesIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\PanelsBarButton.cs">
+      <Link>Chart\PanelsBarButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\PanelsBarContainer.cs">
+      <Link>Chart\PanelsBarContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\PanelsContainer.cs">
+      <Link>Chart\PanelsContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\PanelsContainer.ZoomArea.cs">
+      <Link>Chart\PanelsContainer.ZoomArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\PanelsContainerAnim.cs">
+      <Link>Chart\PanelsContainerAnim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX.cs">
+      <Link>Chart\StockChartX.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX.DP.NotifyAble.cs">
+      <Link>Chart\StockChartX.DP.NotifyAble.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Enums.cs">
+      <Link>Chart\StockChartX_Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Events.cs">
+      <Link>Chart\StockChartX_Events.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Exceptions.cs">
+      <Link>Chart\StockChartX_Exceptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_IndicatorsParams.cs">
+      <Link>Chart\StockChartX_IndicatorsParams.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_LineStudiesParams.cs">
+      <Link>Chart\StockChartX_LineStudiesParams.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Notifications.cs">
+      <Link>Chart\StockChartX_Notifications.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Public.cs">
+      <Link>Chart\StockChartX_Public.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_ResizeMove.cs">
+      <Link>Chart\StockChartX_ResizeMove.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_Templates.cs">
+      <Link>Chart\StockChartX_Templates.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Chart\YAxisCanvas.cs">
+      <Link>Chart\YAxisCanvas.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\ChartScrollerEx.cs">
+      <Link>Controls\ChartScrollerEx.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\ChartScrollerExHandle.cs">
+      <Link>Controls\ChartScrollerExHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\ChartScrollerProperties.cs">
+      <Link>Controls\ChartScrollerProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\ColorPicker.cs">
+      <Link>Controls\ColorPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\ColorSpace.cs">
+      <Link>Controls\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Controls\HSV.cs">
+      <Link>Controls\HSV.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\DataManager\DataEntry.cs">
+      <Link>DataManager\DataEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\DataManager\DataManager.cs">
+      <Link>DataManager\DataManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\DataManager\SeriesEntry.cs">
+      <Link>DataManager\SeriesEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\AccumulativeSwingIndex.cs">
+      <Link>Indicator\AccumulativeSwingIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\Aroon.cs">
+      <Link>Indicator\Aroon.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\AroonOscillator.cs">
+      <Link>Indicator\AroonOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\BollingerBands.cs">
+      <Link>Indicator\BollingerBands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ChaikinMoneyFlow.cs">
+      <Link>Indicator\ChaikinMoneyFlow.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ChaikinVolatility.cs">
+      <Link>Indicator\ChaikinVolatility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ChandeMomentumOscillator.cs">
+      <Link>Indicator\ChandeMomentumOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\CommodityChannelIndex.cs">
+      <Link>Indicator\CommodityChannelIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ComparativeRelativeStrength.cs">
+      <Link>Indicator\ComparativeRelativeStrength.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\CustomIndicator.cs">
+      <Link>Indicator\CustomIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\DetrendedPriceOscillator.cs">
+      <Link>Indicator\DetrendedPriceOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\DirectionalMovementSystem.cs">
+      <Link>Indicator\DirectionalMovementSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\EaseOfMovement.cs">
+      <Link>Indicator\EaseOfMovement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ExponentialMovingAverage.cs">
+      <Link>Indicator\ExponentialMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\FractalChaosBands.cs">
+      <Link>Indicator\FractalChaosBands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\FractalChaosOscillator.cs">
+      <Link>Indicator\FractalChaosOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\HighLowActivator.cs">
+      <Link>Indicator\HighLowActivator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\HighLowBands.cs">
+      <Link>Indicator\HighLowBands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\HighMinusLow.cs">
+      <Link>Indicator\HighMinusLow.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\HistoricalVolatility.cs">
+      <Link>Indicator\HistoricalVolatility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\Indicator.cs">
+      <Link>Indicator\Indicator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\Indicator_Paint.cs">
+      <Link>Indicator\Indicator_Paint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\LinearRegressionForecast.cs">
+      <Link>Indicator\LinearRegressionForecast.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\LinearRegressionIntercept.cs">
+      <Link>Indicator\LinearRegressionIntercept.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\LinearRegressionRSquared.cs">
+      <Link>Indicator\LinearRegressionRSquared.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\LinearRegressionSlope.cs">
+      <Link>Indicator\LinearRegressionSlope.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MACD.cs">
+      <Link>Indicator\MACD.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MACDHistogram.cs">
+      <Link>Indicator\MACDHistogram.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MassIndex.cs">
+      <Link>Indicator\MassIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\Median.cs">
+      <Link>Indicator\Median.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MomentumOscillator.cs">
+      <Link>Indicator\MomentumOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MoneyFlowIndex.cs">
+      <Link>Indicator\MoneyFlowIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MovingAverageEnvelope.cs">
+      <Link>Indicator\MovingAverageEnvelope.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\NegativeVolumeIndex.cs">
+      <Link>Indicator\NegativeVolumeIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\OnBalanceVolume.cs">
+      <Link>Indicator\OnBalanceVolume.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ParabolicSAR.cs">
+      <Link>Indicator\ParabolicSAR.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PerformanceIndex.cs">
+      <Link>Indicator\PerformanceIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PositiveVolumeIndex.cs">
+      <Link>Indicator\PositiveVolumeIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PriceOscillator.cs">
+      <Link>Indicator\PriceOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PriceROC.cs">
+      <Link>Indicator\PriceROC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PriceVolumeTrend.cs">
+      <Link>Indicator\PriceVolumeTrend.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PrimeNumberBands.cs">
+      <Link>Indicator\PrimeNumberBands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PrimeNumberOscillator.cs">
+      <Link>Indicator\PrimeNumberOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\RainbowOscillator.cs">
+      <Link>Indicator\RainbowOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\RelativeStrengthIndex.cs">
+      <Link>Indicator\RelativeStrengthIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\SimpleMovingAverage.cs">
+      <Link>Indicator\SimpleMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\StandardDeviation.cs">
+      <Link>Indicator\StandardDeviation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\StochasticMomentumIndex.cs">
+      <Link>Indicator\StochasticMomentumIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\StochasticOscillator.cs">
+      <Link>Indicator\StochasticOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\SwingIndex.cs">
+      <Link>Indicator\SwingIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TimeSeriesMovingAverage.cs">
+      <Link>Indicator\TimeSeriesMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TradeVolumeIndex.cs">
+      <Link>Indicator\TradeVolumeIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TriangularMovingAverage.cs">
+      <Link>Indicator\TriangularMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TRIX.cs">
+      <Link>Indicator\TRIX.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TrueRange.cs">
+      <Link>Indicator\TrueRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TwinIndicator.cs">
+      <Link>Indicator\TwinIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TypicalPrice.cs">
+      <Link>Indicator\TypicalPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\UltimateOscillator.cs">
+      <Link>Indicator\UltimateOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\VariableMovingAverage.cs">
+      <Link>Indicator\VariableMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\VerticalHorizontalFilter.cs">
+      <Link>Indicator\VerticalHorizontalFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\VIDYA.cs">
+      <Link>Indicator\VIDYA.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\VolumeOscillator.cs">
+      <Link>Indicator\VolumeOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\VolumeROC.cs">
+      <Link>Indicator\VolumeROC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\WeightedClose.cs">
+      <Link>Indicator\WeightedClose.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\WeightedMovingAverage.cs">
+      <Link>Indicator\WeightedMovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\WellesWilderSmoothing.cs">
+      <Link>Indicator\WellesWilderSmoothing.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\WilliamsAccumulationDistribution.cs">
+      <Link>Indicator\WilliamsAccumulationDistribution.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\WilliamsPctR.cs">
+      <Link>Indicator\WilliamsPctR.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Interfaces\IChartPanelMoreIndicatorPanel.cs">
+      <Link>Interfaces\IChartPanelMoreIndicatorPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Interfaces\IValueBridge.cs">
+      <Link>Interfaces\IValueBridge.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Interfaces\IValuePresenter.cs">
+      <Link>Interfaces\IValuePresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\Ellipse.cs">
+      <Link>LineStudies\Ellipse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\FrameworkElement.cs">
+      <Link>LineStudies\Ellipse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\ErrorChannel.cs">
+      <Link>LineStudies\ErrorChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\FibonacciArcs.cs">
+      <Link>LineStudies\FibonacciArcs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\FibonacciFan.cs">
+      <Link>LineStudies\FibonacciFan.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\FibonacciRetracements.cs">
+      <Link>LineStudies\FibonacciRetracements.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\FibonacciTimeZones.cs">
+      <Link>LineStudies\FibonacciTimeZones.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\GannFan.cs">
+      <Link>LineStudies\GannFan.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\HorizontalLine.cs">
+      <Link>LineStudies\HorizontalLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\HorizontalLineStudyValuePresenter.cs">
+      <Link>LineStudies\HorizontalLineStudyValuePresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\ImageObject.cs">
+      <Link>LineStudies\ImageObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\LineStudy.cs">
+      <Link>LineStudies\LineStudy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\LineStudy_Visibility.cs">
+      <Link>LineStudies\LineStudy_Visibility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\QuadrantLines.cs">
+      <Link>LineStudies\QuadrantLines.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\RaffRegression.cs">
+      <Link>LineStudies\RaffRegression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\Rectangle.cs">
+      <Link>LineStudies\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\SpeedLines.cs">
+      <Link>LineStudies\SpeedLines.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\StaticText.cs">
+      <Link>LineStudies\StaticText.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\TironeLevels.cs">
+      <Link>LineStudies\TironeLevels.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\TrendLine.cs">
+      <Link>LineStudies\TrendLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\VerticalLine.cs">
+      <Link>LineStudies\VerticalLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\LineStudies\IShapeAble.cs">
+      <Link>LineStudies\IShapeAble.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Candle.cs">
+      <Link>PaintObjects\Candle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\CandleHeikinAshi.cs">
+      <Link>PaintObjects\CandleHeikinAshi.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\ChartTimers.cs">
+      <Link>PaintObjects\ChartTimers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\ContextLine.cs">
+      <Link>PaintObjects\ContextLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Ellipse.cs">
+      <Link>PaintObjects\Ellipse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\IPaintObject.cs">
+      <Link>PaintObjects\IPaintObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Label.cs">
+      <Link>PaintObjects\Label.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Line.cs">
+      <Link>PaintObjects\Line.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\PaintObjectsManager.cs">
+      <Link>PaintObjects\PaintObjectsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Rectangle.cs">
+      <Link>PaintObjects\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Rectangle3D.cs">
+      <Link>PaintObjects\Rectangle3D.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\SelectionDot.cs">
+      <Link>PaintObjects\SelectionDot.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PaintObjects\Stock.cs">
+      <Link>PaintObjects\Stock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Candles.cs">
+      <Link>PriceStyles\Candles.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\DarvasBoxes.cs">
+      <Link>PriceStyles\DarvasBoxes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\EquiVolume.cs">
+      <Link>PriceStyles\EquiVolume.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\HeikinAshi.cs">
+      <Link>PriceStyles\HeikinAshi.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Kagi.cs">
+      <Link>PriceStyles\Kagi.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Models\PriceStyleModeBase.cs">
+      <Link>PriceStyles\Models\PriceStyleModeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Models\PriceStyleStandardModel.cs">
+      <Link>PriceStyles\Models\PriceStyleStandardModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\PointAndFigure.cs">
+      <Link>PriceStyles\PointAndFigure.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Linear.cs">
+      <Link>PriceStyles\Linear.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Renko.cs">
+      <Link>PriceStyles\Renko.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Stock.cs">
+      <Link>PriceStyles\Stock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\Style.cs">
+      <Link>PriceStyles\Style.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\PriceStyles\ThreeLineBreak.cs">
+      <Link>PriceStyles\ThreeLineBreak.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Models\SeriesModelBase.cs">
+      <Link>Series\Models\SeriesModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Models\SeriesStandardModel.cs">
+      <Link>Series\Models\SeriesStandardModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Series.cs">
+      <Link>Series\Series.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\SeriesDefValueBridge.cs">
+      <Link>Series\SeriesDefValueBridge.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\SeriesTickBoxValuePresenter.cs">
+      <Link>Series\SeriesTickBoxValuePresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\SeriesTitleLabel.cs">
+      <Link>Series\SeriesTitleLabel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Series_TickBox.cs">
+      <Link>Series\Series_TickBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Standard.cs">
+      <Link>Series\Standard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\Stock.cs">
+      <Link>Series\Stock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Series\ToolTip.cs">
+      <Link>Series\ToolTip.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Bands.cs">
+      <Link>TA-SDK\Bands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Field.cs">
+      <Link>TA-SDK\Field.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\General.cs">
+      <Link>TA-SDK\General.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Index.cs">
+      <Link>TA-SDK\Index.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\LinearRegression.cs">
+      <Link>TA-SDK\LinearRegression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\MovingAverage.cs">
+      <Link>TA-SDK\MovingAverage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Navigator.cs">
+      <Link>TA-SDK\Navigator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Note.cs">
+      <Link>TA-SDK\Note.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Oscillator.cs">
+      <Link>TA-SDK\Oscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\Recordset.cs">
+      <Link>TA-SDK\Recordset.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\TA-SDK\TASDK.cs">
+      <Link>TA-SDK\TASDK.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Algorithms.cs">
+      <Link>Utils\Algorithms.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\DataBindingExtensions.cs">
+      <Link>Utils\DataBindingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Extensions.cs">
+      <Link>Utils\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\PaintObjects.cs">
+      <Link>Utils\PaintObjects.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Types.cs">
+      <Link>Utils\Types.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Utils.cs">
+      <Link>Utils\Utils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Segment.cs">
+      <Link>Utils\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\Geometry.cs">
+      <Link>Utils\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Utils\ObservableHelper.cs">
+      <Link>Utils\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="ChartElementProperties\PropertiesDialogContent.xaml.cs">
+      <DependentUpon>PropertiesDialogContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartPanel\ChartPanel_CalcIndicators.cs" />
+    <Compile Include="..\..\WPF\Library\Chart\StockChartX_DependencyProperties.cs">
+      <Link>Chart\StockChartX_DependencyProperties.cs</Link>
+    </Compile>
+    <Compile Include="Chart\StockChartX_ImageSerialization.cs" />
+    <Compile Include="Chart\StockChartX_Serialization.cs" />
+    <Compile Include="Chart\StockChartX_VersionInfo.cs" />
+    <Compile Include="Controls\ColorDialogInternal.xaml.cs">
+      <DependentUpon>ColorDialogInternal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dialog.cs" />
+    <Compile Include="DataManager\DataManager_Serialization.cs" />
+    <Compile Include="Indicator\IndicatorDialogInternal.xaml.cs">
+      <DependentUpon>IndicatorDialogInternal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\CenterOfGravity.cs">
+      <Link>Indicator\CenterOfGravity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ChandeForecastOscillator.cs">
+      <Link>Indicator\ChandeForecastOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\CoppockCurve.cs">
+      <Link>Indicator\CoppockCurve.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\EhlerFisherTransform.cs">
+      <Link>Indicator\EhlerFisherTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ElderForceIndex.cs">
+      <Link>Indicator\ElderForceIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ElderRayBearPower.cs">
+      <Link>Indicator\ElderRayBearPower.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ElderRayBullPower.cs">
+      <Link>Indicator\ElderRayBullPower.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\ElderThermometer.cs">
+      <Link>Indicator\ElderThermometer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\GopalakrishnanRangeIndex.cs">
+      <Link>Indicator\GopalakrishnanRangeIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\IntradayMomentumIndex.cs">
+      <Link>Indicator\IntradayMomentumIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\KeltnerChannel.cs">
+      <Link>Indicator\KeltnerChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\KlingerVolumeOscillator.cs">
+      <Link>Indicator\KlingerVolumeOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\MarketFacilitationIndex.cs">
+      <Link>Indicator\MarketFacilitationIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\PrettyGoodOscillator.cs">
+      <Link>Indicator\PrettyGoodOscillator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\QStick.cs">
+      <Link>Indicator\QStick.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\RandomWalkIndex.cs">
+      <Link>Indicator\RandomWalkIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\RAVI.cs">
+      <Link>Indicator\RAVI.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\SchaffTrendCycle.cs">
+      <Link>Indicator\SchaffTrendCycle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\StollerAverageRangeChannels.cs">
+      <Link>Indicator\StollerAverageRangeChannels.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WPF\Library\Indicators\TwiggsMoneyFlow.cs">
+      <Link>Indicator\TwiggsMoneyFlow.cs</Link>
+    </Compile>
+    <Compile Include="LineStudies\LineStudyContextMenu.xaml.cs">
+      <DependentUpon>LineStudyContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Brushes.cs" />
+    <Compile Include="Utils\DateTime.Extensions.cs" />
+    <Compile Include="Utils\EditableImage.cs" />
+    <Compile Include="Utils\Enum.cs" />
+    <Compile Include="Utils\Extensions.SL.cs" />
+    <Compile Include="Utils\Formatter.cs" />
+    <Compile Include="Utils\Mouse.cs" />
+    <Compile Include="Utils\PngEncoder.cs" />
+    <Compile Include="Utils\Point.cs" />
+    <Compile Include="Utils\PopupSL.cs" />
+    <Compile Include="Utils\Resources.cs" />
+    <Compile Include="Utils\SortedList.cs" />
+    <Compile Include="Utils\StringToPathGeometryConverter.cs" />
+    <Compile Include="Utils\XamlWriter.cs" />
+    <Compile Include="Utils\XamlWriterSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ChartElementProperties\ColorPropertyPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="ChartElementProperties\PropertiesDialogContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Controls\ColorDialogInternal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Indicator\IndicatorDialogInternal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineStudies\LineStudyContextMenu.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DeleteRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buy.png" />
+    <Resource Include="Images\ExitLong.png" />
+    <Resource Include="Images\ExitShort.png" />
+    <Resource Include="Images\sell.png" />
+    <Resource Include="Images\SignalPrice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\SharpZipLib.dll" />
+    <Content Include="..\..\WPF\Library\ReleaseNotes.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" Condition="" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

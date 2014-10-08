@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ModulusFE.LineStudies.LineStudyContextMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto">
+    <Canvas Background="Transparent">
+        <Grid Height="46" Width="80" x:Name="gridContainer">
+            <StackPanel Background="#FFF5F5F5" x:Name="panelItemsContainer">
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <Image Source="../Images/Edit.png" Stretch="None" />
+                    <TextBlock Text="Edit" Margin="2" VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <Image Source="../Images/DeleteRed.png" Stretch="None" />
+                    <TextBlock Text="Delete" Margin="2" VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Canvas>
+</UserControl>

@@ -1,0 +1,14 @@
+﻿      //Silverlight chart support images that are located in resources
+      ImageObject image = (ImageObject)
+                          _stockChartX.CreateLineStudy(LineStudy.StudyTypeEnum.ImageObject, //image object
+                                                    Guid.NewGuid().ToString(), //unique id
+                                                    null, //brush not required
+                                                    0, //panel index
+                                                    new object[] { "TestChart;component/Res/Open.png" } //image path from resources
+                                                    );
+      //set image position
+      image.SetXYValues(0, 0,  //for image first 2 values are ignored
+        10, //record number
+        25 //y value
+        ); 
+      _stockChartX.Update();

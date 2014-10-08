@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="TestChart.Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mod="clr-namespace:ModulusFE;assembly=ModulusFE.StockChartX.SL"
+             xmlns:mod_controls="clr-namespace:ModulusFE.Controls;assembly=ModulusFE.StockChartX.SL"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+             xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+             xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+             xmlns:theming="clr-namespace:System.Windows.Controls.Theming;assembly=System.Windows.Controls.Theming.Toolkit"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             MinWidth="800" MinHeight="400" mc:Ignorable="d" d:DesignWidth="1004">
+    <UserControl.Resources>
+        <Color x:Key="BorderGroupColot">#FF6CC8EB</Color>
+
+        <ControlTemplate x:Key="HorLinesValueControlTemplate">
+            <Grid MinWidth="80" Height="16" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="8"/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Canvas Background="{Binding Background}" />
+                <TextBlock FontFamily="Verdana" FontSize="10" Foreground="{Binding Foreground}" 
+                     Text="{Binding Value}"
+            VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,1,0"/>
+                <Canvas Grid.Column="1" Background="Transparent" Width="10" >
+                    <Path Fill="#FFA5ED6C" Data="M0,0 L10,8 L0,16" HorizontalAlignment="Left"/>
+                </Canvas>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="Ticket4560SimpleControlTemplate">
+            <TextBlock Text="Hello There...">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform Y="-5" X="-100"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="Ticket4560DataBoundControlTemplate">
+            <TextBlock Text="{Binding Text}" 
+                    FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}"
+                    Foreground="{TemplateBinding Foreground}">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform Y="-5" X="-100"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="TickBoxTemplate">
+            <Grid Background="{Binding BackgroundEx}">
+                <TextBlock Foreground="White" Text="{Binding Value}" />
+            </Grid>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE8DFDF" Offset="0"/>
+                    <GradientStop Color="{StaticResource BackgroundGrad1}" Offset="0.455"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button x:Name="btnRefresh" Content="Refresh" Margin="3 2 0 2" Click="btnRefresh_Click"/>
+            <TextBlock Text="Indicators" Margin="4" Foreground="White"/>
+            <ComboBox x:Name="cmbIndicators" Width="200" Margin="0 2 0 2"/>
+            <Button x:Name="btnAddIndicator" Content="Add Indicator" Margin="3 2 0 2" Click="btnAddIndicator_Click"/>
+            <Button x:Name="btnAddBar" Content="Add Bar" Width="60" Margin="4 2 0 2" Click="btnAddBar_Click"/>
+            <Button x:Name="btnAddTick" Content="Add Tick" Width="60" Margin="0 2 0 2" Click="btnAddTick_Click"/>
+            <Button x:Name="btnStartTickTimer" Content="Start Tick Timer" Width="120" Margin="0 2 0 2" Click="btnStartTickTimer_Click"/>
+            <Button x:Name="btnZoomIn" Content="Zoom In" Margin="4 2 0 2" Tag="zoomin" Click="btnZoomIn_Click"/>
+            <Button x:Name="btnZoomOut" Content="Zoom Out" Margin="0 2 0 2" Tag="zoomout" Click="btnZoomIn_Click"/>
+            <Button x:Name="btnResetZoom" Content="ResetZoom" Margin="0 2 0 2" Tag="resetzoom" Click="btnZoomIn_Click"/>
+            <Button x:Name="btnAddCustomIndicator" Content="Custom Indicator" Margin="4 2 0 2" Click="btnAddCustomIndicator_Click"/>
+            <Button x:Name="btnMoveLeft" Content="&lt;-" Margin="4 2 0 2" Click="btnMoveLeft_Click"/>
+            <Button x:Name="btnMoveRight" Content="-&gt;" Margin="0 2 0 2" Click="btnMoveRight_Click"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Border BorderThickness="1" CornerRadius="5" 
+        BorderBrush="{StaticResource BorderBrush}" Grid.ColumnSpan="3" Grid.Row="0" Margin="2" Padding="2">
+                <Border.Background>
+                    <SolidColorBrush Color="{StaticResource BackgroundGrad1}"/>
+                </Border.Background>
+                <mod:StockChartX x:Name="_stockChartX" YGrid="True" XGrid="True" 
+                                 UserDrawingComplete="_stockChartX_UserDrawingComplete" 
+                                 IndicatorAddComplete="_stockChartX_IndicatorAddComplete"
+                                 CustomIndicatorNeedsData="_stockChartX_CustomIndicatorNeedsData"
+                                 SeriesTickBoxValuePresenterTemplate="{StaticResource TickBoxTemplate}"  
+                                 HorizontalLineValuePresenterTemplate="{StaticResource HorLinesValueControlTemplate}"
+                                 LeftChartSpace="10" IsTabStop="True"
+                                 CrossHairsPosition="{Binding CrossHairPosition, Mode=TwoWay}">
+                    <!--URILicenseKey="OBTAIN_KEY_FROM_MODULUS http://www.modulusfe.com/support/getlicense.asp"-->
+                </mod:StockChartX>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" MinWidth="260">
+                <StackPanel>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2" Margin="5">
+                        <controlsToolkit:Expander ExpandDirection="Down" Header="Line Studies" IsExpanded="True">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2" Margin="5">
+                                <StackPanel>
+                                    <TextBlock Text="Choose a LineStudy to add" HorizontalAlignment="Center" Foreground="Green" Margin="3"/>
+                                    <ComboBox x:Name="cmbLineStudies" Margin="3"/>
+                                    <TextBlock Text="Color" HorizontalAlignment="Left" Foreground="Green" Margin="3" />
+                                    <mod_controls:ColorPicker x:Name="colorPicker" SelectedColor="Red" Margin="3" ColorSelected="colorPicker_ColorSelected"/>
+                                    <Button Content="Add" x:Name="btnAddLineStudy" Margin="3" Click="btnAddLineStudy_Click"/>
+                                </StackPanel>
+                            </Border>
+                        </controlsToolkit:Expander>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2" Margin="5">
+                        <controlsToolkit:Expander ExpandDirection="Down" Header="Chart Tools" IsExpanded="True">
+                            <StackPanel Orientation="Vertical" Margin="5" >
+                                <Border BorderThickness="1" CornerRadius="5" Margin="2" BorderBrush="{StaticResource BorderBrush}">
+                                    <StackPanel HorizontalAlignment="Stretch">
+                                        <Button Content="Delete Selected Object(s)" x:Name="btnDeleteCurrentObject" Margin="2" Click="btnDeleteCurrentObject_Click"/>
+                                        <Button Content="Show Indicator props" x:Name="btnIndProps" Margin="2" Click="btnIndProps_Click" />
+                                        <Button Content="Add Indicator without dialog" x:Name="btnQuietAddIndicator" Margin="2" Click="btnQuietAddIndicator_Click" />
+                                        <Button Content="Save As Image" x:Name="btnSaveAsImage" Margin="2" Click="btnSaveAsImage_Click" />
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderThickness="1" CornerRadius="5" Margin="2" Padding="3" BorderBrush="{StaticResource BorderBrush}">
+                                    <StackPanel HorizontalAlignment="Stretch">
+                                        <StackPanel Orientation="Horizontal">
+                                            <RadioButton GroupName="ScalingType" x:Name="radioButtonLinear" IsChecked="True" Content="Linear"  Margin="0 0 50 0" Checked="radioButtonScalingType_Checked" />
+                                            <RadioButton GroupName="ScalingType" x:Name="radioButtonSemiLog" Content="Semi-Log" Checked="radioButtonScalingType_Checked" />
+                                        </StackPanel>
+                                        <CheckBox Content="Side Volume Bars" x:Name="checkBoxSideVolumeBars" Click="checkBoxSideVolumeBars_Click"/>
+                                        <CheckBox Content="Darvas Boxes" x:Name="checkBoxDarvasBoxes" Click="checkBoxDarvasBoxes_Click"/>
+                                        <CheckBox Content="Tick Box" x:Name="checkBoxTickBox" IsChecked="True" Click="checkBoxTickBox_Click"/>
+                                        <CheckBox Content="Mouse Zoom Area" x:Name="checkBoxMouseZoomArea" IsChecked="False" Click="checkBoxMouseZoomArea_Click"/>
+                                        <Border BorderThickness="1" CornerRadius="5" Margin="2" Padding="3" BorderBrush="{StaticResource BorderBrush}">
+                                            <StackPanel>
+                                                <TextBlock Text="Info Panel" />
+                                                <RadioButton GroupName="InfoPanelType" x:Name="radioButtonInfoPanelMouse" IsChecked="True" Content="Folow Mouse" Checked="radioButtonInfoPanelType_Checked" />
+                                                <RadioButton GroupName="InfoPanelType" x:Name="radioButtonInfoPanelFixed" IsChecked="False" Content="Fixed Position" Checked="radioButtonInfoPanelType_Checked" />
+                                                <RadioButton GroupName="InfoPanelType" x:Name="radioButtonInfoPanelHidden" IsChecked="False" Content="Hidden" Checked="radioButtonInfoPanelType_Checked" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderThickness="1" CornerRadius="5" Margin="2" BorderBrush="{StaticResource BorderBrush}">
+                                    <StackPanel>
+                                        <TextBlock Text="Price Types" Margin="3,5,3,3" />
+                                        <ComboBox x:Name="cmbPriceStyles" SelectedIndex="0" Margin="3,1">
+                                            <ComboBoxItem Content="Standard" x:Name="psStandard" Tag="standard" />
+                                            <ComboBoxItem Content="Standard - Bar" x:Name="psBarChart" Tag="barchart"/>
+                                            <ComboBoxItem Content="Standard - Line" x:Name="psLine" Tag="lineChart"/>
+                                            <ComboBoxItem Content="Standard - Bar HLC" x:Name="psBarHLC" Tag="barchartHLC"/>
+                                            <ComboBoxItem Content="Standard - Candle" x:Name="psCandleChart" Tag="candleChart"/>
+                                            <ComboBoxItem Content="Kagi" x:Name="psKagi" Tag="kagi"/>
+                                            <ComboBoxItem Content="Equi Volume" x:Name="psEquiVolume" Tag="equivolume" />
+                                            <ComboBoxItem Content="Candle Volume" x:Name="psCandleVolume" Tag="candlevolume"/>
+                                            <ComboBoxItem Content="Equi Volume Shadow" x:Name="psEquiVolumeShadow" Tag="equivolumeshadow"/>
+                                            <ComboBoxItem Content="Point&amp;Figure" x:Name="pfPointAndFigure" Tag="pointandfigure"/>
+                                            <ComboBoxItem Content="Renko" x:Name="psRenko" Tag="renko"/>
+                                            <ComboBoxItem Content="Three Line Break" x:Name="psThreeLineBreak" Tag="threelinebreak"/>
+                                            <ComboBoxItem Content="Heikin-Ashi" x:Name="psHeikinAshi" Tag="heikinashi"/>
+                                        </ComboBox>
+                                        <Button Content="Apply Price Style" x:Name="btnApplyPriceStyle" Click="btnApplyPriceStyle_Click" Margin="3,2,3,5"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderThickness="1" CornerRadius="5" Margin="2" BorderBrush="{StaticResource BorderBrush}">
+                                    <StackPanel>
+                                        <TextBlock Text="Serialization Type" Margin="2,2,2,0"/>
+                                        <ComboBox x:Name="cmbSerType" Margin="2" SelectedIndex="0">
+                                            <ComboBoxItem Content="All" ToolTipService.ToolTip="Save everything (chart, indicators, linestudies, ...)"/>
+                                            <ComboBoxItem Content="General" ToolTipService.ToolTip="Saves Workspace and Indicators" />
+                                            <ComboBoxItem Content="Objects" ToolTipService.ToolTip="Save LineStudies"/>
+                                        </ComboBox>
+                                        <Button Content="Save Chart" x:Name="btnSave" Margin="2" Click="btnSave_Click"/>
+                                        <Button Content="Load Chart" x:Name="btnLoad" Margin="2" Click="btnLoad_Click"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+
+                        </controlsToolkit:Expander>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2" Margin="5">
+                        <controlsToolkit:Expander ExpandDirection="Down" Header="Other Tools" IsExpanded="True">
+                            <StackPanel Orientation="Vertical" Margin="5" >
+                                <Border BorderThickness="1" CornerRadius="5" Margin="2" BorderBrush="{StaticResource BorderBrush}">
+                                    <StackPanel HorizontalAlignment="Stretch">
+                                        <Button Content="Alt. Style" x:Name="btnAltStyle" Margin="2" Click="btnAltStyle_Click"/>
+                                        <Button Content="Style Info Panel" x:Name="btnStyleInfoPanel" Margin="2" Click="btnStyleInfoPanel_Click"/>
+                                        <Button Content="Small Data Set Chart" x:Name="btnSmallDataSetChart" Margin="2" Click="btSmallDataSetChart_Click"/>
+                                        <Button Content="Close Line Chart" x:Name="btnCloseLineChart" Margin="2" Click="btnCloseLineChart_Click"/>
+                                        <Button Content="Ticket 4132" x:Name="btnTicket4132" Margin="2" Click="btnTicket4132_Click"/>
+                                        <Button Content="Ticket 4360" x:Name="btnTicket4360" Margin="2" Click="btnTicket4360_Click"/>
+                                        <Button Content="{Binding Ticket4489Content, Mode=OneWay}" x:Name="btnTicket4489" Margin="2" Click="btnTicket4489_Click"/>
+                                        <Button Content="Ticket 4541 (Series/Indicators)" x:Name="btnTicket4541" Margin="2" Click="btnTicket4541_Click"/>
+                                        <Button Content="Ticket 4601 (Click Again)" x:Name="btnTicket4601" Margin="2" Click="btnTicket4601_Click"/>
+                                        <Button Content="Calendar V2 (Click Again)" x:Name="btnCalendarV2" Margin="2" Click="btnCalendarV2_Click"/>
+                                        <Button Content="Ticket 4560 (Click Again)" x:Name="btnTicket4560" Margin="2" Click="btnTicket4560_Click"/>
+                                        <Button Content="Ticket 4580 (Click Again)" x:Name="btnTicket4580" Margin="2" Click="btnTicket4580_Click"/>
+                                        <Button Content="Ticket 4638 (Click Again)" x:Name="btnTicket4638" Margin="2" Click="btnTicket4638_Click"/>
+                                        <Button Content="Ticket 4679 (Click Again)" x:Name="btnTicket4679" Margin="2" Click="btnTicket4679_Click"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+
+                        </controlsToolkit:Expander>
+                    </Border>
+                </StackPanel>
+                <!--
+                <toolkitLayout:Accordion SelectionMode="ZeroOrMore" 
+                                     HorizontalAlignment="Stretch" Margin="5"
+                                     BorderThickness="1" BorderBrush="{StaticResource BorderBrush}"
+                                     MinWidth="222" >
+                <toolkitLayout:AccordionItem Header="Line Studies" x:Name="AccordionItemLineStudies" IsSelected="True" HorizontalContentAlignment="Stretch">
+                </toolkitLayout:AccordionItem>
+                <toolkitLayout:AccordionItem Header="Chart Tools" x:Name="AccordionItemChartTools" IsSelected="True" HorizontalContentAlignment="Stretch">
+                </toolkitLayout:AccordionItem>
+                <toolkitLayout:AccordionItem Header="Other Tools" x:Name="AccordionItemOtherTools" HorizontalContentAlignment="Stretch" Selected="AccordionItem_Selected">
+                </toolkitLayout:AccordionItem>
+            </toolkitLayout:Accordion>
+                -->
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

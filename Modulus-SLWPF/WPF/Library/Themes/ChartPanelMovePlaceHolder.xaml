@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModulusFE">
+
+    <Style TargetType="{x:Type local:ChartPanelMovePlaceholder}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ChartPanelMovePlaceholder}">
+                    <Grid Height="20" VerticalAlignment="Top" >
+                        <Rectangle Fill="Yellow" Height="10" VerticalAlignment="Top" Stroke="Transparent" StrokeThickness="0"/>
+                        <Polygon Fill="Yellow" Stroke="Transparent" StrokeThickness="0">
+                            <Polygon.Points>
+                                <Point X="0" Y="10"/>
+                                <Point X="10" Y="10"/>
+                                <Point X="0" Y="20"/>
+                            </Polygon.Points>
+                        </Polygon>
+                        <Polygon Fill="Yellow" HorizontalAlignment="Right" Stroke="Transparent" StrokeThickness="0">
+                            <Polygon.Points>
+                                <Point X="0" Y="10"/>
+                                <Point X="10" Y="20"/>
+                                <Point X="10" Y="10"/>
+                            </Polygon.Points>
+                        </Polygon>
+                        <Polygon HorizontalAlignment="Center" Fill="Yellow" Stroke="Transparent" StrokeThickness="0">
+                            <Polygon.Points>
+                                <Point X="0" Y="10"/>
+                                <Point X="10" Y="20"/>
+                                <Point X="20" Y="10"/>
+                            </Polygon.Points>
+                        </Polygon>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

@@ -10,3 +10,7 @@ C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug\Easychart.Finance.pdb
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.dll
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug\Easychart.Finance.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance\bin\debug\Easychart.Finance.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance\obj\Debug\Easychart.Finance.pdb

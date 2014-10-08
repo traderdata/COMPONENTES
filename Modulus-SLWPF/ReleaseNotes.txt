@@ -1,0 +1,188 @@
+Date: Fri 04.20.2012  Version: 2.4.8.150
+======================================================================
+Fixed up the ErrorChannel and QuadrantLines Line Studies as they were not scrolling to the edge of the chart properly.
+Cleaned up the WPF VS2010 Project so that it is easier to work with (this is the main WPF project for M. Jordan)
+Fixed some OnParameterChanged events for the StockChartX x and y axies.
+Ticket 4654: Line style was not being changed on the vertical line study.
+Ticket 4679: Added the ability to change the PanelMinHeight so that the user can hide a panel completely. Added Maximize, Minimize and Restore methods to the panel so that the user can play around with them programatically. Added a test case for this ticket to both the WPF and SL versions. 
+
+Date: Tue 03.27.2012  Version: 2.4.7.141
+======================================================================
+Ticket 4625: When a panel was maximized the ClearAll() method was not returning the _maximizedPanel to null, causing the painting of the new chart to fail. Problem resolved. 
+			 Also, a refresh button was added to the Silverlight test application to be able to test this bug. Will be useful for other tests.
+Ticket 4560: Created a new tool in the Silverlight Demo/Example application for the users to be able to play with the text values on horizontal lines. Also had to change the access rights on a class so that it would work properly.
+Cleaned up how the TickCompression is working for TimeCompression. When the tick data was added it's time stamp was used. Therefore, the interval would be set by the next tick and not from the previous one in the current data set. Now the control will only grow the chart by exact intervals of the tick period.
+Added a new output enum for the output of the labels in the new calendar version. Allows the user to select the end of the period as the output label.
+Propagated select-ability to Twin/Linked series.
+Ticket 4636: There was a bug in the IsChartScrollerVisible property. It is now fixed.
+Cleaned up the Silverlight Test Application again so that a lot of added tools would be able to be laid out properly. Also cleaned up the structure of the C# file to make things easier to find.
+Cleaned up the error in the InfoPanel folowing the cursor.
+Cleaned up an error in the scroller that was stopping the scroller from going all of the way to the right.
+Cleaned up the random data feed so that it would have a few new features (messyness being one of them, useful for some testing).
+Changed the display routines for the InfoPanel so that it does not go out of bounds as it was before.
+Change the Sample/Demo app w.r.t. the height of initial panels as the new bit of code that limits them from getting too small was getting in the way.
+Ticket 4638: Added a new tool to the Silverlight Sample/Demo application that shows some of the tools that are available for working with the Candle style properties.
+Cleaned up the way that a candle displays on the screen. The border no longer takes up extra space, the wick has been split into two so that it does not display in the middle of the hollow bar.
+Added a new variable to the system so that the user can select which color is used for the wick (the fill or the outline).
+Added some more code to the Demo/Sample application that shows the different display possibilities for the standard price style.
+Ticket 4581: TickBox was not moving to the correct location when the y-axis scale changed. The bug is resolved.
+Ticket 4616: Made sure that extra small candles now have more information on the screen.
+
+Date: Tue 03.13.2012  Version: 2.4.6.125
+======================================================================
+Ticket 4541: Changes from previous release were missed. They are being included in this release.
+Ticket 4597: Changed how the popup windows for indicators work for the SL version of the application. Partly to match the WPF version and partly to have it more consistent for the users. The style controls and settings controls showed up on different popup windows at different times. Now all of the data shows up on one window at a time and all data points ara available.
+	Also, the way that settings are handled for indicators that have 'twin' indicators is now set up properly. It should be automatica and intuative now.
+Ticket 4596: Added the ability for the user to be able to delete Indicators directly from the chart. Again, this is a standardization between WPF and SL. In the WPF version a right click could be used, but as this is not advised, the double click or title bar click will now bring up the settings window that will have the new functionality to be able to delete the seleced indicator.
+Changed the way that the panels reposition themselves when a panel is completely removed. The effect should be less jaring to the user.
+Added a new Calendar to the system. There are some issues with how this calendar works (it may be a bit sparse for some users) but it does scan differently in a way that some users might prefer, and there are a lot more editable parameters for style and layout if the user wants to learn how to use them. A small demonstration has been added to the SL demo application to show some of the functionality.
+Potential breaking change. Changed when the DeleteSeries even it fired. It was not being fired for all deletion events. Now it is, and it will also fire for Twin series. 
+
+Date: Wed 02.29.2012  Version: 2.4.5.116
+======================================================================
+Breaking changed. The properties StockChart.TickPeriodicity and StockChart.TickCompressionType do not compress anymore the stored internally ticks.
+		See internal comments why. Instead user is supposed to call the method StockChart.CompressTicks() after any of those 2 properties were changed.
+Major structural change to the Dependency Properties. They are now more consistent for both WPF and SL versions. Any functionality in only one version is now in both.
+Ticket 4489: Added a new set of dependency properties for the X and Y location of the Crosshairs so that clients can access the values and even change them externally. This also changed how the crosshair is drawn, no longer a timer, but on mouse events.
+Ticket 4541: Added a new method to the Indicator class that will allow the client to find out about the Twin's Parent Indicator (called TwinsParentIndicator). There is also a new button in the SL example with a best practice piece of code.
+Ticket 4541: Added a new dependancy property that will allow the client to turn off the Twin Indicator elements in the title bar of the panel (only one will show up and not many).
+Ticket 4541: Added the required elements to the Serialization for saving and loading of the chart.
+Ticket 4543: Bug Fix: Changed the way that the chart reacts when the user starts to draw a line study. Now the user will be able to change the location and scale of the chart before they start to draw. Also, the cursor has been changed so that it works in the SL version like in the WPF version (there is a cursor style change when the line studes are drawn).
+Bug Fix: Added the URILicenseKey property to the Serialization routines for saving and loading of charts.
+Ticket 4601: Bug fix: There was a problem with the Opacity and LinePattern for the standard series, and many of the line studies. All of the classes are now changed. If a user comes across a situation where these two properties are not working please alert support.
+Ticket 4132: Added a new tool to the SL Example app for saving and applying indicators to charts.
+Added 20 more indicators. Updated ta-sdk library.
+
+Date: Tue 01.31.2012  Version: 2.4.4.106
+======================================================================
+Added a button to the Example project for ticket 4396.
+Fixed a bug with regards to the programmatic creation of Line Studies during the loading of a chart. The application was throwing an exception due to -Infinity values. The values are now being captured and corrected in LineStudy.cs file.
+Fixed a bug where a line study that is added to the far right of the chart would lock to the right and not move with the data as it was scrolled. Ticket 4394.
+Changed the way the safe and re-load of the GeneralTemplate occurs so that the system will restore the data properly. Ticket 4132.
+
+Date: Fri 12.30.2011  Version: 2.4.3.98
+======================================================================
+Fixed a but with the deploy process. The SL XAP file was not being added to the ZIP file and the BIN folder was not being created.
+Slight change to the DemoApplication to stop showing the frame rate data.
+Repaired the deployment XAP so that obfuscation is working properly.
+Changed the Back end DLLs on the Silverlight Example Application to use the .NET v4 DLLs instead of the older ones.
+Added a new structure to the example application that will allow for small bits of example code to be added for the clients.
+Added a new dependency property to deal with the licensing of the SL product. Users will no loner need to edit the code to add their URI, they can instead go to http://www.modulusfe.com/support/getlicense.asp and create a license key for their opearing URL.
+Added a button to the Example project for ticket 4360.
+
+Date: Fri 12.09.2011  Version: 2.4.1.84
+======================================================================
+Added strongly types assemblies for all of the assemblies in the system. Source code users will have access to a non-secure key with the password ModulusFE.
+Added Visual Studio 2010 upgrades. Many files were upgraded to new version, but many files still exist in an unsupported way.
+Fixed a bug in the Silverlight version to turn on the Double click events.
+
+Date: 12 Apr 2011 Version: 2.2.2.47
+======================================================================
+Added a possibility to zoom the chart using a zooming area like in old OCX chart.
+Added new property Series.Panel, that returns a reference to the panel where the series is located.  
+Fixed the case when the event LineStudyAdded wasn't raised for all LineStudies except HorizontalLine. Now it gets raised for all line studies. Other miscellaneous error in internal implementation.  
+
+Date: 22 Dec 2010 Version: 2.2.2.30 
+======================================================================
+New properties and methods
+LineStudy.ShowPropertiesWindow() - will show the internal properties dialog that is shown when user selects [Edit] menu item in LineStudies' context menu.
+StockChartX.YGridStepType - property that sets or gets the type of calculation used for Y grid step.
+Series.UpdateTitle() - method that needs to be called when adding and populating first time a series, if not called the title bar value will be wrong.  
+
+Date: 19 Nov 2010 Version: 2.2.2.28 
+======================================================================
+New Properties
+StockChartX.VerticalGridLinePattern - Gets or sets a collection of Double values that indicate the pattern of dashes and gaps that is used to outline shapes for vertical grid lines. (Not supported in Silverlight version)
+StockChartX.HorizontalGridLinePattern - Gets or sets a collection of Double values that indicate the pattern of dashes and gaps that is used to outline shapes for horizontal grid lines. (Not supported in Silverlight version)
+StockChartX.CalendarBackground - Gets or sets the calendar background
+ChartPanel.TitleBarBackground - Gets or sets the chartpanel's title bar background
+Series.UseEnhancedColoring - makes possible to use below mentioned Series' properties.
+Series.WickUpStroke - Gets or sets the Brush for up-trend wick
+Series.WickDownStroke - Gets or sets the Brush for down-trend wick
+Series.WickStrokeThickness - Gets or sets the stroke thickness for wick
+Series.CandleUpFill - Gets or sets the Brush used to fill the up-trend of candles
+Series.CandleDownFill - Gets or sets the Brush used to fill the down-trend of candles
+Series.CandleUpStroke - Gets or sets the stroke Brush for the up-trend of candles
+Series.CandleDownStroke - Gets or sets the stroke Brush for the down-trend of candles
+Series.CandleStrokeThickness - Gets or sets the stroke thickness for Candles
+Series.TitleBrush - Gets or sets the foreground for series' text displayed in panel's title bar
+Also, included various small fixes for serialization, painting...  
+Fixed a bug when setting StockChartX.LastVisibleRecord won't update the panel title bar values.
+Fixed a bug when in some case users would get such an exception "'Infinity' is not a valid value for property 'Y1'" when working with TrendLines.
+ 
+Date: 08 Mar 2010 Version: 2.2.2.11 
+======================================================================
+Fixed a bug when having small amounts of bar would make the chart scroller act wrong.
+Fixed a bug when using StockChartX.BarBrush(barIndex, brush) won't update correctly the needed bar candle. 
+Fixed a bug when drag&drop-ing OHLC series from one panel to another would make Y axis paint incorectly.  
+
+Date: 03 Mar 2010 Version: 2.2.2.10 
+======================================================================
+Added a new property ChartPanel.YAxisScalePrecision that gets or sets the number of decimal digits to format Y axis values. 
+Fixed a bug in Silverlight version when setting StockChartX.ScalingType didn't actually update correctly the Y values.  
+
+Date: 24 Feb 2010 Version: 2.2.2.9 
+======================================================================
+Fixed a bug in when TickBox was not posionted correctly when Y axis was resized or when ChartPanel was resized.  
+Added a new property ChartPanel.UseAliasedEdgeMode that get or sets whether to use Aliased mode when painting objects on chart. Image below shows the deifference between these 2 modes.  
+As we can see, it works very well for candles and vertical lines, the image is much more crisp, however it has issues when dusplaying polyline, in case of indicators.  
+
+Date: 02 Feb 2010 Version: 2.2.2.5 
+======================================================================
+Fixed bug when adding a HorizontalLine would crash in case no parameters were supplied.  
+
+Date: 29 Dec 2009 Version: 2.2.2.2 
+======================================================================
+Removed StockChartX.AppRoot-property that was used for internal "modal"-dialogs. Now we use the ChildWindow class that comes with SL for showing dialogs.  
+Fixed bug in EnsureVisible method for Horizontal lines. Now it will show even if Y axis were zoomed in.  
+Fixed bug when StockChartX.SeriesTickBoxValuePresenterTemplate will not set the actual template.  
+
+Date: 12 Dec 2009 Version: 2.2.2.1 
+======================================================================
+Addded StockChartX.HorizontalLineValuePresenterTemplate-property to set a custom control template for HorizontalLineStudy value.   
+Addded StockChartX.SeriesTickBoxValuePresenterTemplate-property to set a custom control template for Series TickBox value.  
+Addded StockChartX.ChartPanelMoreIndicatorTemplate-property to set a custom control template for "more" sign. This sign will apear when some of horizontal line Studies are invisible when chart was scrolled or zoomed.   
+Addded LineStudy.EnsureVisible-method that ensures a specified LineStudy is visible, to achieve this chart will be scrolled or zoomed.  
+Addded ChartPanel.CurrentYScaleStep-property that gets the current Y step used to paint the Y axis.  
+Addded StockChart.AddHolder-Content to be placed below Y Axis.   
+Addded ChartPanel.ChartPanelLabel-A TextBlock that can be positioned anywhere on ChartPanel. Used at programmer discretion  
+Addded Series.ForceLinearPaint-Property that forces to be painted as linear. Usefull when series has negative values, in this case by default series is painted as oscilattor. By setting this property to True it will be painted always as a line. 
+IMPORTANT: Property has no effect if Series.ForceOscilatorPaint = true;  
+
+Date: 15 Oct 2009 Version: 2.2.1.11 
+======================================================================
+Addded StockChartX.GetReverseX-method that returns nximate record index by a datetime.  
+Fixed bug when ImageObject created by code won't be positioned correctly on chart.  
+
+Date: 14 Oct 2009 Version: 2.2.1.10 
+======================================================================
+Addded Series.TitleBrush-property that gets or sets the brush of text displayed in title bar. By default the series stroke color is taken.  
+Addded Chart.DeleteHeatMap()-method that allows to close by code the heat panel.  
+Fixed bug when in some cases the X grid won't be displayed correctly for real-time data.  
+
+Date: 08 Oct 2009 Version: 2.2.1.9 
+======================================================================
+Addded Series.ForceLinearChart-property that gets or sets whether negative values would force the series to be painted as a histogram. This value has no effect if ForceOscilatorPaint = true;  
+
+Date: 05 Oct 2009 Version: 2.2.1.8 
+======================================================================
+Added LineStudies.TrendLine.BarsIntersection-property that gets the intersection of current trendline with bars from chart.  
+
+Date: 26 Sep 2009 Version: 2.2.1.7 
+======================================================================
+Added StockChartX.ShowSeconds-property that gets or sets whether to show seconds in calendar panel. It does not have any effect if StockChartX.RealTimeXLabels = false;  
+Added the possibility to serialize/deserialize Silverlight version of chart. Method StockChartX.SaveFile will return a byte array of zipped chart data, StockChartX.ReadFile will read from a byte array. Saving options are the same like in WPF version. However the data between WPF and Silverlight chart is not compatible due to ZIP library that is different under these platforms.  
+Fixed bug when in some cases loading a full chart from file won't display the titles correctly for some indicators.  
+
+Date: 17 Sep 2009 Version: 2.2.1.6 
+======================================================================
+StockChartX.ChartPanelMouseMove-event fired when user moves mouse over a panel. Event args have mouse coordiates relative to internal canvas.  
+Series.ShowInHeatMap-property used to display any series in heat map. Before only indicators were shown.  
+Fixed bug when in some cases calendar won't display year value when there is a transaition from December to January  
+Fixed bug when ChartPanelBeforeClose wasn't fired for HeatMap.  
+Fixed bug when candle's wick color wasn't changed. Now color is taken from .close series from OHLC group.  
+ 
+Date: 1 July 2009 Version: 2.2.1.3 
+======================================================================
+LineStudyPropertyDialogBackground-gets or sets the background of the dialog for LineStudies and for properties dialog for series and indicators.  
+[WPF] Fixed a bug in loading Objects template from a file.  

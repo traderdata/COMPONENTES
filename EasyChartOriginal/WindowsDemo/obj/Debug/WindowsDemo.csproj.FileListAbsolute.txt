@@ -36,3 +36,17 @@ C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easyc
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.csprojResolveAssemblyReference.cache
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.DemoForm.resources
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.csproj.GenerateResource.Cache
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\WindowsDemo.exe.config
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.exe
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\WindowsDemo.exe
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\WindowsDemo.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.Objects.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.Win.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.Objects.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.Win.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\bin\Debug\Easychart.Finance.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.csprojResolveAssemblyReference.cache
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.DemoForm.resources
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\WindowsDemo\obj\Debug\WindowsDemo.csproj.GenerateResource.Cache

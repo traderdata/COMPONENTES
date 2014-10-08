@@ -1,0 +1,116 @@
+﻿<Window x:Class="ModulusFE.Indicators.IndicatorDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Indicator Properties" Height="Auto" Width="250" 
+       WindowStartupLocation="CenterOwner" 
+        Topmost="False" ShowInTaskbar="False" ResizeMode="NoResize" SizeToContent="WidthAndHeight" >
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="3 0 0 0"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="1" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="1" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0 0 0 0" Name="stackPanelBackground">
+        <Grid.Background>
+            <RadialGradientBrush Center="0.6, 0.7" 
+                           RadiusX="1" RadiusY="1">
+                <GradientStop Color="LightBlue" Offset="0"/>
+                <GradientStop Color="LightSteelBlue" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="125"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Name="lbl0" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt0" Text="text0" Grid.Row="0" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb0" Text="cmb0" Grid.Row="0" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl1" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt1" Text="text0" Grid.Row="1" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb1" Text="cmb0" Grid.Row="1" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl2" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt2" Text="text0" Grid.Row="2" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb2" Text="cmb0" Grid.Row="2" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl3" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt3" Text="text0" Grid.Row="3" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb3" Text="cmb0" Grid.Row="3" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl4" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt4" Text="text0" Grid.Row="4" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb4" Text="cmb0" Grid.Row="4" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl5" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt5" Text="text0" Grid.Row="5" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb5" Text="cmb0" Grid.Row="5" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl6" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt6" Text="text0" Grid.Row="6" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb6" Text="cmb0" Grid.Row="6" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl7" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="7" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt7" Text="text0" Grid.Row="7" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb7" Text="cmb0" Grid.Row="7" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl8" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="8" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt8" Text="text0" Grid.Row="8" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb8" Text="cmb0" Grid.Row="8" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Name="lbl9" Text="Label0"  Style="{StaticResource LabelStyle}" Grid.Row="9" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <TextBox Name="txt9" Text="text0" Grid.Row="9" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+        <ComboBox Name="cmb9" Text="cmb0" Grid.Row="9" Grid.Column="1" FontSize="{Binding LabelFontSize}" />
+
+        <TextBlock Text="Color" Style="{StaticResource LabelStyle}" Grid.Row="10" Grid.Column="0"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"/>
+        <Canvas Name="canvasColor" Background="Red" Width="115" Height="8" Grid.Row="10" Grid.Column="1" Margin="5" 
+              MouseLeftButtonDown="canvasColor_MouseLeftButtonDown"/>
+
+        <Border Grid.Row="11" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Black" CornerRadius="2" Margin="2">
+            <TextBlock Style="{StaticResource LabelStyle}" TextWrapping="Wrap" Margin="1" Height="57"
+               Foreground="{Binding LabelForeground}" FontSize="{Binding LabelFontSize}"
+               x:Name="lblDesc" />
+        </Border>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="12" Grid.ColumnSpan="2">
+            <Button Content="OK" Name="btnOK" Margin="2" Width="60" Click="btnOK_Click" IsDefault="True" />
+            <Button Content="Cancel" Name="btnCancel" Margin="2" Width="60" Click="btnCancel_Click" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,4 @@
+C:\Backup\Traderdata\Tecnologia\Modulus\stxwpfsl_src_6543223\SL3\Examples\DemoClient.Web\bin\TestChart.Web.dll
+C:\Backup\Traderdata\Tecnologia\Modulus\stxwpfsl_src_6543223\SL3\Examples\DemoClient.Web\bin\TestChart.Web.pdb
+C:\Backup\Traderdata\Tecnologia\Modulus\stxwpfsl_src_6543223\SL3\Examples\DemoClient.Web\obj\Debug\TestChart.Web.dll
+C:\Backup\Traderdata\Tecnologia\Modulus\stxwpfsl_src_6543223\SL3\Examples\DemoClient.Web\obj\Debug\TestChart.Web.pdb

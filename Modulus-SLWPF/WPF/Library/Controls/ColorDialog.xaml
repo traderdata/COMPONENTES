@@ -1,0 +1,28 @@
+﻿<Window x:Class="ModulusFE.Controls.ColorDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mod_controls="clr-namespace:ModulusFE.Controls"        
+    Title="ColorDialog" Height="310" Width="240" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid x:Name="LayoutRoot" Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+            <TextBlock Text="Old/New Color" Foreground="White" Margin="5 0 3 0" VerticalAlignment="Center"/>
+            <Border BorderBrush="White" Margin="1" BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Canvas Width="50" Height="20" Background="White" Margin="2 3 0 3" x:Name="canvasOldColor" />
+                    <Canvas Width="50" Height="20" Background="Black" Margin="0 3 2 3" x:Name="canvasnewColor" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <mod_controls:ColorPicker x:Name="colorPicker" Grid.Row="1"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+            <Button x:Name="btnOK" Content="OK" Margin="2" Width="60" Click="btnOK_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Margin="2" Width="60" Click="btnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

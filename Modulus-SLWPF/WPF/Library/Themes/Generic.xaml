@@ -1,0 +1,28 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/StockChartX.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanel.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/PanelsBarContainer.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/PanelsBarButton.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelTitleBar.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelTitleBarButton.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelsDivider.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelMoveShadow.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelMovePlaceholder.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/MoveSeriesIndicator.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/SeriesTooltTip.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/Brushes.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartScroller.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelTitleCaptionEntry.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ColorPicker.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/HorizontalLineStudyValuePresenter.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/SeriesTickBoxValuePresenter.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelMoreIndicator.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartPanelMoreIndicatorPanel.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartScrollerEx.xaml" />
+        <ResourceDictionary Source="/ModulusFE.StockChartX;component/Themes/ChartScrollerExHandle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

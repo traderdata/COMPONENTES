@@ -40,3 +40,17 @@ C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\o
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.csproj.GenerateResource.Cache
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.dll
 C:\Backup\Projetos2014\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.Objects.dll.config
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.Objects.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.Objects.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.Win.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.Win.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\bin\debug\Easychart.Finance.pdb
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.csprojResolveAssemblyReference.cache
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.ImgControl.resources
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.ObjectToolPanel.resources
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.ObjectTree.resources
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.csproj.GenerateResource.Cache
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.dll
+C:\Backup\GITHUB\COMPONENTES\EasyChartOriginal\Easychart.Finance.Objects\obj\Debug\Easychart.Finance.Objects.pdb

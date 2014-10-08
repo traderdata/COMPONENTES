@@ -1,0 +1,16 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="TestChart.App"
+             >
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaryTest.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="BackgroundGrad1">#FF262222</Color>
+            <SolidColorBrush x:Key="BorderBrush" Color="#FF1D2B37"/>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
